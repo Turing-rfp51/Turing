@@ -4,8 +4,11 @@
   --darkgrey: #5d5c61;
   --lightgrey: #938e94;
   --taupe: #b1a296;
+  --smallFont: 'Exo', sans-serif;
+  --largeFont: 'Ovo', serif;
 }
 
 body {
   background-color: var(--lightBlue);
+  font-family: var(--smallFont);
 }
