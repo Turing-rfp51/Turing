@@ -1,2 +1,5 @@
 /client/dist
 /config
+/dist
+/.vscode
+node_modules
