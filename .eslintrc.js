@@ -17,6 +17,6 @@ module.exports = {
     'printWidth': 0,
     'quoteProps': 0,
     'jsxSingleQuote': 0,
-    'no-undef': 1,
+    'no-undef': 0,
   },
 };
