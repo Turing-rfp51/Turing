@@ -5,13 +5,17 @@ module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
     allowImportExportEverywhere: true,
-    codeFrame: false
+    codeFrame: false,
   },
-  extends: [
-    'airbnb-standard',
-  ],
+  extends: ['airbnb-standard', 'prettier'],
+  plugins: ['prettier'],
   rules: {
-    "import/extensions": "off",
-    'no-console': 0
-  }
+    'import/extensions': 'off',
+    'no-console': 0,
+    'prettier/prettier': ['error'],
+    'singleQuote': true,
+    'printWidth': 100,
+    'quoteProps': 'preserve',
+    'jsxSingleQuote': true,
+  },
 };
