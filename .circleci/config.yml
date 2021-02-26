@@ -6,17 +6,8 @@ jobs:
       - image: circleci/node:10-browsers
     steps:
       - checkout
+      - run: npm install
       - run:
-          name: The First Step
+          name: JEST TESTS
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
-      - run:
-          name: Code Has Arrived
-          command: |
-            ls -al
-            echo '^^^That should look familiar^^^'
-      - run:
-          name: Running in a Unique Container
-          command: |
-            node -v
+            npm run test
