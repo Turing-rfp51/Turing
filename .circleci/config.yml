@@ -1,12 +1,14 @@
 version: 2.1
 jobs:
   build:
-    working_directory:
     # pre-built images: https://circleci.com/docs/2.0/circleci-images/
     docker:
       - image: circleci/node:10-browsers
     steps:
       - checkout
+      - run:
+          name: Install dependencies
+          command: npm ci
       - run:
           name: JEST TESTS
           command: |
