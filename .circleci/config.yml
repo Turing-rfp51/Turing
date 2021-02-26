@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/Desktop/Class/FEC/Turing
+    working_directory:
     # pre-built images: https://circleci.com/docs/2.0/circleci-images/
     docker:
       - image: circleci/node:10-browsers
@@ -10,4 +10,4 @@ jobs:
       - run:
           name: JEST TESTS
           command: |
-            npm run test
+            npm jest
