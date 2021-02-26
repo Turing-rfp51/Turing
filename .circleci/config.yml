@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  test:
+  build:
     # pre-built images: https://circleci.com/docs/2.0/circleci-images/
     docker:
       - image: circleci/node:10-browsers
