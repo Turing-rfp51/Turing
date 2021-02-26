@@ -12,3 +12,7 @@ body {
   background-color: var(--lightBlue);
   font-family: var(--smallFont);
 }
+
+h1 {
+  font-family: var(--smallFont);
+}
