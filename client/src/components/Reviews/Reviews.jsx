@@ -5,6 +5,9 @@
 import React from 'react';
 import axios from 'axios';
 
+import ReviewsBreakdown from './ReviewsBreakdown.jsx';
+import ReviewsList from './ReviewsList.jsx';
+
 const { TOKEN } = require('../../../../config.js');
 
 const productId = 17762; // will likely come in as props. Only hardcoded for now
@@ -19,10 +22,10 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    this.initializeReivews()
+    this.initializeReviews()
   }
 
-  initializeReivews() {
+  initializeReviews() {
     axios
       .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${productId}`, { headers: { Authorization: TOKEN } })
       .then((obj) => {
@@ -36,6 +39,8 @@ class Reviews extends React.Component {
     return (
       <div>
         {this.state.reviews.map(r => <div key={r.review_id}>{r.summary}</div>)}
+        <ReviewsList />
+        <ReviewsBreakdown />
       </div>
     )
   }
