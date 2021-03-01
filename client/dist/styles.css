@@ -15,3 +15,26 @@ body {
 h1 {
   font-family: var(--smallFont);
 }
+
+/*---------------------------------------------------------------------------------------- REVIEWS */
+
+.reviewListItem {
+  background-color: rgb(99, 157, 182);
+  margin: 10px;
+  padding: 10px;
+}
+
+.reviewImage {
+  height: 100px;
+  margin-right: 10px;
+}
+
+.reviewHeader {
+  display: flex;
+  background-color: aqua;
+  justify-content: space-between;
+}
+
+.reviewDateAndUser {
+  display: flex;
+}

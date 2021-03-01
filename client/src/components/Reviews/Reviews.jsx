@@ -30,7 +30,7 @@ class Reviews extends React.Component {
       .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${productId}`, { headers: { Authorization: TOKEN } })
       .then((obj) => {
         this.setState({reviews: obj.data.results})
-        console.log(obj)
+        console.log(obj.data.results)
       })
       .catch((err) => console.error(err));
   };
