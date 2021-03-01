@@ -15,3 +15,43 @@ body {
 h1 {
   font-family: var(--smallFont);
 }
+
+/*---------------------------------------------------------------------------------------- REVIEWS */
+
+.reviewsModuleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ReviewsBreakdownContainer {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+}
+
+.reviewListContainer {
+  width: 50vw;
+  background-color: rgb(162, 211, 162);
+}
+
+.reviewListItem {
+  background-color: rgb(99, 157, 182);
+  margin: 10px;
+  padding: 10px;
+}
+
+.reviewImage {
+  height: 100px;
+  margin-right: 10px;
+}
+
+.reviewHeader {
+  display: flex;
+  background-color: aqua;
+  justify-content: space-between;
+}
+
+.reviewDateAndUser {
+  display: flex;
+}
