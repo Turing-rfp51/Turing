@@ -3,6 +3,7 @@ import React from 'react';
 import ReviewResponse from './ReviewResponse.jsx';
 import ReviewHeader from './ReviewHeader.jsx';
 import ReviewPhotos from './ReviewPhotos.jsx';
+import ReviewRecommendation from './ReviewRecommendation.jsx';
 
 const ReviewsList = ({ review }) => (
   <div className='reviewListItem'>
@@ -10,12 +11,7 @@ const ReviewsList = ({ review }) => (
     <h4>{review.summary}</h4>
     <p>{review.body}</p>
     <ReviewPhotos review={review} />
-    {review.recommend && (
-      <div className='reviewRecommendLine'>
-        <i className='fas fa-check' />
-        <div>I recommend this product</div>
-      </div>
-    )}
+    <ReviewRecommendation review={review} />
     {review.response && <ReviewResponse review={review} />}
   </div>
 );
