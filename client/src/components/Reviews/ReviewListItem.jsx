@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import ReviewResponse from './ReviewResponse.jsx';
 
 const ReviewsList = ({ review }) => (
   <div className='reviewListItem'>
@@ -19,12 +20,7 @@ const ReviewsList = ({ review }) => (
       ))}
     </div>
     {review.recommend && <div>I recommend this product</div>}
-    {review.response && (
-      <div>
-        <h4>Response from Seller:</h4>
-        <p>{review.response}</p>
-      </div>
-    )}
+    {review.response && <ReviewResponse review={review} />}
   </div>
 );
 
