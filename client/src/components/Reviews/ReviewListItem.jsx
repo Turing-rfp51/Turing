@@ -10,7 +10,12 @@ const ReviewsList = ({ review }) => (
     <h4>{review.summary}</h4>
     <p>{review.body}</p>
     <ReviewPhotos review={review} />
-    {review.recommend && <div>I recommend this product</div>}
+    {review.recommend && (
+      <div className='reviewRecommendLine'>
+        <i className='fas fa-check' />
+        <div>I recommend this product</div>
+      </div>
+    )}
     {review.response && <ReviewResponse review={review} />}
   </div>
 );

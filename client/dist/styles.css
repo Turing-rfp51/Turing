@@ -41,6 +41,10 @@ h1 {
   padding: 10px;
 }
 
+.reviewRecommendLine {
+  display: flex;
+}
+
 .reviewImage {
   height: 100px;
   margin-right: 10px;
