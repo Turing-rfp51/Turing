@@ -18,6 +18,23 @@ h1 {
 
 /*---------------------------------------------------------------------------------------- REVIEWS */
 
+.reviewsModuleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ReviewsBreakdownContainer {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+}
+
+.reviewListContainer {
+  width: 50vw;
+  background-color: rgb(162, 211, 162);
+}
+
 .reviewListItem {
   background-color: rgb(99, 157, 182);
   margin: 10px;

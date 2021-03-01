@@ -37,7 +37,7 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='reviewsModuleContainer'>
         <ReviewsBreakdown reviews={this.state.reviews}/>
         <ReviewsList reviews={this.state.reviews}/>
       </div>
