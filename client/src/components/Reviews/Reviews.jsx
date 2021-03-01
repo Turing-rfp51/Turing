@@ -38,9 +38,8 @@ class Reviews extends React.Component {
   render() {
     return (
       <div>
-        {this.state.reviews.map(r => <div key={r.review_id}>{r.summary}</div>)}
-        <ReviewsList />
-        <ReviewsBreakdown />
+        <ReviewsBreakdown reviews={this.state.reviews}/>
+        <ReviewsList reviews={this.state.reviews}/>
       </div>
     )
   }
