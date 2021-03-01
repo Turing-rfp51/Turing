@@ -30,3 +30,6 @@ node_modules
 
 #Bundle
 # /client/dist
+
+#API TOKEN
+config.js
