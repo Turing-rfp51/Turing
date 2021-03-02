@@ -36,6 +36,11 @@ h1 {
   width: 50vw;
 }
 
+.reviewListDisplay {
+  max-height: 80vh;
+  overflow: scroll;
+}
+
 .reviewListItem {
   margin: 10px;
   padding: 10px;
