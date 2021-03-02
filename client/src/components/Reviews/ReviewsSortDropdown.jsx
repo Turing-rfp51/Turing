@@ -5,11 +5,15 @@ import React from 'react';
 
 const ReviewsSortDropdown = ({ updateSortBy }) => (
   <form>
-    <label htmlFor='reviewSort'>Sort on</label>
-    <select id='reviewSort'>
-      <option>Helpful</option>
-      <option>Newest</option>
-      <option>Relevant</option>
+    <label htmlFor='reviewSortDropdown'>Sort on</label>
+    <select
+      id='reviewSortDropdown'
+      name='sortMethod'
+      onChange={(e) => updateSortBy(e.target.value)}
+    >
+      <option value='helpful'>Helpful</option>
+      <option value='newest'>Newest</option>
+      <option value='relevant'>Relevant</option>
     </select>
   </form>
 );
