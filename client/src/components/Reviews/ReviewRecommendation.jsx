@@ -6,7 +6,7 @@ const ReviewRecommendation = ({ review }) => (
     {review.recommend && (
       <div className='reviewRecommendLine'>
         <i className='fas fa-check' />
-        <div>I recommend this product</div>
+        <div className='reviewRecommendLineText'>I recommend this product</div>
       </div>
     )}
   </div>

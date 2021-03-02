@@ -8,7 +8,7 @@ import ReviewRecommendation from './ReviewRecommendation.jsx';
 const ReviewsList = ({ review }) => (
   <div className='reviewListItem'>
     <ReviewHeader review={review} />
-    <h4>{review.summary}</h4>
+    <h3>{review.summary}</h3>
     <p>{review.body}</p>
     <ReviewPhotos review={review} />
     <ReviewRecommendation review={review} />

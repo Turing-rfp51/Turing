@@ -27,35 +27,56 @@ h1 {
   width: 20vw;
   display: flex;
   flex-direction: column;
-  background-color: red;
-}
-
-.reviewListContainer {
-  width: 50vw;
-  background-color: rgb(162, 211, 162);
-}
-
-.reviewListItem {
-  background-color: rgb(99, 157, 182);
+  border: 2px solid red;
   margin: 10px;
   padding: 10px;
 }
 
+.reviewListContainer {
+  width: 50vw;
+}
+
+.reviewListItem {
+  margin: 10px;
+  padding: 10px;
+  border-top: 2px solid black;
+}
+
 .reviewRecommendLine {
   display: flex;
+  margin: 10px 0;
+}
+
+.reviewRecommendLineText {
+  margin-left: 10px;
 }
 
 .reviewImage {
   height: 100px;
   margin-right: 10px;
+  border: 2px solid black;
+}
+
+.reviewImage:hover {
+  cursor: pointer;
 }
 
 .reviewHeader {
   display: flex;
-  background-color: aqua;
   justify-content: space-between;
 }
 
 .reviewDateAndUser {
   display: flex;
+}
+
+.reviewUsername {
+  margin: 0 15px;
+}
+
+.reviewResponseContainer {
+  border-radius: 3px;
+  background-color: rgb(202, 202, 202);
+  margin: 10px 0 0 20px;
+  padding: 10px;
 }

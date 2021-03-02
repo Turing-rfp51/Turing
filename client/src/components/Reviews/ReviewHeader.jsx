@@ -7,8 +7,7 @@ const ReviewHeader = ({ review }) => (
   <div className='reviewHeader'>
     <ReviewStarRating review={review} />
     <div className='reviewDateAndUser'>
-      {/* check if user is verified */}
-      <div>{review.reviewer_name}</div>
+      <div className='reviewUsername'>{review.reviewer_name}</div>
       <ReviewDateFormatted review={review} />
     </div>
   </div>

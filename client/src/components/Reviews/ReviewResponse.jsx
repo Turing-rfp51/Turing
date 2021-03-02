@@ -2,8 +2,8 @@
 import React from 'react';
 
 const ReviewResponse = ({ review }) => (
-  <div>
-    <h4>Response from Seller:</h4>
+  <div className='reviewResponseContainer'>
+    <div>Response from Seller:</div>
     <p>{review.response}</p>
   </div>
 );
