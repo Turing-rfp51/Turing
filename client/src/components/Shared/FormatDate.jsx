@@ -18,7 +18,10 @@ const months = [
 
 const FormatDate = ({ date }) => (
   <div>
-    {date.replace(/(\d+)-\d+-(\d+).+/gi, `${months[date.match(/-\d\d-/gi)[0].slice(1, 2)]} $2, $1`)}
+    {date.replace(
+      /(\d+)-\d+-(\d+).+/gi,
+      `${months[+date.match(/-\d\d-/gi)[0].slice(1, 3) - 1]} $2, $1`
+    )}
   </div>
 );
 
