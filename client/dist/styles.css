@@ -50,6 +50,7 @@ h1 {
 .reviewRecommendLine {
   display: flex;
   margin: 10px 0;
+  align-items: center;
 }
 
 .reviewRecommendLineText {
