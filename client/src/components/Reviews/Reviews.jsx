@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prefer-stateless-function */
@@ -9,8 +10,6 @@ import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
 
 const { TOKEN } = require('../../../../config.js');
-
-const productId = 17762; // will likely come in as props. Only hardcoded for now
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class Reviews extends React.Component {
 
   initializeReviews() {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${productId}`, { headers: { Authorization: TOKEN } })
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${this.props.productId}`, { headers: { Authorization: TOKEN } })
       .then((obj) => {
         this.setState({reviews: obj.data.results})
         console.log(obj.data.results)

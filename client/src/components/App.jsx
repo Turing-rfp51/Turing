@@ -3,11 +3,13 @@ import Overview from './Overview/Overview.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import QA from './QA/QA.jsx';
 
+const productId = 17762;
+
 const App = () => (
   <>
     <Overview />
-    <QA />
-    <Reviews />
+    <QA productId={productId} />
+    <Reviews productId={productId} />
   </>
 );
 
