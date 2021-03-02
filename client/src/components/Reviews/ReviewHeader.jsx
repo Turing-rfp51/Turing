@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ReviewStarRating from './ReviewStarRating.jsx';
-import ReviewDateFormatted from './ReviewDateFormatted.jsx';
+import FormatDate from '../Shared/FormatDate.jsx';
 
 const ReviewHeader = ({ review }) => (
   <div className='reviewHeader'>
     <ReviewStarRating review={review} />
     <div className='reviewDateAndUser'>
       <div className='reviewUsername'>{review.reviewer_name}</div>
-      <ReviewDateFormatted review={review} />
+      <FormatDate date={review.date} />
     </div>
   </div>
 );
