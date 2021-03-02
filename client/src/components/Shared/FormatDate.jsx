@@ -16,13 +16,10 @@ const months = [
   'December',
 ];
 
-const ReviewDateFormatted = ({ review }) => (
+const FormatDate = ({ date }) => (
   <div>
-    {review.date.replace(
-      /(\d+)-\d+-(\d+).+/gi,
-      `${months[review.date.match(/-\d\d-/gi)[0].slice(1, 2)]} $2, $1`
-    )}
+    {date.replace(/(\d+)-\d+-(\d+).+/gi, `${months[date.match(/-\d\d-/gi)[0].slice(1, 2)]} $2, $1`)}
   </div>
 );
 
-export default ReviewDateFormatted;
+export default FormatDate;
