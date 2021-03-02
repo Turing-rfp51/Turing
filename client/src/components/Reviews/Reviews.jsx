@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prettier/prettier */
@@ -24,6 +25,7 @@ class Reviews extends React.Component {
     this.getReviews = this.getReviews.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.showMoreReviews = this.showMoreReviews.bind(this);
+    this.addNewReview = this.addNewReview.bind(this);
   }
 
   componentDidMount() {
@@ -45,14 +47,18 @@ class Reviews extends React.Component {
   };
 
   showMoreReviews() {
-    this.setState(prevState => ({numberToDisplay: prevState.numberToDisplay + 2}), )
+    this.setState(prevState => ({numberToDisplay: prevState.numberToDisplay + 2}))
+  }
+
+  addNewReview() {
+    console.log('adding new review')
   }
 
   render() {
     return (
       <div className='reviewsModuleContainer'>
         <ReviewsBreakdown reviews={this.state.reviews}/>
-        <ReviewsList reviews={this.state.reviews.slice(0, this.state.numberToDisplay)} updateSortBy={this.updateSortBy} showMoreReviews={this.showMoreReviews}/>
+        <ReviewsList reviews={this.state.reviews.slice(0, this.state.numberToDisplay)} updateSortBy={this.updateSortBy} showMoreReviews={this.showMoreReviews} addNewReview={this.addNewReview}/>
       </div>
     )
   }
