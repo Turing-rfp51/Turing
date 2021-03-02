@@ -80,3 +80,21 @@ h1 {
   margin: 10px 0 0 20px;
   padding: 10px;
 }
+
+.reviewHelpfulCountContainer {
+  display: flex;
+  margin: 20px 0 0 0;
+}
+
+.reviewHelpfulVoteOption {
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.reviewHelpfulVoteOption:hover {
+  cursor: pointer;
+}
+
+.reviewHelpfulVoteCount {
+  margin-left: 3px;
+}
