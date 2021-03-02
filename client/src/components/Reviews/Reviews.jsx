@@ -16,17 +16,20 @@ class Reviews extends React.Component {
     super(props);
 
     this.state = {
-      reviews: []
+      reviews: [],
+      sortMethod: 'relevant'
     }
+
+    this.getReviews = this.getReviews.bind(this);
   }
 
   componentDidMount() {
-    this.initializeReviews()
+    this.getReviews()
   }
 
-  initializeReviews() {
+  getReviews() {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${this.props.productId}`, { headers: { Authorization: TOKEN } })
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${this.props.productId}&sort=${this.state.sortMethod}`, { headers: { Authorization: TOKEN } })
       .then((obj) => {
         this.setState({reviews: obj.data.results})
         console.log(obj.data.results)
@@ -38,7 +41,7 @@ class Reviews extends React.Component {
     return (
       <div className='reviewsModuleContainer'>
         <ReviewsBreakdown reviews={this.state.reviews}/>
-        <ReviewsList reviews={this.state.reviews}/>
+        <ReviewsList reviews={this.state.reviews} getReviews={this.getReviews}/>
       </div>
     )
   }
