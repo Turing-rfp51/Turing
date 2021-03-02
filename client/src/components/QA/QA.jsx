@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import QuestionsList from './QuestionsList.jsx';
+import QAList from './QAList.jsx';
 
 const { TOKEN } = require('../../../../config.js');
 
@@ -15,18 +15,18 @@ class QA extends React.Component {
   }
 
   componentDidMount() {
-    this.initializeQA();
+    this.getQA();
   }
 
-  initializeQA() {
+  getQA() {
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${this.props.productId}`,
         { headers: { Authorization: TOKEN } }
       )
       .then((obj) => {
-        this.setState({ data: obj.data });
-        console.log(obj.data);
+        this.setState({ data: obj.data.results });
+        console.log(obj.data.results);
       })
       .catch((err) => console.error(err));
   }
@@ -34,7 +34,7 @@ class QA extends React.Component {
   render() {
     return (
       <div className='qaModuleContainer'>
-        <QuestionsList data={this.state.data} />
+        <QAList data={this.state.data} />
       </div>
     );
   }
