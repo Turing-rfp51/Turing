@@ -9,7 +9,7 @@ import ReviewHelpfulCount from './ReviewHelpfulCount.jsx';
 const ReviewsList = ({ review }) => (
   <div className='reviewListItem'>
     <ReviewHeader review={review} />
-    <h3>{review.summary}</h3>
+    <h3 className='reviewSummary'>{review.summary}</h3>
     <p>{review.body}</p>
     <ReviewPhotos review={review} />
     <ReviewRecommendation review={review} />
