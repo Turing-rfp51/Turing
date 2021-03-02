@@ -1,9 +1,21 @@
 import React from 'react';
 
-const QuestionsListItem = ({questionData}) => (
+import QAHeader from './QAHeader.jsx';
+import Question from './Question.jsx';
+import Answer from './Answer.jsx';
+import HelpfulUpvote from './HelpfulUpvote.jsx';
+import AddAnswer from './AddAnswer.jsx';
+import QAFooter from './QAFooter.jsx';
 
-<div>Questions List Item</div>
+const QAListItem = ({ questionData }) => (
+  <div className='QAListItem'>
+    <QAHeader />
+    <Question questionData={questionData} />
+    <Answer questionData={questionData} />
+    <HelpfulUpvote />
+    <AddAnswer />
+    <QAFooter />
+  </div>
+);
 
-)
-
-export default QuestionsListItem;
+export default QAListItem;

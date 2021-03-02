@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Question = () => <div>Question</div>;
+const Question = ({ questionData }) => (
+  <h3 className='question'>Q: {questionData.question_body}</h3>
+);
 
 export default Question;
