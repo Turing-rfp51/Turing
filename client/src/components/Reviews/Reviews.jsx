@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prettier/prettier */
@@ -16,17 +17,24 @@ class Reviews extends React.Component {
     super(props);
 
     this.state = {
-      reviews: []
+      reviews: [],
+      sortMethod: 'relevant',
+      numberToDisplay: 2
     }
+
+    this.getReviews = this.getReviews.bind(this);
+    this.updateSortBy = this.updateSortBy.bind(this);
+    this.showMoreReviews = this.showMoreReviews.bind(this);
+    this.addNewReview = this.addNewReview.bind(this);
   }
 
   componentDidMount() {
-    this.initializeReviews()
+    this.getReviews()
   }
 
-  initializeReviews() {
+  getReviews() {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${this.props.productId}`, { headers: { Authorization: TOKEN } })
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?count=30&product_id=${this.props.productId}&sort=${this.state.sortMethod}`, { headers: { Authorization: TOKEN } })
       .then((obj) => {
         this.setState({reviews: obj.data.results})
         console.log(obj.data.results)
@@ -34,11 +42,23 @@ class Reviews extends React.Component {
       .catch((err) => console.error(err));
   };
 
+  updateSortBy(method) {
+    this.setState({sortMethod: method}, () => this.getReviews())
+  };
+
+  showMoreReviews() {
+    this.setState(prevState => ({numberToDisplay: prevState.numberToDisplay + 2}))
+  }
+
+  addNewReview() {
+    console.log('adding new review')
+  }
+
   render() {
     return (
       <div className='reviewsModuleContainer'>
         <ReviewsBreakdown reviews={this.state.reviews}/>
-        <ReviewsList reviews={this.state.reviews}/>
+        <ReviewsList reviews={this.state.reviews.slice(0, this.state.numberToDisplay)} updateSortBy={this.updateSortBy} showMoreReviews={this.showMoreReviews} addNewReview={this.addNewReview}/>
       </div>
     )
   }
