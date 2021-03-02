@@ -21,6 +21,7 @@ class Reviews extends React.Component {
     }
 
     this.getReviews = this.getReviews.bind(this);
+    this.updateSortBy = this.updateSortBy.bind(this);
   }
 
   componentDidMount() {
@@ -37,11 +38,15 @@ class Reviews extends React.Component {
       .catch((err) => console.error(err));
   };
 
+  updateSortBy(method) {
+    this.setState({sortMethod: method}, () => this.getReviews())
+  };
+
   render() {
     return (
       <div className='reviewsModuleContainer'>
         <ReviewsBreakdown reviews={this.state.reviews}/>
-        <ReviewsList reviews={this.state.reviews} getReviews={this.getReviews}/>
+        <ReviewsList reviews={this.state.reviews} updateSortBy={this.updateSortBy}/>
       </div>
     )
   }
