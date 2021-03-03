@@ -19,9 +19,16 @@ class ReviewBody extends React.Component {
         {review.body.length > 250 && !expanded && (
           <React.Fragment>
             <p>{review.body.slice(0, 250)}</p>
-            <button type='button' onClick={() => this.setState({ expanded: true })}>
-              Show More
-            </button>
+            <div className='showMoreButtonContainer'>
+              <i className='fas fa-chevron-down' />
+              <button
+                type='button'
+                id='showMoreButton'
+                onClick={() => this.setState({ expanded: true })}
+              >
+                Show More
+              </button>
+            </div>
           </React.Fragment>
         )}
       </React.Fragment>
