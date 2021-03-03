@@ -4,7 +4,7 @@ import React from 'react';
 const AnswersList = ({ answers }) => (
   <React.Fragment>
     {Object.keys(answers).map((a) => (
-      <div>{answers[a].body}</div>
+      <div>A: {answers[a].body}</div>
     ))}
   </React.Fragment>
 );
