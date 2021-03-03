@@ -31,15 +31,17 @@ class reviewPhotos extends React.Component {
             />
           </div>
         )}
-        {review.photos.map((p) => (
-          <img
-            className='reviewImage'
-            src={p.url}
-            alt='product'
-            key={p.id}
-            onClick={() => this.setState({ selectedPhoto: p })}
-          />
-        ))}
+        <div className='reviewImageContainer'>
+          {review.photos.map((p) => (
+            <img
+              className='reviewImage'
+              src={p.url}
+              alt='product'
+              key={p.id}
+              onClick={() => this.setState({ selectedPhoto: p })}
+            />
+          ))}
+        </div>
       </React.Fragment>
     );
   }
