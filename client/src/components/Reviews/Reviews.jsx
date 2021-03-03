@@ -66,6 +66,7 @@ class Reviews extends React.Component {
           updateSortBy={this.updateSortBy}
           showMoreReviews={this.showMoreReviews}
           addNewReview={this.addNewReview}
+          getReviews={this.getReviews}
         />
       </div>
     );

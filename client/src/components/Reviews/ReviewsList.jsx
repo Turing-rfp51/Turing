@@ -4,11 +4,12 @@ import ReviewListItem from './ReviewListItem.jsx';
 import ReviewsSortDropdown from './ReviewsSortDropdown.jsx';
 import ReviewsListButtons from './ReviewsListButtons.jsx';
 
-const ReviewsList = ({ reviews, updateSortBy, showMoreReviews, addNewReview }) => (
+const ReviewsList = ({ reviews, updateSortBy, showMoreReviews, addNewReview, getReviews }) => (
   <div className='reviewListContainer'>
     {reviews.length > 0 && <ReviewsSortDropdown updateSortBy={updateSortBy} />}
     <div className='reviewListDisplay'>
-      {reviews.length > 0 && reviews.map((r) => <ReviewListItem review={r} key={r.review_id} />)}
+      {reviews.length > 0 &&
+        reviews.map((r) => <ReviewListItem review={r} key={r.review_id} getReviews={getReviews} />)}
     </div>
     <ReviewsListButtons
       showMoreReviews={showMoreReviews}

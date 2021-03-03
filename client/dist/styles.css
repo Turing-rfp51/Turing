@@ -96,6 +96,7 @@ button:hover {
 
 .reviewSummary {
   font-weight: 700;
+  margin-bottom: 0px;
 }
 
 .reviewListDisplay {
@@ -166,21 +167,37 @@ button:hover {
 
 .reviewResponseBody {
   color: black;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .reviewHelpfulCountContainer {
   display: flex;
-  margin: 20px 0 0 0;
+  margin: 15px 0 0 0;
 }
 
 .reviewHelpfulVoteOption {
   margin-left: 10px;
   text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
 }
 
 .reviewHelpfulVoteOption:hover {
   cursor: pointer;
+  color: white;
+  background: rgb(88, 179, 88);
+  border-radius: 5px;
+}
+
+.reviewReportButton:hover {
+  background: rgb(175, 52, 52);
+}
+
+.reviewVotedHelpful {
+  color: white;
+  background: rgb(88, 179, 88);
+  border-radius: 5px;
 }
 
 .reviewHelpfulVoteCount {
