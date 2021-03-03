@@ -36,6 +36,16 @@ button:hover {
   padding: 10px;
 }
 
+.dropdownContainer {
+  margin: 0 0 10px 10px;
+  font-size: 130%;
+}
+
+#reviewSortDropdown {
+  margin-left: 5px;
+  font-size: 80%;
+}
+
 .reviewListContainer {
   width: 50vw;
 }
@@ -49,10 +59,13 @@ button:hover {
   overflow: scroll;
 }
 
-.reviewListItem {
-  margin: 10px;
-  padding: 10px;
+.reviewListItem:first-child {
   border-top: 2px solid black;
+}
+
+.reviewListItem {
+  padding: 15px;
+  border-bottom: 2px solid black;
   display: flex;
   flex-direction: column;
 }
@@ -98,9 +111,18 @@ button:hover {
 
 .reviewResponseContainer {
   border-radius: 3px;
-  background-color: rgb(202, 202, 202);
-  margin: 10px 0 0 20px;
+  background-color: rgb(224, 224, 224);
+  margin: 15px 0;
   padding: 10px;
+}
+
+.reviewResponseFromSellerText {
+  font-weight: 600;
+}
+
+.reviewResponseBody {
+  color: black;
+  margin-bottom: 0px;
 }
 
 .reviewHelpfulCountContainer {
@@ -158,4 +180,12 @@ button:hover {
   font-size: 100%;
   font-family: var(--smallFont);
   border: none;
+}
+
+.reviewsButton {
+  border-radius: 0;
+  background: none;
+  margin: 10px 10px 0 0;
+  padding: 3px 5px;
+  font-size: 140%;
 }
