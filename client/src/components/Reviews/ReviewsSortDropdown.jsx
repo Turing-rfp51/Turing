@@ -11,9 +11,9 @@ const ReviewsSortDropdown = ({ updateSortBy }) => (
       name='sortMethod'
       onChange={(e) => updateSortBy(e.target.value)}
     >
-      <option value='helpful'>Helpful</option>
-      <option value='newest'>Newest</option>
       <option value='relevant'>Relevant</option>
+      <option value='newest'>Newest</option>
+      <option value='helpful'>Helpful</option>
     </select>
   </form>
 );
