@@ -40,7 +40,7 @@ class ReviewHelpfulCount extends React.Component {
           }
           onClick={this.triggerUpdateHelpfulCount}
         >
-          YES
+          Yes
         </button>
         <div className='reviewHelpfulVoteCount'>({review.helpfulness})</div>
         <button
