@@ -141,6 +141,13 @@ button:hover {
 
 .reviewHelpfulVoteOption:hover {
   cursor: pointer;
+  color: white;
+  background: rgb(88, 179, 88);
+  border-radius: 5px;
+}
+
+.reviewReportButton:hover {
+  background: rgb(175, 52, 52);
 }
 
 .reviewVotedHelpful {

@@ -45,7 +45,7 @@ class ReviewHelpfulCount extends React.Component {
         <div className='reviewHelpfulVoteCount'>({review.helpfulness})</div>
         <button
           type='button'
-          className='reviewHelpfulVoteOption'
+          className='reviewHelpfulVoteOption reviewReportButton'
           onClick={() => reportItem('reviews', review.review_id, getReviews)}
         >
           Report
