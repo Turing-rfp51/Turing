@@ -4,7 +4,7 @@
 import React from 'react';
 
 const ReviewsSortDropdown = ({ updateSortBy }) => (
-  <form>
+  <form className='dropdownContainer'>
     <label htmlFor='reviewSortDropdown'>Sort on</label>
     <select
       id='reviewSortDropdown'

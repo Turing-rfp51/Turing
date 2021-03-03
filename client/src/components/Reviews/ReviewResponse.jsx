@@ -3,8 +3,8 @@ import React from 'react';
 
 const ReviewResponse = ({ review }) => (
   <div className='reviewResponseContainer'>
-    <div>Response from Seller:</div>
-    <p>{review.response}</p>
+    <div className='reviewResponseFromSellerText'>Response from Seller:</div>
+    <p className='reviewResponseBody'>{review.response}</p>
   </div>
 );
 
