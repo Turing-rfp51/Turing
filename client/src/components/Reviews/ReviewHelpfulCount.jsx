@@ -2,54 +2,52 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
+const { updateHelpfulCount, reportItem } = require('../Shared/HelpfulCount.js');
+
 class ReviewHelpfulCount extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      vote: null,
+      voted: false,
     };
 
     this.triggerUpdateHelpfulCount = this.triggerUpdateHelpfulCount.bind(this);
   }
 
-  triggerUpdateHelpfulCount(adj) {
-    const { vote } = this.state;
-    const { review, updateHelpfulCount } = this.props;
-    if (vote) {
-      this.setState({ vote: adj === 1 ? 'yes' : 'no' });
+  triggerUpdateHelpfulCount() {
+    const { voted } = this.state;
+    const { review } = this.props;
+    if (!voted) {
+      this.setState({ voted: true });
+      updateHelpfulCount('reviews', review.review_id);
     }
-    updateHelpfulCount(review.helpfulness + adj);
   }
 
   render() {
     const { review } = this.props;
-    const { vote } = this.state;
+    const { voted } = this.state;
     return (
       <div className='reviewHelpfulCountContainer'>
         <div>Was this review helpful?</div>
         <button
           type='button'
           className={
-            vote === 'yes'
+            voted === true
               ? 'reviewVotedHelpful reviewHelpfulVoteOption'
               : 'reviewHelpfulVoteOption'
           }
-          onClick={() => this.triggerUpdateHelpfulCount(1)}
+          onClick={this.triggerUpdateHelpfulCount}
         >
           YES
         </button>
         <div className='reviewHelpfulVoteCount'>({review.helpfulness})</div>
         <button
           type='button'
-          className={
-            vote === 'no'
-              ? 'reviewVotedNotHelpful reviewHelpfulVoteOption'
-              : 'reviewHelpfulVoteOption'
-          }
-          onClick={() => this.triggerUpdateHelpfulCount(-1)}
+          className='reviewHelpfulVoteOption'
+          onClick={() => reportItem('reviews', review.review_id)}
         >
-          NO
+          Report
         </button>
       </div>
     );
