@@ -206,3 +206,16 @@ button:hover {
   padding: 3px 5px;
   font-size: 140%;
 }
+
+.reviewAverageContainer {
+  display: flex;
+}
+
+.reviewAverageNumber {
+  font-size: 300%;
+}
+
+.starIcon {
+  width: 20px;
+  height: 20px;
+}

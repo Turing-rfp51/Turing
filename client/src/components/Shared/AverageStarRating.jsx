@@ -1,6 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-plusplus */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { v4 as uuid } from 'uuid';
+import star from './stars/star.svg';
+import starOutline from './stars/star-outline.svg';
+import starOneQuarter from './stars/star-one-quarter.svg';
+import starHalf from './stars/star-half.svg';
+import starThreeQuarter from './stars/star-three-quarter.svg';
 
 class AverageStarRating extends React.Component {
   constructor(props) {
@@ -28,9 +35,16 @@ class AverageStarRating extends React.Component {
   render() {
     const { average } = this.state;
     return (
-      <React.Fragment>
-        <div>{average}</div>
-      </React.Fragment>
+      <div className='reviewAverageContainer'>
+        <div className='reviewAverageNumber'>{average}</div>
+        {Array.apply(1, Array(Math.floor(average))).map(() => (
+          <img src={star} className='starIcon' alt='star' key={uuid()} />
+        ))}
+        <span className='fractionStar fa fa-star' key={uuid()} />
+        {Array.apply(1, Array(5 - Math.ceil(average))).map(() => (
+          <img src={starOutline} className='starIcon' alt='star' key={uuid()} />
+        ))}
+      </div>
     );
   }
 }
