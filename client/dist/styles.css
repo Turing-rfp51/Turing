@@ -36,6 +36,10 @@ h1 {
   width: 50vw;
 }
 
+.reviewSummary {
+  font-weight: 700;
+}
+
 .reviewListDisplay {
   max-height: 80vh;
   overflow: scroll;
