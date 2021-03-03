@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import QuestionSearch from './QuestionSearch.jsx';
 import QAList from './QAList.jsx';
 
 const { TOKEN } = require('../../../../config.js');
@@ -34,6 +35,8 @@ class QA extends React.Component {
   render() {
     return (
       <div className='qaModuleContainer'>
+        <h3>{'QUESTIONS & ANSWERS'}</h3>
+        <QuestionSearch />
         <QAList data={this.state.data} />
       </div>
     );
