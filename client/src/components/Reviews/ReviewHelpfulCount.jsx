@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const { updateHelpfulCount, reportItem } = require('../Shared/HelpfulCount.js');
+import { updateHelpfulCount, reportItem } from '../Shared/HelpfulCount.js';
 
 class ReviewHelpfulCount extends React.Component {
   constructor(props) {
@@ -17,15 +17,16 @@ class ReviewHelpfulCount extends React.Component {
 
   triggerUpdateHelpfulCount() {
     const { voted } = this.state;
-    const { review } = this.props;
+    const { review, getReviews } = this.props;
     if (!voted) {
-      this.setState({ voted: true });
-      updateHelpfulCount('reviews', review.review_id);
+      updateHelpfulCount('reviews', review.review_id, () =>
+        this.setState({ voted: true }, getReviews)
+      );
     }
   }
 
   render() {
-    const { review } = this.props;
+    const { review, getReviews } = this.props;
     const { voted } = this.state;
     return (
       <div className='reviewHelpfulCountContainer'>
@@ -45,7 +46,7 @@ class ReviewHelpfulCount extends React.Component {
         <button
           type='button'
           className='reviewHelpfulVoteOption'
-          onClick={() => reportItem('reviews', review.review_id)}
+          onClick={() => reportItem('reviews', review.review_id, getReviews)}
         >
           Report
         </button>

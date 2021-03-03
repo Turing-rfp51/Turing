@@ -7,7 +7,7 @@ import ReviewRecommendation from './ReviewRecommendation.jsx';
 import ReviewHelpfulCount from './ReviewHelpfulCount.jsx';
 import ReviewBody from './ReviewBody.jsx';
 
-const ReviewsList = ({ review, updateHelpfulCount, reportReview }) => (
+const ReviewsList = ({ review, updateHelpfulCount, reportReview, getReviews }) => (
   <div className='reviewListItem'>
     <ReviewHeader review={review} />
     <h3 className='reviewSummary'>{review.summary}</h3>
@@ -15,7 +15,7 @@ const ReviewsList = ({ review, updateHelpfulCount, reportReview }) => (
     <ReviewPhotos review={review} />
     <ReviewRecommendation review={review} />
     {review.response && <ReviewResponse review={review} />}
-    <ReviewHelpfulCount review={review} />
+    <ReviewHelpfulCount review={review} getReviews={getReviews} />
   </div>
 );
 
