@@ -7,8 +7,8 @@ const productId = 17762;
 
 const App = () => (
   <>
-    <Overview />
-    <QA productId={productId} />
+    {/* <Overview /> */}
+    {/* <QA productId={productId} /> */}
     <Reviews productId={productId} />
   </>
 );
