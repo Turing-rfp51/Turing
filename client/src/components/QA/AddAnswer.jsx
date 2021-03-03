@@ -1,5 +1,5 @@
 import React from 'react';
 
-const AddAnswer = () => <div>Add Answer</div>;
+const AddAnswer = () => <button>Add Answer</button>;
 
 export default AddAnswer;

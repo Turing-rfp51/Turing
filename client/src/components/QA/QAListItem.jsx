@@ -7,6 +7,7 @@ import AnswersList from './AnswersList.jsx';
 import HelpfulUpvote from './HelpfulUpvote.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import QAFooter from './QAFooter.jsx';
+import ModalForm from './ModalForm.jsx';
 
 const QAListItem = ({ questionData }) => (
   <div className='QAListItem'>
@@ -15,6 +16,7 @@ const QAListItem = ({ questionData }) => (
     <AnswersList answers={questionData.answers} />
     <HelpfulUpvote />
     <AddAnswer />
+    <ModalForm />
     <QAFooter />
   </div>
 );

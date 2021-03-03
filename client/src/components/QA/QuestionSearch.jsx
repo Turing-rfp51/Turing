@@ -51,7 +51,7 @@ class QuestionSearch extends React.Component {
           value={text}
           type='text'
           onChange={this.onTextChanged}
-          placeholder='“Have a question? Search for answers…”
+          placeholder='“HAVE A QUESTION? SEARCH FOR ANSWERS…”
 '
         />
         {this.renderSuggestions()}
