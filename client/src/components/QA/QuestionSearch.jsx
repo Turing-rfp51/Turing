@@ -13,7 +13,7 @@ class QuestionSearch extends React.Component {
   }
 
   onTextChanged(e) {
-    const value = e.target.value;
+    const { value } = e.target;
     let suggestions = [];
     if (value.length > 0) {
       const regex = new RegExp(`^${value}`, 'i');
@@ -46,7 +46,7 @@ class QuestionSearch extends React.Component {
   render() {
     const { text } = this.state;
     return (
-      <div>
+      <div className='qaSearch-bar'>
         <input
           value={text}
           type='text'
