@@ -16,6 +16,10 @@ h1 {
   font-family: var(--smallFont);
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /*---------------------------------------------------------------------------------------- REVIEWS */
 
 .reviewsModuleContainer {
@@ -32,8 +36,22 @@ h1 {
   padding: 10px;
 }
 
+.dropdownContainer {
+  margin: 0 0 10px 10px;
+  font-size: 130%;
+}
+
+#reviewSortDropdown {
+  margin-left: 5px;
+  font-size: 80%;
+}
+
 .reviewListContainer {
   width: 50vw;
+}
+
+.reviewSummary {
+  font-weight: 700;
 }
 
 .reviewListDisplay {
@@ -41,20 +59,31 @@ h1 {
   overflow: scroll;
 }
 
-.reviewListItem {
-  margin: 10px;
-  padding: 10px;
+.reviewListItem:first-child {
   border-top: 2px solid black;
+}
+
+.reviewListItem {
+  padding: 15px;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 .reviewRecommendLine {
   display: flex;
-  margin: 10px 0;
+  margin-top: 15px;
   align-items: center;
+  font-size: 120%;
 }
 
 .reviewRecommendLineText {
   margin-left: 10px;
+}
+
+.reviewImageContainer {
+  display: flex;
+  margin: 10px 0;
 }
 
 .reviewImage {
@@ -82,9 +111,18 @@ h1 {
 
 .reviewResponseContainer {
   border-radius: 3px;
-  background-color: rgb(202, 202, 202);
-  margin: 10px 0 0 20px;
+  background-color: rgb(224, 224, 224);
+  margin: 15px 0;
   padding: 10px;
+}
+
+.reviewResponseFromSellerText {
+  font-weight: 600;
+}
+
+.reviewResponseBody {
+  color: black;
+  margin-bottom: 0px;
 }
 
 .reviewHelpfulCountContainer {
@@ -103,4 +141,51 @@ h1 {
 
 .reviewHelpfulVoteCount {
   margin-left: 3px;
+}
+
+.reviewExpandedPhotoModal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.322);
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewSelectedImage {
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  max-height: 80%;
+  top: 10vh;
+  left: 10vh;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.showMoreButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+}
+
+#showMoreButton {
+  background: none;
+  font-size: 100%;
+  font-family: var(--smallFont);
+  border: none;
+}
+
+.reviewsButton {
+  border-radius: 0;
+  background: none;
+  margin: 10px 10px 0 0;
+  padding: 3px 5px;
+  font-size: 140%;
 }

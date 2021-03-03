@@ -4,16 +4,16 @@
 import React from 'react';
 
 const ReviewsSortDropdown = ({ updateSortBy }) => (
-  <form>
+  <form className='dropdownContainer'>
     <label htmlFor='reviewSortDropdown'>Sort on</label>
     <select
       id='reviewSortDropdown'
       name='sortMethod'
       onChange={(e) => updateSortBy(e.target.value)}
     >
-      <option value='helpful'>Helpful</option>
-      <option value='newest'>Newest</option>
       <option value='relevant'>Relevant</option>
+      <option value='newest'>Newest</option>
+      <option value='helpful'>Helpful</option>
     </select>
   </form>
 );
