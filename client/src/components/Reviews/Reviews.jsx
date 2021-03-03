@@ -76,7 +76,9 @@ class Reviews extends React.Component {
   render() {
     return (
       <div className='reviewsModuleContainer'>
-        <ReviewsBreakdown reviews={this.state.reviews} metadata={this.state.metadata} />
+        {this.state.metadata.ratings && (
+          <ReviewsBreakdown reviews={this.state.reviews} metadata={this.state.metadata} />
+        )}
         <ReviewsList
           reviews={this.state.reviews.slice(0, this.state.numberToDisplay)}
           updateSortBy={this.updateSortBy}

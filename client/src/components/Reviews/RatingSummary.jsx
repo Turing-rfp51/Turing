@@ -2,8 +2,6 @@
 import React from 'react';
 import AverageStarRating from '../Shared/AverageStarRating.jsx';
 
-const RatingSummary = ({ reviews, metadata }) => (
-  <AverageStarRating reviews={reviews} metadata={metadata} />
-);
+const RatingSummary = ({ metadata }) => <AverageStarRating metadata={metadata} />;
 
 export default RatingSummary;
