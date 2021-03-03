@@ -26,6 +26,7 @@ class Reviews extends React.Component {
     this.updateSortBy = this.updateSortBy.bind(this);
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.addNewReview = this.addNewReview.bind(this);
+    this.updateHelpfulCount = this.updateHelpfulCount.bind(this);
   }
 
   componentDidMount() {
@@ -57,6 +58,10 @@ class Reviews extends React.Component {
     console.log('adding new review');
   }
 
+  updateHelpfulCount(newHelpfulnessScore) {
+    axios.post();
+  }
+
   render() {
     return (
       <div className='reviewsModuleContainer'>
@@ -66,6 +71,7 @@ class Reviews extends React.Component {
           updateSortBy={this.updateSortBy}
           showMoreReviews={this.showMoreReviews}
           addNewReview={this.addNewReview}
+          updateHelpfulCount={this.updateHelpfulCount}
         />
       </div>
     );
