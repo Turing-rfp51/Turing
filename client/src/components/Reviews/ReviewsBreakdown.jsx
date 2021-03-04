@@ -13,7 +13,7 @@ const ReviewsBreakdown = ({ reviews, metadata, addOrRemoveFilters, clearFilters,
       clearFilters={clearFilters}
       starFilters={starFilters}
     />
-    <ProductBreakdown />
+    <ProductBreakdown metadata={metadata} />
   </div>
 );
 
