@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import ReviewRatingBar from './ReviewRatingBar.jsx';
 
 class FilterByStar extends React.Component {
   constructor(props) {
@@ -13,13 +14,23 @@ class FilterByStar extends React.Component {
   }
 
   render() {
-    const { n } = this.props;
+    const { n, metadata } = this.props;
     const { active } = this.state;
 
     return (
       <div>
-        <div onClick={() => this.setState({ active: !active })}>{n}</div>
-        {active && <div>this filter is active</div>}
+        <div
+          onClick={() => this.setState({ active: !active })}
+          className={
+            active
+              ? 'reviewActiveFilter reviewSingleFilterContainer'
+              : 'reviewSingleFilterContainer'
+          }
+        >
+          {n} Star{n !== 1 && 's'}
+          <ReviewRatingBar n={n} metadata={metadata} />
+          {metadata.ratings[n] || 0}
+        </div>
       </div>
     );
   }

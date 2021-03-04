@@ -3,13 +3,13 @@ import React from 'react';
 import FilterByStar from './FilterByStar.jsx';
 
 const FilterList = ({ metadata }) => (
-  <React.Fragment>
-    <FilterByStar n={5} />
-    <FilterByStar n={4} />
-    <FilterByStar n={3} />
-    <FilterByStar n={2} />
-    <FilterByStar n={1} />
-  </React.Fragment>
+  <div className='reviewFilterBarsContainer'>
+    <FilterByStar n={5} metadata={metadata} />
+    <FilterByStar n={4} metadata={metadata} />
+    <FilterByStar n={3} metadata={metadata} />
+    <FilterByStar n={2} metadata={metadata} />
+    <FilterByStar n={1} metadata={metadata} />
+  </div>
 );
 
 export default FilterList;
