@@ -1,12 +1,20 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import FilterList from './FilterList.jsx';
 
-const RatingBreakdown = () => (
+const RatingBreakdown = ({ metadata }) => (
   <div className='reviewRatingBreakdownContainer'>
     <div className='reviewRatingBreakdownText'>Rating Breakdown</div>
     <div className='reviewFilterHeader'>Current Filters -------- Remove Filters</div>
     <FilterList />
-    <div className='reviewRecommendationPercentage'>% Recommend this Product</div>
+    <div className='reviewRecommendationPercentage'>
+      {Math.round(
+        (+(metadata.recommended.true || 0) /
+          (+(metadata.recommended.true || 0) + +(metadata.recommended.false || 0))) *
+          100
+      )}
+      % Recommend this Product
+    </div>
   </div>
 );
 

@@ -7,7 +7,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 const ReviewsBreakdown = ({ reviews, metadata }) => (
   <div className='ReviewsBreakdownContainer'>
     <RatingSummary reviews={reviews} metadata={metadata} />
-    <RatingBreakdown />
+    <RatingBreakdown metadata={metadata} />
     <ProductBreakdown />
   </div>
 );

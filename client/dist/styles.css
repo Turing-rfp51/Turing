@@ -82,6 +82,7 @@ button:hover {
 
 .ReviewsBreakdownContainer {
   width: 20vw;
+  min-width: fit-content;
   display: flex;
   flex-direction: column;
   border: 2px solid red;
@@ -302,4 +303,10 @@ button:hover {
 
 .reviewRatingBreakdownText {
   font-size: 130%;
+  margin-bottom: 10px;
+}
+
+.reviewRecommendationPercentage {
+  font-size: 130%;
+  margin-top: 10px;
 }
