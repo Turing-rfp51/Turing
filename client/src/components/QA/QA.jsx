@@ -20,6 +20,7 @@ class QA extends React.Component {
   }
 
   getQA() {
+    console.log('inside get QA');
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${this.props.productId}`,

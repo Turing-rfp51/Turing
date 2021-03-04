@@ -18,15 +18,14 @@ class HelpfulAnswerUpvoteReport extends React.Component {
 
   triggerUpdateHelpfulCount() {
     const { voted } = this.state;
-    const { questionData, getQA } = this.props;
+    const { answerid, getQA } = this.props;
     if (!voted) {
-      updateHelpfulCount('qa/answers', this.props.answers.review_id, () =>
-        this.setState({ voted: true }, getQA)
-      );
+      updateHelpfulCount('qa/answers', answerid, () => this.setState({ voted: true }, getQA));
     }
   }
 
   render() {
+    const { answerid, answerHelpfulness, getQA } = this.props;
     return (
       <div className='qaHelpfulAnswerUpvoteReport'>
         <div>Helpful? </div>
@@ -37,11 +36,11 @@ class HelpfulAnswerUpvoteReport extends React.Component {
         >
           Yes
         </button>
-        <div className='qaAnswerHelpfulVoteCount'>({this.props.answers.helpfulness})</div>
+        <div className='qaAnswerHelpfulVoteCount'>({answerHelpfulness})</div>
         <button
           type='button'
           className='qaAnswerReport'
-          onClick={() => reportItem('qa/answers', this.props.answers.id, getQA)}
+          onClick={() => reportItem('qa/answers', answerid, getQA)}
         >
           Report
         </button>
