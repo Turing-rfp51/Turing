@@ -4,10 +4,15 @@ import RatingSummary from './RatingSummary.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 
-const ReviewsBreakdown = ({ reviews, metadata, addOrRemoveFilters }) => (
+const ReviewsBreakdown = ({ reviews, metadata, addOrRemoveFilters, clearFilters, starFilters }) => (
   <div className='ReviewsBreakdownContainer'>
     <RatingSummary reviews={reviews} metadata={metadata} />
-    <RatingBreakdown metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
+    <RatingBreakdown
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      clearFilters={clearFilters}
+      starFilters={starFilters}
+    />
     <ProductBreakdown />
   </div>
 );

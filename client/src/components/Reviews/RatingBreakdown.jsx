@@ -1,12 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import FilterList from './FilterList.jsx';
+import ReviewFilterHeader from './ReviewFilterHeader.jsx';
 
-const RatingBreakdown = ({ metadata, addOrRemoveFilters }) => (
+const RatingBreakdown = ({ metadata, addOrRemoveFilters, clearFilters, starFilters }) => (
   <div className='reviewRatingBreakdownContainer'>
     <div className='reviewRatingBreakdownText'>Rating Breakdown</div>
-    <div className='reviewFilterHeader'>Current Filters____________Remove Filters</div>
-    <FilterList metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
+    {starFilters.length > 0 && (
+      <ReviewFilterHeader clearFilters={clearFilters} starFilters={starFilters} />
+    )}
+    <FilterList
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      starFilters={starFilters}
+    />
     <div className='reviewRecommendationPercentage'>
       {Math.round(
         (+(metadata.recommended.true || 0) /
