@@ -33,9 +33,12 @@ class FilterByStar extends React.Component {
               : 'reviewSingleFilterContainer'
           }
         >
-          {n} Star{n !== 1 && 's'}
+          <span className='reviewFilterLabel'>
+            <span className='reviewFilterLabelStarNumber'>{n}</span>
+            <span className='reviewFilterLabelStarText'>Star{n !== 1 && 's'}</span>
+          </span>
           <ReviewRatingBar n={n} metadata={metadata} />
-          {metadata.ratings[n] || 0}
+          <span className='reviewFilterCount'>{metadata.ratings[n] || 0} </span>
         </div>
       </div>
     );
