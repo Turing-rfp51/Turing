@@ -29,9 +29,11 @@ class QAHeader extends React.Component {
     return (
       <div className='qaHeader'>
         <Question questionData={this.props.questionData} />
-        <HelpfulQuestionUpvote questionData={this.props.questionData} />
-        <AddAnswer open={this.open} />
-        {this.state.modal && <Modal close={this.close} />}
+        <div className='qaHelpfulUpVoteAndAddAnswer'>
+          <HelpfulQuestionUpvote questionData={this.props.questionData} getQA={this.props.getQA} />
+          <AddAnswer open={this.open} />
+          {this.state.modal && <Modal close={this.close} />}
+        </div>
       </div>
     );
   }
