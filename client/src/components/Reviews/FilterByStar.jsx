@@ -13,6 +13,12 @@ class FilterByStar extends React.Component {
     };
   }
 
+  toggleFilter() {
+    const { n, addOrRemoveFilters } = this.props;
+    const { active } = this.state;
+    this.setState({ active: !active }, () => addOrRemoveFilters(n));
+  }
+
   render() {
     const { n, metadata } = this.props;
     const { active } = this.state;
@@ -20,7 +26,7 @@ class FilterByStar extends React.Component {
     return (
       <div>
         <div
-          onClick={() => this.setState({ active: !active })}
+          onClick={this.toggleFilter.bind(this)}
           className={
             active
               ? 'reviewActiveFilter reviewSingleFilterContainer'

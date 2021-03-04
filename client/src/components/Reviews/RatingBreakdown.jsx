@@ -2,11 +2,11 @@
 import React from 'react';
 import FilterList from './FilterList.jsx';
 
-const RatingBreakdown = ({ metadata }) => (
+const RatingBreakdown = ({ metadata, addOrRemoveFilters }) => (
   <div className='reviewRatingBreakdownContainer'>
     <div className='reviewRatingBreakdownText'>Rating Breakdown</div>
     <div className='reviewFilterHeader'>Current Filters____________Remove Filters</div>
-    <FilterList metadata={metadata} />
+    <FilterList metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
     <div className='reviewRecommendationPercentage'>
       {Math.round(
         (+(metadata.recommended.true || 0) /
