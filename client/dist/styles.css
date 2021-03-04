@@ -40,6 +40,35 @@ button:hover {
   font-size: 100%;
 }
 
+.qaHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.qaHelpfulUpVoteAndAddAnswer {
+  display: flex;
+  flex-direction: row;
+}
+.questionHelpfulCountContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.questionVotedHelpful {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.questionHelpfulVoteCount {
+  display: flex;
+  flex-direction: row;
+}
+
 .modal {
   position: fixed;
   left: 0;

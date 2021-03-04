@@ -37,7 +37,7 @@ class QA extends React.Component {
       <div className='qaModuleContainer'>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
         <QuestionSearch />
-        <QAList data={this.state.data} />
+        <QAList data={this.state.data} getQA={this.getQA} />
       </div>
     );
   }
