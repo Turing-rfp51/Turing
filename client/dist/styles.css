@@ -101,6 +101,27 @@ button:hover {
   border-bottom: 1px solid #eee;
 }
 
+.qaHelpfulAnswerUpvoteReport {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.qaAnswerHelpfulUpvote {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaAnswerReport {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
 /*---------------------------------------------------------------------------------------- REVIEWS */
 
 .reviewsModuleContainer {

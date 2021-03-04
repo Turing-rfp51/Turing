@@ -9,7 +9,7 @@ const QAListItem = ({ questionData, getQA }) => (
   <div className='QAListItem'>
     <QAHeader questionData={questionData} getQA={getQA} />
     <AnswersList answers={questionData.answers} />
-    <QAFooter questionData={questionData} />
+    <QAFooter answers={questionData.answers} getQA={getQA} />
   </div>
 );
 
