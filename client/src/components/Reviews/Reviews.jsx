@@ -18,11 +18,13 @@ class Reviews extends React.Component {
 
     this.state = {
       reviews: [],
+      metadata: {},
       sortMethod: 'relevant',
       numberToDisplay: 2,
     };
 
     this.getReviews = this.getReviews.bind(this);
+    this.getMetadata = this.getMetadata.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.addNewReview = this.addNewReview.bind(this);
@@ -30,6 +32,7 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     this.getReviews();
+    this.getMetadata();
   }
 
   getReviews() {
@@ -41,6 +44,19 @@ class Reviews extends React.Component {
       .then((obj) => {
         this.setState({ reviews: obj.data.results });
         console.log(obj.data.results);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  getMetadata() {
+    axios
+      .get(
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${this.props.productId}`,
+        { headers: { Authorization: TOKEN } }
+      )
+      .then((obj) => {
+        this.setState({ metadata: obj.data });
+        console.log('data:', obj.data);
       })
       .catch((err) => console.error(err));
   }
@@ -60,7 +76,9 @@ class Reviews extends React.Component {
   render() {
     return (
       <div className='reviewsModuleContainer'>
-        <ReviewsBreakdown reviews={this.state.reviews} />
+        {this.state.metadata.ratings && (
+          <ReviewsBreakdown reviews={this.state.reviews} metadata={this.state.metadata} />
+        )}
         <ReviewsList
           reviews={this.state.reviews.slice(0, this.state.numberToDisplay)}
           updateSortBy={this.updateSortBy}
