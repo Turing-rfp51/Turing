@@ -6,7 +6,7 @@ const ReviewFilterHeader = ({ clearFilters, starFilters }) => (
     <div>
       Current Star Filters:
       {starFilters.map((n) => (
-        <span className='reviewFilterNumberLabel'>
+        <span className='reviewFilterNumberLabel' key={n}>
           {n}
           {starFilters.indexOf(n) !== starFilters.length - 1 && ','}
         </span>
