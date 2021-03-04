@@ -3,11 +3,11 @@ import React from 'react';
 
 import QAListItem from './QAListItem.jsx';
 
-const QAList = ({ data }) => (
+const QAList = ({ data, getQA }) => (
   <div className='questionListContainer'>
     {data.length > 0 &&
       data.map((questionData) => (
-        <QAListItem questionData={questionData} key={questionData.question_id} />
+        <QAListItem questionData={questionData} key={questionData.question_id} getQA={getQA} />
       ))}
   </div>
 );

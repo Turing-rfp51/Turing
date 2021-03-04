@@ -42,6 +42,35 @@ button:hover {
   font-size: 100%;
 }
 
+.qaHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.qaHelpfulUpVoteAndAddAnswer {
+  display: flex;
+  flex-direction: row;
+}
+.questionHelpfulCountContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.questionVotedHelpful {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.questionHelpfulVoteCount {
+  display: flex;
+  flex-direction: row;
+}
+
 .modal {
   position: fixed;
   left: 0;
@@ -72,6 +101,42 @@ button:hover {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+}
+
+.qaFooter {
+  display: flex;
+  flex-direction: row;
+}
+.qaDate {
+  margin-left: 10px;
+}
+
+.qaHelpfulAnswerUpvoteReport {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+.qaAnswerHelpfulUpvote {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaAnswerReport {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaAnswerName {
+  background: none;
+  border: none;
+  font-size: 100%;
 }
 
 /*---------------------------------------------------------------------------------------- REVIEWS */
