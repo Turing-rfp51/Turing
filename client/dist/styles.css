@@ -258,3 +258,39 @@ button:hover {
   padding: 3px 5px;
   font-size: 140%;
 }
+
+.ratingSummaryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewAverageContainer {
+  display: flex;
+}
+
+.reviewAverageNumber {
+  font-size: 400%;
+}
+
+.starIcon {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+}
+
+.starIconSmall {
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+}
+
+.averageStarDisplayContainer {
+  display: flex;
+  word-wrap: none;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.totalReviewCountText {
+  font-size: 150%;
+}
