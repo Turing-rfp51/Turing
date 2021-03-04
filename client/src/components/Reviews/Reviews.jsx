@@ -33,6 +33,7 @@ class Reviews extends React.Component {
     this.addNewReview = this.addNewReview.bind(this);
     this.addOrRemoveFilters = this.addOrRemoveFilters.bind(this);
     this.filterReviews = this.filterReviews.bind(this);
+    this.clearFilters = this.clearFilters.bind(this);
   }
 
   componentDidMount() {
@@ -102,6 +103,10 @@ class Reviews extends React.Component {
     this.setState({ filteredReviews: filtered });
   }
 
+  clearFilters() {
+    this.setState({ starFilters: [] });
+  }
+
   render() {
     const { metadata, reviews, filteredReviews, starFilters, numberToDisplay } = this.state;
     return (
@@ -111,6 +116,8 @@ class Reviews extends React.Component {
             reviews={reviews}
             metadata={metadata}
             addOrRemoveFilters={this.addOrRemoveFilters}
+            clearFilters={this.clearFilters}
+            starFilters={starFilters}
           />
         )}
         <ReviewsList

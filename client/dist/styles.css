@@ -87,9 +87,9 @@ button:hover {
   min-width: fit-content;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
-  margin: 10px;
   padding: 10px;
+  margin-right: 10px;
+  border: 2px solid black;
 }
 
 .dropdownContainer {
@@ -304,12 +304,28 @@ button:hover {
 
 .reviewRatingBreakdownText {
   font-size: 130%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .reviewRecommendationPercentage {
   font-size: 130%;
   margin-top: 20px;
+}
+
+.reviewFilterHeader {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.reviewClearFiltersButton {
+  margin-left: auto;
+  font-size: 80%;
+  margin-top: 0;
+}
+
+.reviewFilterNumberLabel {
+  margin-left: 3px;
 }
 
 .reviewSingleFilterContainer {

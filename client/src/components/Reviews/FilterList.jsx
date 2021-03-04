@@ -2,13 +2,38 @@
 import React from 'react';
 import FilterByStar from './FilterByStar.jsx';
 
-const FilterList = ({ metadata, addOrRemoveFilters }) => (
+const FilterList = ({ metadata, addOrRemoveFilters, starFilters }) => (
   <div className='reviewFilterBarsContainer'>
-    <FilterByStar n={5} metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
-    <FilterByStar n={4} metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
-    <FilterByStar n={3} metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
-    <FilterByStar n={2} metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
-    <FilterByStar n={1} metadata={metadata} addOrRemoveFilters={addOrRemoveFilters} />
+    <FilterByStar
+      n={5}
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      starFilters={starFilters}
+    />
+    <FilterByStar
+      n={4}
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      starFilters={starFilters}
+    />
+    <FilterByStar
+      n={3}
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      starFilters={starFilters}
+    />
+    <FilterByStar
+      n={2}
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      starFilters={starFilters}
+    />
+    <FilterByStar
+      n={1}
+      metadata={metadata}
+      addOrRemoveFilters={addOrRemoveFilters}
+      starFilters={starFilters}
+    />
   </div>
 );
 
