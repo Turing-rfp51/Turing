@@ -32,6 +32,14 @@ button:hover {
   border: none;
 }
 
+.qaAddAnswer {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
 .modal {
   position: fixed;
   left: 0;
