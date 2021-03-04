@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import FilterByStar from './FilterByStar.jsx';
 
-const FilterList = () => (
+const FilterList = ({ metadata }) => (
   <React.Fragment>
     <FilterByStar n={5} />
     <FilterByStar n={4} />
