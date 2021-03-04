@@ -4,7 +4,14 @@ import ReviewListItem from './ReviewListItem.jsx';
 import ReviewsSortDropdown from './ReviewsSortDropdown.jsx';
 import ReviewsListButtons from './ReviewsListButtons.jsx';
 
-const ReviewsList = ({ reviews, updateSortBy, showMoreReviews, addNewReview, getReviews }) => (
+const ReviewsList = ({
+  reviews,
+  updateSortBy,
+  showMoreReviews,
+  addNewReview,
+  getReviews,
+  totalLength,
+}) => (
   <div className='reviewListContainer'>
     {reviews.length > 0 && <ReviewsSortDropdown updateSortBy={updateSortBy} />}
     <div className='reviewListDisplay'>
@@ -15,6 +22,7 @@ const ReviewsList = ({ reviews, updateSortBy, showMoreReviews, addNewReview, get
       showMoreReviews={showMoreReviews}
       numOfReviews={reviews.length}
       addNewReview={addNewReview}
+      totalLength={totalLength}
     />
   </div>
 );

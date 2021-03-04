@@ -6,6 +6,8 @@
   --taupe: #b1a296;
   --smallFont: 'Exo', sans-serif;
   --largeFont: 'Ovo', serif;
+  --ae-green: rgb(88, 179, 88);
+  --ae-lightgrey: rgb(224, 224, 224);
 }
 
 body {
@@ -132,6 +134,7 @@ button:hover {
 
 .ReviewsBreakdownContainer {
   width: 20vw;
+  min-width: fit-content;
   display: flex;
   flex-direction: column;
   border: 2px solid red;
@@ -215,7 +218,7 @@ button:hover {
 
 .reviewResponseContainer {
   border-radius: 3px;
-  background-color: rgb(224, 224, 224);
+  background-color: var(--ae-lightgrey);
   margin: 15px 0;
   padding: 10px;
 }
@@ -245,8 +248,8 @@ button:hover {
 .reviewHelpfulVoteOption:hover {
   cursor: pointer;
   color: white;
-  background: rgb(88, 179, 88);
-  border-radius: 5px;
+  background: var(--ae-green);
+  border-radius: 2px;
 }
 
 .reviewReportButton:hover {
@@ -255,8 +258,8 @@ button:hover {
 
 .reviewVotedHelpful {
   color: white;
-  background: rgb(88, 179, 88);
-  border-radius: 5px;
+  background: var(--ae-green);
+  border-radius: 2px;
 }
 
 .reviewHelpfulVoteCount {
@@ -343,4 +346,39 @@ button:hover {
 
 .totalReviewCountText {
   font-size: 150%;
+}
+
+.reviewRatingBreakdownContainer {
+  margin: 20px 0;
+}
+
+.reviewRatingBreakdownText {
+  font-size: 130%;
+  margin-bottom: 10px;
+}
+
+.reviewRecommendationPercentage {
+  font-size: 130%;
+  margin-top: 10px;
+}
+
+.reviewSingleFilterContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.reviewSingleFilterContainer:hover {
+  background-color: var(--ae-lightgrey);
+  cursor: pointer;
+}
+
+.reviewSingleFilterBar {
+  margin: 0 10px;
+}
+
+.reviewActiveFilter {
+  background-color: var(--ae-lightgrey);
 }

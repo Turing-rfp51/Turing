@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -21,6 +22,8 @@ class Reviews extends React.Component {
       metadata: {},
       sortMethod: 'relevant',
       numberToDisplay: 2,
+      starFilters: [],
+      filteredReviews: [],
     };
 
     this.getReviews = this.getReviews.bind(this);
@@ -28,6 +31,8 @@ class Reviews extends React.Component {
     this.updateSortBy = this.updateSortBy.bind(this);
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.addNewReview = this.addNewReview.bind(this);
+    this.addOrRemoveFilters = this.addOrRemoveFilters.bind(this);
+    this.filterReviews = this.filterReviews.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +50,7 @@ class Reviews extends React.Component {
         this.setState({ reviews: obj.data.results });
         console.log(obj.data.results);
       })
+      .then(this.state.starFilters.length > 0 && this.filterReviews)
       .catch((err) => console.error(err));
   }
 
@@ -73,18 +79,51 @@ class Reviews extends React.Component {
     console.log('adding new review');
   }
 
+  addOrRemoveFilters(n) {
+    const { starFilters } = this.state;
+    if (starFilters.includes(n)) {
+      this.setState({ starFilters: starFilters.filter((x) => x !== n) }, this.filterReviews);
+    } else {
+      this.setState({ starFilters: [...starFilters, n] }, this.filterReviews);
+    }
+  }
+
+  filterReviews() {
+    const { reviews, starFilters } = this.state;
+
+    const filtered = [];
+
+    for (let i = 0; i < reviews.length; i++) {
+      if (starFilters.includes(+reviews[i].rating)) {
+        filtered.push(reviews[i]);
+      }
+    }
+
+    this.setState({ filteredReviews: filtered });
+  }
+
   render() {
+    const { metadata, reviews, filteredReviews, starFilters, numberToDisplay } = this.state;
     return (
       <div className='reviewsModuleContainer'>
-        {this.state.metadata.ratings && (
-          <ReviewsBreakdown reviews={this.state.reviews} metadata={this.state.metadata} />
+        {metadata.ratings && (
+          <ReviewsBreakdown
+            reviews={reviews}
+            metadata={metadata}
+            addOrRemoveFilters={this.addOrRemoveFilters}
+          />
         )}
         <ReviewsList
-          reviews={this.state.reviews.slice(0, this.state.numberToDisplay)}
+          reviews={
+            starFilters.length > 0
+              ? filteredReviews.slice(0, numberToDisplay)
+              : reviews.slice(0, numberToDisplay)
+          }
           updateSortBy={this.updateSortBy}
           showMoreReviews={this.showMoreReviews}
           addNewReview={this.addNewReview}
           getReviews={this.getReviews}
+          totalLength={starFilters.length > 0 ? filteredReviews.length : reviews.length}
         />
       </div>
     );
