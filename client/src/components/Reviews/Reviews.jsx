@@ -123,6 +123,7 @@ class Reviews extends React.Component {
           showMoreReviews={this.showMoreReviews}
           addNewReview={this.addNewReview}
           getReviews={this.getReviews}
+          totalLength={starFilters.length > 0 ? filteredReviews.length : reviews.length}
         />
       </div>
     );
