@@ -3,7 +3,7 @@ import React from 'react';
 
 import QAListItem from './QAListItem.jsx';
 
-const QAList = ({ sortedData, data, getQA }) => (
+const QAList = ({ data, getQA, questionsDisplayed }) => (
   <div className='questionListContainer'>
     {data.length > 0 &&
       data.map((questionData) => (

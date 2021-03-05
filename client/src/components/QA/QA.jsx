@@ -52,12 +52,25 @@ class QA extends React.Component {
     const filteredData = [...this.state.data].filter((question) =>
       question.question_body.includes(this.state.filter)
     );
+    const { data, questionsDisplayed } = this.state;
     return (
       <div className='qaModuleContainer'>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
-        <QuestionSearch data={this.state.data} setFilter={this.setFilter} />
-        <QAList data={filteredData} getQA={this.getQA} showMoreQuestions={this.showMoreQuestions} />
-        <QAFooter />
+        <QuestionSearch data={data} setFilter={this.setFilter} />
+        <QAList
+          data={
+            filteredData.length > 0
+              ? filteredData.slice(0, questionsDisplayed)
+              : data.slice(0, questionsDisplayed)
+          }
+          getQA={this.getQA}
+          questionsDisplayed={questionsDisplayed}
+        />
+        <QAFooter
+          showMoreQuestions={this.showMoreQuestions}
+          numOfQuestions={filteredData.length}
+          questionsDisplayed={questionsDisplayed}
+        />
       </div>
     );
   }
