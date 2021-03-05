@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
@@ -13,9 +15,13 @@ class NewReviewModal extends React.Component {
     super(props);
 
     this.state = {
-      currBodyChars: 0,
       photoURLs: [],
       selectedCharacteristics: {},
+      email: '',
+      nickname: '',
+      body: '',
+      summary: '',
+      recommend: true,
     };
 
     this.loadPhotos = this.loadPhotos.bind(this);
@@ -24,7 +30,7 @@ class NewReviewModal extends React.Component {
   }
 
   loadPhotos() {
-    const { files } = document.getElementById('npmPhotoUpload');
+    const { files } = document.getElementById('nrmPhotoUpload');
     const fReader = new FileReader();
 
     [0, 1, 2, 3, 4].forEach((i) => {
@@ -52,39 +58,76 @@ class NewReviewModal extends React.Component {
     this.setState({ selectedCharacteristics: temp }, () => console.log(selectedCharacteristics));
   }
 
-  submitReview(info) {
-    console.log(info);
+  submitReview(e) {
+    e.preventDefault();
     const { metadata } = this.props;
-    const { photoURLs } = this.state;
-    let reviewObj = {
+    const {
+      photoURLs,
+      selectedCharacteristics,
+      summary,
+      body,
+      nickname,
+      email,
+      recommend,
+    } = this.state;
+
+    const finalCharObj = {};
+    for (const k in metadata.characteristics) {
+      finalCharObj[metadata.characteristics[k].id] = selectedCharacteristics[k];
+    }
+
+    const reviewObj = {
       product_id: metadata.product_id,
       rating: 5,
-      summary: '',
-      body: '',
-      recommend: true,
-      name: '',
-      email: '',
+      summary,
+      body,
+      recommend,
+      name: nickname,
+      email,
       photos: photoURLs,
-      characteristics: {},
+      characteristics: finalCharObj,
     };
+    console.log('reviewObj:', reviewObj);
   }
 
   render() {
     const { metadata, productName, toggleShowNewReviewModal } = this.props;
-    const { currBodyChars, photoURLs, selectedCharacteristics } = this.state;
+    const {
+      currBodyChars,
+      photoURLs,
+      selectedCharacteristics,
+      email,
+      nickname,
+      body,
+      summary,
+      recommend,
+    } = this.state;
     return (
       <div className='newReviewModalBackgroundContainer'>
-        <form className='newReviewModalContainer' onSubmit={this.submitReview}>
+        <form className='newReviewModalContainer' onSubmit={(e) => this.submitReview(e)}>
           <div className='newReviewModalHeaderContainer'>
             <h1 className='nrmTitle'>Write Your Review</h1>
-            <h2 className='nrmSubtitle'>About the {productName}</h2>
+            <h2 className='nrmSubtitle'>About {productName}</h2>
           </div>
           {/* Overall Rating Component here */}
           <div className='reviewInputContainer'>
             <span>Do you recommend this product?*</span>
-            <input type='radio' id='nrmRecommendYes' name='recommend' value='yes' required />
+            <input
+              type='radio'
+              id='nrmRecommendYes'
+              name='recommend'
+              value='yes'
+              required
+              onClick={() => this.setState({ recommend: true })}
+            />
             <label htmlFor='nrmRecommendYes'>Yes</label>
-            <input type='radio' id='nrmRecommendNo' name='recommend' value='no' />
+            <input
+              type='radio'
+              id='nrmRecommendNo'
+              name='recommend'
+              value='no'
+              onClick={() => this.setState({ recommend: false })}
+            />
             <label htmlFor='nrmRecommendNo'>No</label>
           </div>
           <br />
@@ -95,7 +138,12 @@ class NewReviewModal extends React.Component {
           />
           <br />
           <label htmlFor='nrmSummary'>Review Summary</label>
-          <textarea maxLength='60' id='nrmSummary' placeholder='Example: Best purchase ever!' />
+          <textarea
+            maxLength='60'
+            id='nrmSummary'
+            placeholder='Example: Best purchase ever!'
+            onChange={(e) => this.setState({ summary: e.target.value })}
+          />
           <br />
           <label htmlFor='nrmBody'>Review Body*</label>
           <textarea
@@ -104,25 +152,37 @@ class NewReviewModal extends React.Component {
             id='nrmBody'
             placeholder='Why did you like the product or not?'
             required
-            onChange={(e) => this.setState({ currBodyChars: e.target.value.length })}
+            onChange={(e) => this.setState({ body: e.target.value })}
           />
           <span className='nrmSmallText'>
-            {currBodyChars >= 50
+            {body.length >= 50
               ? 'Minimum reached'
-              : `Minimum required characters left: ${50 - currBodyChars}`}
+              : `Minimum required characters left: ${50 - body.length}`}
           </span>
           <br />
           <label htmlFor='npmPhotoUpload'>Upload Photos</label>
           <ReviewUploadImages photoURLs={photoURLs} loadPhotos={this.loadPhotos} />
           <br />
           <label htmlFor='nrmNickname'>What is your nickname*</label>
-          <input type='text' id='nrmNickname' placeholder='Example: jackson11!' required />
+          <input
+            type='text'
+            id='nrmNickname'
+            placeholder='Example: jackson11!'
+            required
+            onChange={(e) => this.setState({ nickname: e.target.value })}
+          />
           <span className='nrmSmallText'>
             For privacy reasons, do not use your full name or email address
           </span>
           <br />
-          <label htmlFor='nrmNickname'>Your email*</label>
-          <input type='text' id='nrmEmail' placeholder='Example:  jackson11@email.com' required />
+          <label htmlFor='nrmEmail'>Your email*</label>
+          <input
+            type='text'
+            id='nrmEmail'
+            placeholder='Example:  jackson11@email.com'
+            required
+            onChange={(e) => this.setState({ email: e.target.value })}
+          />
           <span className='nrmSmallText'>For authentication reasons, you will not be emailed</span>
           <br />
           <div className='nrmButtonsContainer'>

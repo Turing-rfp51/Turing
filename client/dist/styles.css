@@ -511,6 +511,8 @@ button:hover {
   background-color: white;
   border: 5px solid black;
   font-size: 130%;
+  max-height: 90vh;
+  overflow: scroll;
 }
 
 .newReviewModalHeaderContainer {
@@ -541,6 +543,7 @@ button:hover {
   font-family: var(--smallFont);
   font-size: 100%;
   margin-top: 5px;
+  min-height: 30px;
 }
 
 .nrmButtonsContainer {
@@ -565,6 +568,7 @@ button:hover {
   background: none;
   margin: 10px 10px 0 0;
   padding: 3px 5px;
+  min-height: 30px;
 }
 .ReviewCharacteristicsInputContainer {
   display: flex;
@@ -574,6 +578,9 @@ button:hover {
 .nrmRadioInputContainer {
   display: flex;
   flex-direction: column;
+  background-color: var(--ae-lightgrey);
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .nrmRadioOptionsContainer {

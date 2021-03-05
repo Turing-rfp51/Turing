@@ -21,7 +21,7 @@ const ReviewCharacteristicsInput = ({
 }) => (
   <React.Fragment>
     {Object.keys(characteristics).map((c) => (
-      <div className='ReviewCharacteristicsInputContainer'>
+      <div className='ReviewCharacteristicsInputContainer' key={c}>
         <div className='nrmRadioInputContainer'>
           <div className='nrmCharNameLabel'>
             {`${c}*`} -
@@ -38,10 +38,11 @@ const ReviewCharacteristicsInput = ({
               <input
                 type='radio'
                 id={`nrm${c}${n}`}
+                key={`${c}${n}`}
                 name={`nrm${c}`}
                 value={n}
                 required
-                onChange={(e) => updateSelectedChar(`${c}`, e.target.value)}
+                onChange={(e) => updateSelectedChar(`${c}`, +e.target.value)}
               />
             ))}
           </div>
