@@ -1,7 +1,11 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
+import ReviewUploadImages from './ReviewUploadImages.jsx';
 
 class NewReviewModal extends React.Component {
   constructor(props) {
@@ -9,12 +13,38 @@ class NewReviewModal extends React.Component {
 
     this.state = {
       currBodyChars: 0,
+      photoURLs: [],
     };
+
+    this.loadPhotos = this.loadPhotos.bind(this);
+    this.updatePhotos = this.updatePhotos.bind(this);
+  }
+
+  loadPhotos() {
+    const { files } = document.getElementById('npmPhotoUpload');
+    const fReader = new FileReader();
+
+    [0, 1, 2, 3, 4].forEach((i) => {
+      if (files[i]) {
+        fReader.readAsDataURL(files[i]);
+
+        fReader.onloadend = (event) => {
+          const temp = event.target.result;
+          this.updatePhotos(temp);
+        };
+      }
+    });
+  }
+
+  updatePhotos(temp) {
+    const { photoURLs } = this.state;
+
+    this.setState({ photoURLs: [...photoURLs, temp] });
   }
 
   render() {
     const { metadata, productName, toggleShowNewReviewModal } = this.props;
-    const { currBodyChars } = this.state;
+    const { currBodyChars, photoURLs } = this.state;
     return (
       <div className='newReviewModalBackgroundContainer'>
         <form className='newReviewModalContainer'>
@@ -26,9 +56,9 @@ class NewReviewModal extends React.Component {
           <div className='reviewInputContainer'>
             <span>Do you recommend this product?*</span>
             <input type='radio' id='nrmRecommendYes' name='recommend' value='yes' required />
-            <label htmlFor='recommendYes'>Yes</label>
+            <label htmlFor='nrmRecommendYes'>Yes</label>
             <input type='radio' id='nrmRecommendNo' name='recommend' value='no' />
-            <label htmlFor='recommendNo'>No</label>
+            <label htmlFor='nrmRecommendNo'>No</label>
           </div>
           {/* Characteristic radio buttons here */}
           <br />
@@ -49,7 +79,9 @@ class NewReviewModal extends React.Component {
               ? 'Minimum reached'
               : `Minimum required characters left: ${50 - currBodyChars}`}
           </span>
-          {/* Upload photos component here */}
+          <br />
+          <label htmlFor='npmPhotoUpload'>Upload Photos</label>
+          <ReviewUploadImages photoURLs={photoURLs} loadPhotos={this.loadPhotos} />
           <br />
           <label htmlFor='nrmNickname'>What is your nickname*</label>
           <input type='text' id='nrmNickname' placeholder='Example: jackson11!' required />
