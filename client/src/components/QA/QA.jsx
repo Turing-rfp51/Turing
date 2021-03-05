@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import QuestionSearch from './QuestionSearch.jsx';
 import QAList from './QAList.jsx';
+import QAFooter from './QAFooter.jsx';
 
 const { TOKEN } = require('../../../../config.js');
 
@@ -14,7 +15,6 @@ class QA extends React.Component {
     this.state = {
       data: [],
       filter: '',
-      questions: [],
     };
     this.setFilter = this.setFilter.bind(this);
   }
@@ -49,9 +49,14 @@ class QA extends React.Component {
         <h3>{'QUESTIONS & ANSWERS'}</h3>
         <QuestionSearch data={this.state.data} setFilter={this.setFilter} />
         <QAList data={filteredData} getQA={this.getQA.bind(this)} />
+        <QAFooter />
       </div>
     );
   }
 }
 
 export default QA;
+
+// const sortedData = [...this.state.data]
+// .filter((question) => question.answers)
+// .sort((a, b) => b.helpfulness - a.helpfulness);
