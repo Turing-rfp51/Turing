@@ -66,6 +66,7 @@ class Reviews extends React.Component {
       )
       .then((obj) => {
         this.setState({ metadata: obj.data });
+        console.log('metadata:', obj.data);
       })
       .catch((err) => console.error(err));
   }

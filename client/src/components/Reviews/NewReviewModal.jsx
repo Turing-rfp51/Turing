@@ -6,6 +6,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import ReviewUploadImages from './ReviewUploadImages.jsx';
+import ReviewCharacteristicsInput from './ReviewCharacteristicsInput.jsx';
 
 class NewReviewModal extends React.Component {
   constructor(props) {
@@ -14,10 +15,12 @@ class NewReviewModal extends React.Component {
     this.state = {
       currBodyChars: 0,
       photoURLs: [],
+      selectedCharacteristics: {},
     };
 
     this.loadPhotos = this.loadPhotos.bind(this);
     this.updatePhotos = this.updatePhotos.bind(this);
+    this.updateSelectedChar = this.updateSelectedChar.bind(this);
   }
 
   loadPhotos() {
@@ -42,12 +45,36 @@ class NewReviewModal extends React.Component {
     this.setState({ photoURLs: [...photoURLs, temp] });
   }
 
+  updateSelectedChar(char, value) {
+    const { selectedCharacteristics } = this.state;
+    const temp = Object.assign(selectedCharacteristics);
+    temp[char] = value;
+    this.setState({ selectedCharacteristics: temp }, () => console.log(selectedCharacteristics));
+  }
+
+  submitReview(info) {
+    console.log(info);
+    const { metadata } = this.props;
+    const { photoURLs } = this.state;
+    let reviewObj = {
+      product_id: metadata.product_id,
+      rating: 5,
+      summary: '',
+      body: '',
+      recommend: true,
+      name: '',
+      email: '',
+      photos: photoURLs,
+      characteristics: {},
+    };
+  }
+
   render() {
     const { metadata, productName, toggleShowNewReviewModal } = this.props;
-    const { currBodyChars, photoURLs } = this.state;
+    const { currBodyChars, photoURLs, selectedCharacteristics } = this.state;
     return (
       <div className='newReviewModalBackgroundContainer'>
-        <form className='newReviewModalContainer'>
+        <form className='newReviewModalContainer' onSubmit={this.submitReview}>
           <div className='newReviewModalHeaderContainer'>
             <h1 className='nrmTitle'>Write Your Review</h1>
             <h2 className='nrmSubtitle'>About the {productName}</h2>
@@ -60,7 +87,12 @@ class NewReviewModal extends React.Component {
             <input type='radio' id='nrmRecommendNo' name='recommend' value='no' />
             <label htmlFor='nrmRecommendNo'>No</label>
           </div>
-          {/* Characteristic radio buttons here */}
+          <br />
+          <ReviewCharacteristicsInput
+            characteristics={metadata.characteristics}
+            selectedCharacteristics={selectedCharacteristics}
+            updateSelectedChar={this.updateSelectedChar}
+          />
           <br />
           <label htmlFor='nrmSummary'>Review Summary</label>
           <textarea maxLength='60' id='nrmSummary' placeholder='Example: Best purchase ever!' />
