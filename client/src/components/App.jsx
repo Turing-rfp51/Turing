@@ -7,7 +7,7 @@ const productId = 17762;
 
 const App = () => (
   <>
-    <Overview />
+    <Overview productId={productId} />
     <QA productId={productId} />
     <Reviews productId={productId} />
   </>
