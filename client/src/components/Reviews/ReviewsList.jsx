@@ -8,7 +8,7 @@ const ReviewsList = ({
   reviews,
   updateSortBy,
   showMoreReviews,
-  addNewReview,
+  toggleShowNewReviewModal,
   getReviews,
   totalLength,
 }) => (
@@ -21,7 +21,7 @@ const ReviewsList = ({
     <ReviewsListButtons
       showMoreReviews={showMoreReviews}
       numOfReviews={reviews.length}
-      addNewReview={addNewReview}
+      toggleShowNewReviewModal={toggleShowNewReviewModal}
       totalLength={totalLength}
     />
   </div>
