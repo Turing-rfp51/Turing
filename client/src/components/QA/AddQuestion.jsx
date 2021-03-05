@@ -1,5 +1,9 @@
 import React from 'react';
 
-const AddQuestion = () => <div>Add Question Button</div>;
+const AddQuestion = ({ open }) => (
+  <button className='qaAddQuestion' type='button' onClick={open}>
+    ADD A QUESTION +
+  </button>
+);
 
 export default AddQuestion;
