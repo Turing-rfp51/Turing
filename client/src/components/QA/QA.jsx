@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import axios from 'axios';
 
@@ -12,15 +13,21 @@ class QA extends React.Component {
 
     this.state = {
       data: [],
+      filter: '',
+      questions: [],
     };
+    this.setFilter = this.setFilter.bind(this);
   }
 
   componentDidMount() {
     this.getQA();
   }
 
+  setFilter(text) {
+    this.setState({ filter: text });
+  }
+
   getQA() {
-    console.log('inside get QA');
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${this.props.productId}`,
@@ -34,11 +41,14 @@ class QA extends React.Component {
   }
 
   render() {
+    const filteredData = [...this.state.data].filter((question) =>
+      question.question_body.includes(this.state.filter)
+    );
     return (
       <div className='qaModuleContainer'>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
-        <QuestionSearch />
-        <QAList data={this.state.data} getQA={this.getQA.bind(this)} />
+        <QuestionSearch data={this.state.data} setFilter={this.setFilter} />
+        <QAList data={filteredData} getQA={this.getQA.bind(this)} />
       </div>
     );
   }
