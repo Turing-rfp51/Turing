@@ -27,6 +27,14 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.qaWrap {
+  display: flex;
+  flex-direction: row;
 }
 
 .qaSearch-bar {
@@ -37,8 +45,33 @@ button:hover {
 }
 
 .qaSearch-bar input {
-  width: 100%;
+  width: 95%;
   border: none;
+  position: relative;
+  display: flex;
+}
+
+.qaSearchTerm {
+  width: 100%;
+  border: 3px solid black;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
+
+.qaSearchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #292b2c;
+  background: #292b2c;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .qaAddAnswer {
