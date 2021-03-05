@@ -505,10 +505,46 @@ button:hover {
 }
 
 .newReviewModalContainer {
-  width: 80%;
-  height: 80%;
+  padding: 20px 50px;
   display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 5px solid black;
+  font-size: 130%;
+}
+
+.newReviewModalHeaderContainer {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  margin-bottom: 20px;
+}
+
+.nrmSmallText {
+  font-size: 70%;
+  margin-top: 5px;
+}
+
+.nrmTitle {
+  margin-bottom: 10px;
+}
+
+.nrmSubtitle {
+  margin-top: 0px;
+}
+
+#nrmSummary,
+#nrmBody,
+#nrmNickname,
+#nrmEmail {
+  font-family: var(--smallFont);
+  font-size: 100%;
+  margin-top: 5px;
+}
+
+.nrmButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
