@@ -10,6 +10,7 @@ import axios from 'axios';
 
 import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
+import NewReviewModal from './NewReviewModal.jsx';
 
 const { TOKEN } = require('../../../../config.js');
 
@@ -24,13 +25,14 @@ class Reviews extends React.Component {
       numberToDisplay: 2,
       starFilters: [],
       filteredReviews: [],
+      productName: '',
     };
 
     this.getReviews = this.getReviews.bind(this);
     this.getMetadata = this.getMetadata.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.showMoreReviews = this.showMoreReviews.bind(this);
-    this.addNewReview = this.addNewReview.bind(this);
+    this.toggleShowNewReviewModal = this.toggleShowNewReviewModal.bind(this);
     this.addOrRemoveFilters = this.addOrRemoveFilters.bind(this);
     this.filterReviews = this.filterReviews.bind(this);
     this.clearFilters = this.clearFilters.bind(this);
@@ -39,6 +41,7 @@ class Reviews extends React.Component {
   componentDidMount() {
     this.getReviews();
     this.getMetadata();
+    this.getProductName();
   }
 
   getReviews() {
@@ -63,7 +66,17 @@ class Reviews extends React.Component {
       )
       .then((obj) => {
         this.setState({ metadata: obj.data });
-        console.log('data:', obj.data);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  getProductName() {
+    axios
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${this.props.productId}`, {
+        headers: { Authorization: TOKEN },
+      })
+      .then((obj) => {
+        this.setState({ productName: obj.data.name });
       })
       .catch((err) => console.error(err));
   }
@@ -76,8 +89,9 @@ class Reviews extends React.Component {
     this.setState((prevState) => ({ numberToDisplay: prevState.numberToDisplay + 2 }));
   }
 
-  addNewReview() {
-    console.log('adding new review');
+  toggleShowNewReviewModal() {
+    const { showNewReviewModal } = this.state;
+    this.setState({ showNewReviewModal: !showNewReviewModal });
   }
 
   addOrRemoveFilters(n) {
@@ -108,7 +122,15 @@ class Reviews extends React.Component {
   }
 
   render() {
-    const { metadata, reviews, filteredReviews, starFilters, numberToDisplay } = this.state;
+    const {
+      metadata,
+      reviews,
+      filteredReviews,
+      starFilters,
+      numberToDisplay,
+      showNewReviewModal,
+      productName,
+    } = this.state;
     return (
       <div className='reviewsModuleContainer'>
         {metadata.ratings && (
@@ -128,10 +150,17 @@ class Reviews extends React.Component {
           }
           updateSortBy={this.updateSortBy}
           showMoreReviews={this.showMoreReviews}
-          addNewReview={this.addNewReview}
+          toggleShowNewReviewModal={this.toggleShowNewReviewModal}
           getReviews={this.getReviews}
           totalLength={starFilters.length > 0 ? filteredReviews.length : reviews.length}
         />
+        {showNewReviewModal && (
+          <NewReviewModal
+            metadata={metadata}
+            productName={productName}
+            toggleShowNewReviewModal={this.toggleShowNewReviewModal}
+          />
+        )}
       </div>
     );
   }

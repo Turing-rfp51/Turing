@@ -490,3 +490,61 @@ button:hover {
   display: flex;
   justify-content: space-between;
 }
+
+.newReviewModalBackgroundContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newReviewModalContainer {
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 5px solid black;
+  font-size: 130%;
+}
+
+.newReviewModalHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nrmSmallText {
+  font-size: 70%;
+  margin-top: 5px;
+}
+
+.nrmTitle {
+  margin-bottom: 10px;
+}
+
+.nrmSubtitle {
+  margin-top: 0px;
+}
+
+#nrmSummary,
+#nrmBody,
+#nrmNickname,
+#nrmEmail {
+  font-family: var(--smallFont);
+  font-size: 100%;
+  margin-top: 5px;
+}
+
+.nrmButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
