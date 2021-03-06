@@ -548,3 +548,80 @@ button:hover {
   flex-direction: column;
   justify-content: center;
 }
+
+/*----------------------------------------------------------------------------------OVERVIEW----------*/
+
+.overviewBody {
+  display: flex;
+  margin: 50px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.overviewHeaderContainer {
+  width: 398px;
+  order: 2;
+  height: 450px;
+}
+
+.styleSelector {
+  width: 408px;
+  order: 3;
+}
+
+.stylePhotos {
+  height: 102px;
+  width: 102px;
+  position: relative;
+  text-align: center;
+}
+.photosGrid {
+  display: grid;
+  grid-template: repeat(auto-fit, 102px) / repeat(4, 102px);
+}
+.doNotDisplay {
+  display: none;
+}
+.displayCheckMark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: not-allowed;
+}
+.notSelectedPhoto,
+.selectedPhoto {
+  border: 1px solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.notSelectedPhoto:hover {
+  opacity: 75%;
+  cursor: pointer;
+}
+.selectedPhoto {
+  opacity: 75%;
+  cursor: not-allowed;
+}
+
+.addToCartContainer {
+  width: 398px;
+  order: 4;
+}
+
+.imagePreviewContainer {
+  background-color: BLACK;
+  color: rgb(175, 52, 52);
+  order: 1;
+  margin: 15px;
+  width: 60%;
+}
+
+.infoStyleAdd {
+  order: 2;
+  width: 405px;
+}
