@@ -3,16 +3,16 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Reviews from '../../client/src/components/Reviews/Reviews.jsx';
+// import Reviews from '../../client/src/components/Reviews/Reviews.jsx';
 import NewReviewModal from '../../client/src/components/Reviews/NewReviewModal.jsx';
 // import ReviewsList from '../../client/src/components/Reviews/ReviewsList.jsx';
 
 describe('<Reviews />', () => {
-  it('works with setProps', () => {
-    const wrap = mount(<Reviews />);
-    wrap.setProps({ productId: '17762' });
-    expect(wrap.prop('productId')).toEqual('17762');
-  });
+  // it('works with setProps', () => {
+  //   const wrap = mount(<Reviews />);
+  //   wrap.setProps({ productId: '17762' });
+  //   expect(wrap.prop('productId')).toEqual('17762');
+  // });
 
   it(`doesn't render NewReviewModal immediately`, () => {
     const wrap = shallow(<Reviews />);
