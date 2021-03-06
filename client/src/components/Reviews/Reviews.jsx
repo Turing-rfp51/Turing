@@ -26,6 +26,7 @@ class Reviews extends React.Component {
       starFilters: [],
       filteredReviews: [],
       productName: '',
+      showNewReviewModal: false,
     };
 
     this.getReviews = this.getReviews.bind(this);
