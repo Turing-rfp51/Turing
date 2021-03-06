@@ -8,19 +8,19 @@ import NewReviewModal from '../../client/src/components/Reviews/NewReviewModal.j
 import ReviewsList from '../../client/src/components/Reviews/ReviewsList.jsx';
 
 describe('<Reviews />', () => {
-  // it('works with setProps', () => {
-  //   const wrap = mount(<Reviews />);
-  //   wrap.setProps({ productId: '17762' });
-  //   expect(wrap.prop('productId')).toEqual('17762');
-  // });
+  it('works with setProps', () => {
+    const wrap = mount(<Reviews />);
+    wrap.setProps({ productId: '17762' });
+    expect(wrap.prop('productId')).toEqual('17762');
+  });
 
   it(`doesn't render NewReviewModal immediately`, () => {
     const wrap = shallow(<Reviews />);
     expect(wrap.find(NewReviewModal)).toHaveLength(0);
   });
 
-  it(`does render reviewList immediately`, () => {
-    const wrap = shallow(<Reviews />);
-    expect(wrap.find(ReviewsList)).toHaveLength(1);
-  });
+  // it(`does render reviewList immediately`, () => {
+  //   const wrap = shallow(<Reviews />);
+  //   expect(wrap.find(ReviewsList)).toHaveLength(1);
+  // });
 });
