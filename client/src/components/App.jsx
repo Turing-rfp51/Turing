@@ -3,7 +3,7 @@ import Overview from './Overview/Overview.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import QA from './QA/QA.jsx';
 
-const productId = 17762;
+const productId = 17792;
 
 const App = () => (
   <>

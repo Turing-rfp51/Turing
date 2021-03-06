@@ -621,13 +621,51 @@ button:hover {
 
 .overviewHeaderContainer {
   width: 398px;
-  order: 2;
+  order: 1;
   height: 450px;
+  display: grid;
+  grid-template: 55px 45px 100px / repeat(4, 100px);
+}
+.productName {
+  margin: 10px;
+  grid-area: 1/1/2/3;
+  text-align: left;
+}
+.productCategory {
+  margin: 10px;
+  text-align: left;
+  grid-area: 1 / 3 / 2 / 5;
+}
+.originalPrice {
+  margin: 15px;
+  grid-area: 2/1/3/3;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.salePrice {
+  color: red;
+  text-decoration: underline red;
+}
+.oldPrice {
+  text-decoration: line-through red;
+}
+.description {
+  margin-top: 14px;
+  font-style: italic;
+  grid-area: 3 / 1 / 4 / 3;
 }
 
 .styleSelector {
   width: 408px;
-  order: 3;
+  order: 2;
+}
+
+.selectedStyle {
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
 }
 
 .stylePhotos {
@@ -668,19 +706,27 @@ button:hover {
 }
 
 .addToCartContainer {
-  width: 398px;
-  order: 4;
+  margin: 5px;
+  width: 408px;
+  order: 3;
 }
 
 .imagePreviewContainer {
-  background-color: BLACK;
   color: rgb(175, 52, 52);
   order: 1;
   margin: 15px;
   width: 60%;
+  display: grid;
+  grid-template-columns: 100%;
 }
 
 .infoStyleAdd {
   order: 2;
   width: 405px;
+}
+
+.selectedImage {
+  width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }

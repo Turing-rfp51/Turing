@@ -6,8 +6,8 @@ import ShareAndStars from './ShareAndStars.jsx';
 
 const Header = ({ name, category, price, salePrice, description }) => (
   <span className='overviewHeaderContainer'>
-    <h3>{name}</h3>
-    <h5>{`(${category})`}</h5>
+    <h3 className='productName'>{name}</h3>
+    <h5 className='productCategory'>{`(${category})`}</h5>
     <Price price={price} salePrice={salePrice} />
     <Description description={description} />
     <ShareAndStars />
