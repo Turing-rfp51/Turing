@@ -47,7 +47,7 @@ class Reviews extends React.Component {
   getReviews() {
     axios
       .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?count=40&product_id=${this.props.productId}&sort=${this.state.sortMethod}`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?count=500&product_id=${this.props.productId}&sort=${this.state.sortMethod}`,
         { headers: { Authorization: TOKEN } }
       )
       .then((obj) => {
@@ -160,6 +160,8 @@ class Reviews extends React.Component {
             metadata={metadata}
             productName={productName}
             toggleShowNewReviewModal={this.toggleShowNewReviewModal}
+            getReviews={this.getReviews}
+            getMetadata={this.getMetadata}
           />
         )}
       </div>

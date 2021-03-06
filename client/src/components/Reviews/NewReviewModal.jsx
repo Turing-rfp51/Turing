@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-plusplus */
@@ -27,7 +28,7 @@ class NewReviewModal extends React.Component {
       nickname: '',
       body: '',
       summary: '',
-      recommend: true,
+      recommend: false,
       rating: 0,
     };
 
@@ -70,7 +71,8 @@ class NewReviewModal extends React.Component {
   }
 
   submitReview(e) {
-    const { metadata } = this.props;
+    e.preventDefault();
+    const { metadata, getReviews, getMetadata, toggleShowNewReviewModal } = this.props;
     const {
       photoURLs,
       selectedCharacteristics,
@@ -98,16 +100,19 @@ class NewReviewModal extends React.Component {
       photos: photoURLs,
       characteristics: finalCharObj,
     };
+
     axios({
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews`,
       method: 'post',
-      data: JSON.stringify(reviewObj),
+      data: reviewObj,
       headers: {
         'Authorization': TOKEN,
-        'Content-Type': 'application/json',
       },
     })
       .then((results) => console.log('submitted review', results))
+      .then(toggleShowNewReviewModal)
+      .then(getReviews)
+      .then(getMetadata)
       .catch((err) => console.error(err));
   }
 
@@ -201,7 +206,7 @@ class NewReviewModal extends React.Component {
           <span className='nrmSmallText'>For authentication reasons, you will not be emailed</span>
           <br />
           <div className='nrmButtonsContainer'>
-            <button className='reviewsButton' type='submit'>
+            <button disabled={rating === 0} className='reviewsButton' type='submit'>
               Submit
             </button>
             <button type='button' className='reviewsButton' onClick={toggleShowNewReviewModal}>
