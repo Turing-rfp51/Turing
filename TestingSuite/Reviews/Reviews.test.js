@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Reviews from '../../client/src/components/Reviews/Reviews.jsx';
 import NewReviewModal from '../../client/src/components/Reviews/NewReviewModal.jsx';
@@ -15,12 +15,12 @@ describe('<Reviews />', () => {
   });
 
   it(`doesn't render NewReviewModal immediately`, () => {
-    const wrap = mount(<Reviews />);
+    const wrap = shallow(<Reviews />);
     expect(wrap.find(NewReviewModal)).toHaveLength(0);
   });
 
   it(`does render reviewList immediately`, () => {
-    const wrap = mount(<Reviews />);
+    const wrap = shallow(<Reviews />);
     expect(wrap.find(ReviewsList)).toHaveLength(1);
   });
 });
