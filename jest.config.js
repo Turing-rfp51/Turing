@@ -10,7 +10,7 @@ module.exports = {
   setupFiles: ['./enzyme.config.js'],
   testEnvironment: 'jsdom',
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
-  testPathIgnorePatterns: ['\\\\node_modules\\\\', 'config.js'],
+  testPathIgnorePatterns: ['\\\\node_modules\\\\', 'Turing/config.js'],
   testURL: 'http://localhost:3000',
   transformIgnorePatterns: ['./node_modules/'],
   verbose: false,
