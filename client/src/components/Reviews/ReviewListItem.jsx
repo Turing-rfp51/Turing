@@ -12,7 +12,7 @@ const ReviewsList = ({ review, updateHelpfulCount, reportReview, getReviews }) =
     <ReviewHeader review={review} />
     <h3 className='reviewSummary'>{review.summary}</h3>
     <ReviewBody review={review} />
-    <ReviewPhotos review={review} />
+    {review.photos.length > 0 && <ReviewPhotos review={review} />}
     <ReviewRecommendation review={review} />
     {review.response && <ReviewResponse review={review} />}
     <ReviewHelpfulCount review={review} getReviews={getReviews} />

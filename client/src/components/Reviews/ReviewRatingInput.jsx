@@ -6,12 +6,17 @@ import React from 'react';
 import star from '../Shared/stars/star.svg';
 import starOutline from '../Shared/stars/star-outline.svg';
 
+const ratingLabels = ['', 'Poor', 'Fair', 'Average', 'Good', 'Great'];
+
 const ReviewRatingInput = ({ updateStarRating, rating }) => (
   <React.Fragment>
-    <span>Overall Rating*</span>
+    <div className='nrmRatingInputHeader'>
+      <span>Overall Rating*</span>
+      {rating > 0 && <span className='nrmSelectedCharLabel'>- {ratingLabels[rating]}</span>}
+    </div>
     <div className='reviewAllStarsInputContainer'>
       {[1, 2, 3, 4, 5].map((n) => (
-        <div className='reviewStarInputContainer'>
+        <div className='reviewStarInputContainer' key={n}>
           <img
             src={rating >= n ? star : starOutline}
             className='starIcon reviewInputStar'

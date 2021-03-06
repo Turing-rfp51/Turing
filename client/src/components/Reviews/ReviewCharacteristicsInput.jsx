@@ -24,13 +24,13 @@ const ReviewCharacteristicsInput = ({
       <div className='ReviewCharacteristicsInputContainer' key={c}>
         <div className='nrmRadioInputContainer'>
           <div className='nrmCharNameLabel'>
-            {`${c}*`} -
+            {`${c}*`}
             {selectedCharacteristics[c] ? (
               <span className='nrmSelectedCharLabel'>
-                {labels[c.toLowerCase()][selectedCharacteristics[c] - 1]}
+                - {labels[c.toLowerCase()][selectedCharacteristics[c] - 1]}
               </span>
             ) : (
-              <span className='nrmSelectedCharLabel'>none selected</span>
+              <span className='nrmSelectedCharLabel'>- none selected</span>
             )}
           </div>
           <div className='nrmRadioOptionsContainer'>
