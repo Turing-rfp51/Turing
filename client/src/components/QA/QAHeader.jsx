@@ -26,13 +26,14 @@ class QAHeader extends React.Component {
   }
 
   render() {
+    const { questionData, getQA } = this.props;
     return (
       <div className='qaHeader'>
-        <Question questionData={this.props.questionData} />
+        <Question questionData={questionData} />
         <div className='qaHelpfulUpVoteAndAddAnswer'>
-          <HelpfulQuestionUpvote questionData={this.props.questionData} getQA={this.props.getQA} />
+          <HelpfulQuestionUpvote questionData={questionData} getQA={getQA} />
           <AddAnswer open={this.open} />
-          {this.state.modal && <Modal close={this.close} />}
+          {this.state.modal && <Modal getQA={getQA} close={this.close} />}
         </div>
       </div>
     );
