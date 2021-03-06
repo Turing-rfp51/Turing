@@ -213,7 +213,6 @@ button:hover {
   flex-direction: column;
   padding: 10px;
   margin-right: 10px;
-  border: 2px solid black;
 }
 
 .dropdownContainer {
@@ -368,7 +367,8 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -10px;
+  margin-top: -15px;
+  margin-bottom: 10px;
 }
 
 #showMoreButton {
@@ -570,6 +570,8 @@ button:hover {
   background-color: white;
   border: 5px solid black;
   font-size: 130%;
+  max-height: 90vh;
+  overflow: scroll;
 }
 
 .newReviewModalHeaderContainer {
@@ -577,7 +579,6 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .nrmSmallText {
@@ -590,7 +591,7 @@ button:hover {
 }
 
 .nrmSubtitle {
-  margin-top: 0px;
+  margin: 0;
 }
 
 #nrmSummary,
@@ -600,12 +601,87 @@ button:hover {
   font-family: var(--smallFont);
   font-size: 100%;
   margin-top: 5px;
+  min-height: 30px;
 }
 
 .nrmButtonsContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.reviewUploadedImagesContainer {
+  display: flex;
+}
+
+.reviewUploadImage {
+  height: 100px;
+  margin-right: 15px;
+  border: 2px solid black;
+}
+
+#nrmPhotoUpload {
+  font-size: 80%;
+  border-radius: 0;
+  background: none;
+  margin: 10px 10px 0 0;
+  padding: 3px 5px;
+  min-height: 30px;
+}
+.ReviewCharacteristicsInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.nrmRadioInputContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ae-lightgrey);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.nrmRadioOptionsContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nrmRadioLabelsContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 80%;
+}
+
+.nrmCharNameLabel {
+  margin-bottom: 10px;
+}
+
+.nrmSelectedCharLabel {
+  color: rgb(33, 129, 9);
+  margin-left: 10px;
+}
+
+#nrmRecommendYes,
+#nrmRecommendNo {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.nrmCharRadioButtons {
+  width: 100%;
+  height: 1em;
+}
+
+.reviewAllStarsInputContainer {
+  display: flex;
+}
+
+.reviewStarInputContainer {
+  margin-top: 5px;
+}
+
+.reviewInputStar:hover {
+  cursor: pointer;
 }
 
 /*----------------------------------------------------------------------------------OVERVIEW----------*/

@@ -26,13 +26,14 @@ class QAFooter extends React.Component {
 
   render() {
     const { modal } = this.state;
+    const { numOfQuestions, showMoreQuestions, questionsDisplayed } = this.props;
 
     return (
       <div className='qaFooter'>
         <MoreAnsweredQuestions
-          numOfQuestions={this.props.numOfQuestions}
-          showMoreQuestions={this.props.showMoreQuestions}
-          questionsDisplayed={this.props.questionsDisplayed}
+          numOfQuestions={numOfQuestions}
+          showMoreQuestions={showMoreQuestions}
+          questionsDisplayed={questionsDisplayed}
         />
         <AddQuestion open={this.open} />
         {modal && <Modal close={this.close} />}
