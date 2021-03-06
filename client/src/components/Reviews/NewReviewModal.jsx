@@ -7,8 +7,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
+
+import axios from 'axios';
+
 import ReviewUploadImages from './ReviewUploadImages.jsx';
 import ReviewCharacteristicsInput from './ReviewCharacteristicsInput.jsx';
+import ReviewRatingInput from './ReviewRatingInput.jsx';
+
+const { TOKEN } = require('../../../../config.js');
 
 class NewReviewModal extends React.Component {
   constructor(props) {
@@ -22,11 +28,13 @@ class NewReviewModal extends React.Component {
       body: '',
       summary: '',
       recommend: true,
+      rating: 0,
     };
 
     this.loadPhotos = this.loadPhotos.bind(this);
     this.updatePhotos = this.updatePhotos.bind(this);
     this.updateSelectedChar = this.updateSelectedChar.bind(this);
+    this.updateStarRating = this.updateStarRating.bind(this);
   }
 
   loadPhotos() {
@@ -47,7 +55,6 @@ class NewReviewModal extends React.Component {
 
   updatePhotos(temp) {
     const { photoURLs } = this.state;
-
     this.setState({ photoURLs: [...photoURLs, temp] });
   }
 
@@ -58,8 +65,11 @@ class NewReviewModal extends React.Component {
     this.setState({ selectedCharacteristics: temp }, () => console.log(selectedCharacteristics));
   }
 
+  updateStarRating(n) {
+    this.setState({ rating: n });
+  }
+
   submitReview(e) {
-    e.preventDefault();
     const { metadata } = this.props;
     const {
       photoURLs,
@@ -69,6 +79,7 @@ class NewReviewModal extends React.Component {
       nickname,
       email,
       recommend,
+      rating,
     } = this.state;
 
     const finalCharObj = {};
@@ -77,8 +88,8 @@ class NewReviewModal extends React.Component {
     }
 
     const reviewObj = {
-      product_id: metadata.product_id,
-      rating: 5,
+      product_id: +metadata.product_id,
+      rating,
       summary,
       body,
       recommend,
@@ -87,21 +98,22 @@ class NewReviewModal extends React.Component {
       photos: photoURLs,
       characteristics: finalCharObj,
     };
-    console.log('reviewObj:', reviewObj);
+    axios({
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews`,
+      method: 'post',
+      data: JSON.stringify(reviewObj),
+      headers: {
+        'Authorization': TOKEN,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((results) => console.log('submitted review', results))
+      .catch((err) => console.error(err));
   }
 
   render() {
     const { metadata, productName, toggleShowNewReviewModal } = this.props;
-    const {
-      currBodyChars,
-      photoURLs,
-      selectedCharacteristics,
-      email,
-      nickname,
-      body,
-      summary,
-      recommend,
-    } = this.state;
+    const { photoURLs, selectedCharacteristics, body, rating } = this.state;
     return (
       <div className='newReviewModalBackgroundContainer'>
         <form className='newReviewModalContainer' onSubmit={(e) => this.submitReview(e)}>
@@ -109,26 +121,30 @@ class NewReviewModal extends React.Component {
             <h1 className='nrmTitle'>Write Your Review</h1>
             <h2 className='nrmSubtitle'>About {productName}</h2>
           </div>
-          {/* Overall Rating Component here */}
+          <br />
+          <ReviewRatingInput updateStarRating={this.updateStarRating} rating={rating} />
+          <br />
           <div className='reviewInputContainer'>
             <span>Do you recommend this product?*</span>
-            <input
-              type='radio'
-              id='nrmRecommendYes'
-              name='recommend'
-              value='yes'
-              required
-              onClick={() => this.setState({ recommend: true })}
-            />
-            <label htmlFor='nrmRecommendYes'>Yes</label>
-            <input
-              type='radio'
-              id='nrmRecommendNo'
-              name='recommend'
-              value='no'
-              onClick={() => this.setState({ recommend: false })}
-            />
-            <label htmlFor='nrmRecommendNo'>No</label>
+            <div>
+              <input
+                type='radio'
+                id='nrmRecommendYes'
+                name='recommend'
+                value='yes'
+                required
+                onClick={() => this.setState({ recommend: true })}
+              />
+              <label htmlFor='nrmRecommendYes'>Yes</label>
+              <input
+                type='radio'
+                id='nrmRecommendNo'
+                name='recommend'
+                value='no'
+                onClick={() => this.setState({ recommend: false })}
+              />
+              <label htmlFor='nrmRecommendNo'>No</label>
+            </div>
           </div>
           <br />
           <ReviewCharacteristicsInput
@@ -136,7 +152,6 @@ class NewReviewModal extends React.Component {
             selectedCharacteristics={selectedCharacteristics}
             updateSelectedChar={this.updateSelectedChar}
           />
-          <br />
           <label htmlFor='nrmSummary'>Review Summary</label>
           <textarea
             maxLength='60'
@@ -157,7 +172,7 @@ class NewReviewModal extends React.Component {
           <span className='nrmSmallText'>
             {body.length >= 50
               ? 'Minimum reached'
-              : `Minimum required characters left: ${50 - body.length}`}
+              : `Minimum  characters left: ${50 - body.length}`}
           </span>
           <br />
           <label htmlFor='npmPhotoUpload'>Upload Photos</label>

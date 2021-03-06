@@ -602,3 +602,26 @@ button:hover {
   color: rgb(33, 129, 9);
   margin-left: 10px;
 }
+
+#nrmRecommendYes,
+#nrmRecommendNo {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.nrmCharRadioButtons {
+  width: 100%;
+  height: 1em;
+}
+
+.reviewAllStarsInputContainer {
+  display: flex;
+}
+
+.reviewStarInputContainer {
+  margin-top: 5px;
+}
+
+.reviewInputStar:hover {
+  cursor: pointer;
+}

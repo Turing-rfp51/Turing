@@ -37,6 +37,7 @@ const ReviewCharacteristicsInput = ({
             {values.map((n) => (
               <input
                 type='radio'
+                className='nrmCharRadioButtons'
                 id={`nrm${c}${n}`}
                 key={`${c}${n}`}
                 name={`nrm${c}`}
