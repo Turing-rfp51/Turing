@@ -22,6 +22,7 @@ class QA extends React.Component {
     this.getQA = this.getQA.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
+    this.showMoreAnswers = this.showMoreAnswers.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +35,10 @@ class QA extends React.Component {
 
   showMoreQuestions() {
     this.setState((current) => ({ questionsDisplayed: current.questionsDisplayed + 2 }));
+  }
+
+  showMoreAnswers(questionID) {
+    this.setState((current) => ({ answersDisplayed: current.answersDisplayed + 2 }));
   }
 
   getQA() {
@@ -52,7 +57,7 @@ class QA extends React.Component {
     const filteredData = [...this.state.data].filter((question) =>
       question.question_body.includes(this.state.filter)
     );
-    const { data, questionsDisplayed } = this.state;
+    const { data, questionsDisplayed, answersDisplayed } = this.state;
     return (
       <div className='qaModuleContainer'>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
@@ -64,7 +69,8 @@ class QA extends React.Component {
               : data.slice(0, questionsDisplayed)
           }
           getQA={this.getQA}
-          questionsDisplayed={questionsDisplayed}
+          answersDisplayed={answersDisplayed}
+          showMoreAnswers={this.showMoreAnswers}
         />
         <QAFooter
           showMoreQuestions={this.showMoreQuestions}
