@@ -10,7 +10,7 @@ class ImagePreview extends React.Component {
   }
 
   render() {
-    return <span>ImagePreviewHere</span>;
+    return <span className='imagePreviewContainer'>ImagePreviewHere</span>;
   }
 }
 
