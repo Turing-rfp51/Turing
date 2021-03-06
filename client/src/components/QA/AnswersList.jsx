@@ -2,11 +2,19 @@
 import React from 'react';
 
 import Answer from './Answer.jsx';
+import LoadMoreAnswers from './LoadMoreAnswers.jsx';
 import AnswerName from './AnswerName.jsx';
 import FormatDate from '../Shared/FormatDate.jsx';
 import HelpfulAnswerUpvoteReport from './HelpfulAnswerUpvoteReport.jsx';
 
-const AnswersList = ({ answers, getQA }) => {
+const AnswersList = ({
+  answers,
+  answersDisplayed,
+  showMoreAnswers,
+  totalAnswers,
+  questionDataID,
+  getQA,
+}) => {
   return (
     <React.Fragment>
       {Object.keys(answers).map((a) => (
@@ -25,6 +33,13 @@ const AnswersList = ({ answers, getQA }) => {
           </div>
         </div>
       ))}
+      <LoadMoreAnswers
+        questionID={questionDataID}
+        totalAnswers={totalAnswers}
+        numOfAnswers={answers.length}
+        answersDisplayed={answersDisplayed}
+        showMoreAnswers={showMoreAnswers}
+      />
     </React.Fragment>
   );
 };
