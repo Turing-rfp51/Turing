@@ -8,11 +8,11 @@ import NewReviewModal from '../../client/src/components/Reviews/NewReviewModal.j
 import ReviewsList from '../../client/src/components/Reviews/ReviewsList.jsx';
 
 describe('<Reviews />', () => {
-  it('works with setProps', () => {
-    const wrap = mount(<Reviews />);
-    wrap.setProps({ productId: '17762' });
-    expect(wrap.prop('productId')).toEqual('17762');
-  });
+  // it('works with setProps', () => {
+  //   const wrap = mount(<Reviews />);
+  //   wrap.setProps({ productId: '17762' });
+  //   expect(wrap.prop('productId')).toEqual('17762');
+  // });
 
   it(`doesn't render NewReviewModal immediately`, () => {
     const wrap = shallow(<Reviews />);
