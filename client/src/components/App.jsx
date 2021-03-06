@@ -3,6 +3,8 @@ import Overview from './Overview/Overview.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import QA from './QA/QA.jsx';
 
+const { TOKEN } = require('../../../config.js');
+
 const productId = 17762;
 
 const App = () => (
@@ -17,7 +19,7 @@ const App = () => (
     <br />
     <br />
     <br />
-    <Reviews productId={productId} />
+    <Reviews productId={productId} TOKEN={TOKEN} />
   </>
 );
 

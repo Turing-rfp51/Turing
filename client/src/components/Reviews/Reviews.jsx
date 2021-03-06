@@ -12,8 +12,6 @@ import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-const { TOKEN } = require('../../../../config.js');
-
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
