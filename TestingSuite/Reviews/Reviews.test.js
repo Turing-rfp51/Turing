@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme';
 
 import Reviews from '../../client/src/components/Reviews/Reviews.jsx';
 import NewReviewModal from '../../client/src/components/Reviews/NewReviewModal.jsx';
-import ReviewsList from '../../client/src/components/Reviews/ReviewsList.jsx';
+// import ReviewsList from '../../client/src/components/Reviews/ReviewsList.jsx';
 
 describe('<Reviews />', () => {
   it('works with setProps', () => {
