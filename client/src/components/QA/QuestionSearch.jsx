@@ -52,14 +52,19 @@ class QuestionSearch extends React.Component {
   render() {
     const { text } = this.state;
     return (
-      <div className='qaSearch-bar'>
-        <input
-          value={text}
-          type='text'
-          onChange={this.onTextChanged}
-          placeholder='“HAVE A QUESTION? SEARCH FOR ANSWERS…”
-'
-        />
+      <div className='qaWrap'>
+        <div className='qaSearch-bar'>
+          <input
+            className='qaSearchTerm'
+            value={text}
+            type='text'
+            onChange={this.onTextChanged}
+            placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS…'
+          />
+        </div>
+        <button type='submit' className='qaSearchButton'>
+          <i className='fa fa-search'></i>
+        </button>
         {this.renderSuggestions()}
       </div>
     );

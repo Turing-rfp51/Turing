@@ -22,6 +22,21 @@ button:hover {
   cursor: pointer;
 }
 /*---------------------------------------------------------------------------------------- Q&A */
+
+.qaModuleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.qaWrap {
+  display: flex;
+  flex-direction: row;
+}
+
 .qaSearch-bar {
   width: 100%;
   height: 60 px;
@@ -30,8 +45,33 @@ button:hover {
 }
 
 .qaSearch-bar input {
-  width: 100%;
+  width: 95%;
   border: none;
+  position: relative;
+  display: flex;
+}
+
+.qaSearchTerm {
+  width: 100%;
+  border: 3px solid black;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
+
+.qaSearchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #292b2c;
+  background: #292b2c;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .qaAddAnswer {
@@ -137,6 +177,25 @@ button:hover {
   background: none;
   border: none;
   font-size: 100%;
+}
+
+.qaAddQuestion,
+.qaMoreAnsweredQuestions {
+  background-color: white;
+  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.432);
+  transition-duration: 0.4s;
+  margin: 10px 10px 0 0;
+  margin-left: 10px;
+  font-size: 140%;
+  padding: 15px 32px;
+  text-align: center;
+}
+
+.qaAddQuestion:hover,
+.qaMoreAnsweredQuestions:hover {
+  background-color: rgba(0, 0, 0, 0.432);
+  color: white;
 }
 
 /*---------------------------------------------------------------------------------------- REVIEWS */
@@ -624,4 +683,81 @@ button:hover {
 
 .reviewInputStar:hover {
   cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------------OVERVIEW----------*/
+
+.overviewBody {
+  display: flex;
+  margin: 50px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.overviewHeaderContainer {
+  width: 398px;
+  order: 2;
+  height: 450px;
+}
+
+.styleSelector {
+  width: 408px;
+  order: 3;
+}
+
+.stylePhotos {
+  height: 102px;
+  width: 102px;
+  position: relative;
+  text-align: center;
+}
+.photosGrid {
+  display: grid;
+  grid-template: repeat(auto-fit, 102px) / repeat(4, 102px);
+}
+.doNotDisplay {
+  display: none;
+}
+.displayCheckMark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: not-allowed;
+}
+.notSelectedPhoto,
+.selectedPhoto {
+  border: 1px solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.notSelectedPhoto:hover {
+  opacity: 75%;
+  cursor: pointer;
+}
+.selectedPhoto {
+  opacity: 75%;
+  cursor: not-allowed;
+}
+
+.addToCartContainer {
+  width: 398px;
+  order: 4;
+}
+
+.imagePreviewContainer {
+  background-color: BLACK;
+  color: rgb(175, 52, 52);
+  order: 1;
+  margin: 15px;
+  width: 60%;
+}
+
+.infoStyleAdd {
+  order: 2;
+  width: 405px;
 }
