@@ -43,7 +43,7 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <>
+      <div className='addToCartContainer'>
         <form>
           <div hidden={!this.state.displayInstructions}>Please select size</div>
           <SizeOptions onSelectSize={this.onSelectSize} skus={this.props.skus} />
@@ -57,7 +57,7 @@ class AddToCart extends React.Component {
         <button onClick={this.onAddToCart} type='submit'>
           Add to Cart
         </button>
-      </>
+      </div>
     );
   }
 }

@@ -25,13 +25,17 @@ class Overview extends React.Component {
     let url = `${this.state.url}/products/${this.props.productId}`
 
     axios.get(url, {headers: {Authorization: TOKEN}})
-      .then((data) => this.setState({info: data.data}))
+      .then(({data: {name, category, description}}) => this.setState({info: {
+        name,
+        category,
+        description
+      }}))
       .catch((err) => console.log(err));
 
     url += `/styles`;
 
     axios.get(url, {headers: {Authorization: TOKEN}})
-      .then((data) => this.setState({styles: data.data.results}))
+      .then(({data: {results}}) => this.setState({styles: results}))
       .then(() => this.selectStyle(0))
       .catch((err) => console.log(err));
   }
@@ -41,24 +45,26 @@ class Overview extends React.Component {
   }
 
   render () {
-    return (<>
-    <Header
-      name={this.state.info.name}
-      category={this.state.info.category}
-      description={this.state.info.description}
-      price={this.state.selectedStyle.original_price}
-      salePrice={this.state.selectedStyle.sale_price}
-    />
-    <StyleSelector
-      styles={this.state.styles}
-      selectedStyleName={this.state.selectedStyle.name}
-      selectStyle={this.selectStyle}
-    />
-    <AddToCart
-      skus={this.state.selectedStyle.skus}
-      url={this.state.url}/>
+    return (<div className='overviewBody'>
+    <div className='infoStyleAdd'>
+      <Header
+        name={this.state.info.name}
+        category={this.state.info.category}
+        description={this.state.info.description}
+        price={this.state.selectedStyle.original_price}
+        salePrice={this.state.selectedStyle.sale_price}
+        />
+      <StyleSelector
+        styles={this.state.styles}
+        selectedStyle={this.state.selectedStyle}
+        selectStyle={this.selectStyle}
+        />
+      <AddToCart
+        skus={this.state.selectedStyle.skus}
+        url={this.state.url}/>
+      </div>
     <ImagePreview/>
-    </>);
+    </div>);
   }
 }
 
