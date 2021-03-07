@@ -30,7 +30,7 @@ class QuestionModal extends React.Component {
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/`,
       headers: {
-        'product_id': '17762',
+        'product_id': productId,
         'Authorization': TOKEN,
         'Content-Type': 'application/json',
       },
@@ -57,7 +57,7 @@ class QuestionModal extends React.Component {
   }
 
   render() {
-    const { questionBody, questionId, updateAnswers, close } = this.props;
+    const { close } = this.props;
     return (
       <div className='modal'>
         <div className='modal-content'>
