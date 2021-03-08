@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import ImageModal from './ImageModal.jsx';
-import ThumbnailScroll from './ThumbnailScroll.jsx'
+import ImageViewBox from './ImageViewBox.jsx';
 
 class ImagePreview extends React.Component {
   constructor(props) {
@@ -16,7 +16,6 @@ class ImagePreview extends React.Component {
 
   toggleModal() {
     this.setState((state) => ({ expanded: !state.expanded }));
-    console.log(this.state);
   }
 
   render() {
@@ -25,16 +24,15 @@ class ImagePreview extends React.Component {
     if (photos) {
       return (
         <>
-        <span className='imagePreviewContainer'>
-          <img
-            src={photos[selectedIndex].url}
-            alt=''
-            className='selectedImage'
-            onClick={this.toggleModal}
+          <div className='imagePreviewContainer' onClick={this.toggleModal}>
+            <ImageViewBox photos={photos} selectedIndex={selectedIndex} />
+          </div>
+          <ImageModal
+            toggleModal={this.toggleModal}
+            expanded={expanded}
+            photos={photos}
+            selectedIndex={selectedIndex}
           />
-          <ThumbnailScroll/>
-        </span>
-        <ImageModal toggleModal={this.toggleModal} expanded={expanded} />
         </>
       );
     }

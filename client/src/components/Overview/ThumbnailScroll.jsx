@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ThumbnailScroll = () => {
-  return <div>Scroll thumbs here</div>
+  return <div className='thumbnailScroll'>Scroll thumbs here</div>
 }
 
 export default ThumbnailScroll

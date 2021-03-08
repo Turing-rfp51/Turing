@@ -791,9 +791,10 @@ button:hover {
   color: rgb(175, 52, 52);
   order: 1;
   margin: 15px;
-  width: 60%;
   display: grid;
-  grid-template-columns: 100%;
+  width: 60%;
+  height: 60%;
+  grid-template-rows: 80% 20%;
 }
 
 .infoStyleAdd {
@@ -801,8 +802,19 @@ button:hover {
   width: 405px;
 }
 
+.imageBox {
+  height: 100%;
+  width: 100%;
+  grid-row-start: 1;
+  overflow: hidden;
+}
+
 .selectedImage {
-  width: 90%;
-  max-height: 90%;
+  max-width: 100%;
   object-fit: contain;
+}
+
+.thumbnailScroll {
+  grid-row-start: 2;
+  background-color: black;
 }
