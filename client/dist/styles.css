@@ -284,9 +284,18 @@ button:hover {
   margin-right: 10px;
 }
 
-.dropdownContainer {
-  margin: 0 0 10px 10px;
+.reviewListHeader {
+  display: flex;
   font-size: 130%;
+  margin-bottom: 5px;
+}
+
+.reviewDropdownContainer {
+  margin: 0 0 10px 0;
+}
+
+#reviewSearchInput {
+  margin: 0 0 10px 10px;
 }
 
 #reviewSortDropdown {
