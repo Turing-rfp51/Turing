@@ -18,25 +18,25 @@ class AnswerModal extends React.Component {
   }
 
   onChange(e) {
-    console.log('this is the questionid', this.props.questionId);
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
-    e.preventtDefault();
+    e.preventDefault();
     const { body, name, email, photos } = this.state;
+    console.log('it is hitting handle submit');
+    console.log(body, name, email, photos);
     const { questionId, close, getQA } = this.props;
     axios({
       method: 'post',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`,
       headers: {
-        'product_id': '17762',
         'Authorization': TOKEN,
         'Content-Type': 'application/json',
       },
       data: {
         'body': body,
-        'name': nickname,
+        'name': name,
         'email': email,
         'photos': photos,
       },
@@ -57,19 +57,18 @@ class AnswerModal extends React.Component {
   }
 
   render() {
-    const { questionBody, questionId, updateAnswers, close } = this.props;
+    const { close } = this.props;
     return (
-      <div className='modal'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <h4 className='modal-title'>PLEASE SHARE YOUR EXPERIENCE </h4>
+      <div className='qaModal'>
+        <div className='qaModal-content'>
+          <div className='qaModal-header'>
+            <h4 className='qaModal-title'>PLEASE SHARE YOUR EXPERIENCE </h4>
           </div>
           <form className='qaModalForm' onSubmit={(e) => this.handleSubmit(e)}>
-            <div id='qaModalyourAnswer'>YOUR ANSWER :</div>
-            <br />
+            <div className='qaModalyourAnswer'>YOUR ANSWER :</div>
             <textarea
               type='text'
-              className='qaModalyourQuestion'
+              className='qaModalAnswerText'
               name='body'
               onChange={this.onChange}
               maxLength='1000'
@@ -77,8 +76,8 @@ class AnswerModal extends React.Component {
               required
             />
             <br />
-            <div className='nickName'>WHAT IS YOUR NICKNAME : </div>
             <br />
+            <div className='qaModalNickname'>WHAT IS YOUR NICKNAME : </div>
             <input
               type='text'
               name='name'
@@ -94,7 +93,6 @@ class AnswerModal extends React.Component {
             </p>
             <br />
             <div className='qaModalEmail'>YOUR EMAIL : </div>
-            <br />
             <input
               type='text'
               name='email'
@@ -108,7 +106,6 @@ class AnswerModal extends React.Component {
             <p className='qaModalEmailWarning'>
               For authentication reasons, you will not be emailed
             </p>
-            <br />
             <br />
             <div className='modal-footer'>
               <button className='qaModalSubmit' type='submit'>
