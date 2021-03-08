@@ -2,7 +2,7 @@ import React from 'react';
 
 import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
-import Modal from './Modal.jsx';
+import QuestionModal from './QuestionModal.jsx';
 
 class QAFooter extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class QAFooter extends React.Component {
 
   render() {
     const { modal } = this.state;
-    const { numOfQuestions, showMoreQuestions, questionsDisplayed } = this.props;
+    const { numOfQuestions, showMoreQuestions, questionsDisplayed, getQA, productId } = this.props;
 
     return (
       <div className='qaFooter'>
@@ -36,7 +36,7 @@ class QAFooter extends React.Component {
           questionsDisplayed={questionsDisplayed}
         />
         <AddQuestion open={this.open} />
-        {modal && <Modal close={this.close} />}
+        {modal && <QuestionModal productId={productId} getQA={getQA} close={this.close} />}
       </div>
     );
   }

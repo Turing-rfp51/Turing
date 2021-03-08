@@ -9,7 +9,6 @@ const QAList = ({ data, getQA, answersDisplayed, showMoreAnswers }) => (
       data.map((questionData) => (
         <QAListItem
           questionData={questionData}
-          questionDataID={questionData.id}
           answers={Object.keys(questionData.answers).map((a) => questionData.answers[a])}
           answersDisplayed={answersDisplayed}
           showMoreAnswers={showMoreAnswers}

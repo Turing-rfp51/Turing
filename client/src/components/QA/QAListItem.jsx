@@ -14,7 +14,7 @@ const QAListItem = ({
 }) => {
   return (
     <div className='QAListItem'>
-      <QAHeader questionData={questionData} getQA={getQA} />
+      <QAHeader questionData={questionData} getQA={getQA} questionId={questionData.question_id} />
       <AnswersList
         questionDataID={questionDataID}
         totalAnswers={answers.length}
