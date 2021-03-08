@@ -45,25 +45,30 @@ class Overview extends React.Component {
   }
 
   render () {
+    const {name, category, description} = this.state.info;
+    const {original_price, sale_price, skus, photos} = this.state.selectedStyle;
+    const {styles, selectedStyle, url} = this.state;
     return (<div className='overviewBody'>
-    <div className='infoStyleAdd'>
-      <Header
-        name={this.state.info.name}
-        category={this.state.info.category}
-        description={this.state.info.description}
-        price={this.state.selectedStyle.original_price}
-        salePrice={this.state.selectedStyle.sale_price}
+      <div className='infoStyleAdd'>
+        <Header
+          name={name}
+          category={category}
+          description={description}
+          price={original_price}
+          salePrice={sale_price}
         />
-      <StyleSelector
-        styles={this.state.styles}
-        selectedStyle={this.state.selectedStyle}
-        selectStyle={this.selectStyle}
+        <StyleSelector
+          styles={styles}
+          selectedStyle={selectedStyle}
+          selectStyle={this.selectStyle}
         />
-      <AddToCart
-        skus={this.state.selectedStyle.skus}
-        url={this.state.url}/>
+        <AddToCart
+          skus={skus}
+          url={url}/>
       </div>
-    <ImagePreview/>
+      <ImagePreview
+        photos={photos}
+      />
     </div>);
   }
 }
