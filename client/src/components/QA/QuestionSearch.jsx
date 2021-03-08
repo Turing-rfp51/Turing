@@ -3,7 +3,7 @@ import React from 'react';
 class QuestionSearch extends React.Component {
   constructor(props) {
     super(props);
-    // this.items = ['Jack', 'Jill', 'John', 'James', 'Irene'];
+    // this.items = this.props.questionsList;
 
     this.state = {
       suggestions: [],
@@ -17,9 +17,9 @@ class QuestionSearch extends React.Component {
     // let suggestions = [];
     // if (value.length > 0) {
     //   const regex = new RegExp(`^${value}`, 'i');
-    //   suggestions = this.items.sort().filter((v) => regex.test(v));
+    //   suggestions = this.props.questionsList.sort().filter((v) => regex.test(v));
     // }
-
+    console.log(this.props.questionsList);
     this.setState(() => ({ text: value }));
     if (value.length >= 3) {
       this.props.setFilter(value);

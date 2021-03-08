@@ -57,6 +57,7 @@ class QA extends React.Component {
     const filteredData = [...this.state.data].filter((question) =>
       question.question_body.includes(this.state.filter)
     );
+    // const questionsList = [...this.state.data].map((question) => question.question_body);
     const { data, questionsDisplayed, answersDisplayed } = this.state;
     const { productId } = this.props;
     return (
