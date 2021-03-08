@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
@@ -13,7 +15,12 @@ const ReviewsList = ({
   totalLength,
 }) => (
   <div className='reviewListContainer'>
-    {reviews.length > 0 && <ReviewsSortDropdown updateSortBy={updateSortBy} />}
+    <div className='reviewListHeader'>
+      {/* <label htmlFor='reviewSearchInput'>Search: </label>
+      <input id='reviewSearchInput' type='text' />
+      <i className='fa fa-search' /> */}
+      {reviews.length > 0 && <ReviewsSortDropdown updateSortBy={updateSortBy} />}
+    </div>
     <div className='reviewListDisplay'>
       {reviews.length > 0 &&
         reviews.map((r) => <ReviewListItem review={r} key={r.review_id} getReviews={getReviews} />)}

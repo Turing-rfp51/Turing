@@ -110,10 +110,10 @@ class NewReviewModal extends React.Component {
       },
     })
       .then((results) => console.log('submitted review', results))
+      .catch((err) => console.error(err))
       .then(toggleShowNewReviewModal)
       .then(getReviews)
-      .then(getMetadata)
-      .catch((err) => console.error(err));
+      .then(getMetadata);
   }
 
   render() {
