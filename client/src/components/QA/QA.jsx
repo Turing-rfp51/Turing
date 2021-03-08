@@ -44,7 +44,7 @@ class QA extends React.Component {
   getQA() {
     axios
       .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=${this.props.productId}`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?count=500&product_id=${this.props.productId}`,
         { headers: { Authorization: TOKEN } }
       )
       .then((obj) => {
@@ -57,7 +57,9 @@ class QA extends React.Component {
     const filteredData = [...this.state.data].filter((question) =>
       question.question_body.includes(this.state.filter)
     );
+    // const questionsList = [...this.state.data].map((question) => question.question_body);
     const { data, questionsDisplayed, answersDisplayed } = this.state;
+    const { productId } = this.props;
     return (
       <div className='qaModuleContainer'>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
@@ -76,6 +78,8 @@ class QA extends React.Component {
           showMoreQuestions={this.showMoreQuestions}
           numOfQuestions={filteredData.length}
           questionsDisplayed={questionsDisplayed}
+          getQA={this.getQA}
+          productId={productId}
         />
       </div>
     );

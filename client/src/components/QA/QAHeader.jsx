@@ -3,7 +3,7 @@ import React from 'react';
 import Question from './Question.jsx';
 import HelpfulQuestionUpvote from './HelpfulQuestionUpvote.jsx';
 import AddAnswer from './AddAnswer.jsx';
-import Modal from './Modal.jsx';
+import AnswerModal from './AnswerModal.jsx';
 
 class QAHeader extends React.Component {
   constructor(props) {
@@ -26,13 +26,16 @@ class QAHeader extends React.Component {
   }
 
   render() {
+    const { questionData, getQA, questionId } = this.props;
     return (
       <div className='qaHeader'>
-        <Question questionData={this.props.questionData} />
+        <Question questionData={questionData} />
         <div className='qaHelpfulUpVoteAndAddAnswer'>
-          <HelpfulQuestionUpvote questionData={this.props.questionData} getQA={this.props.getQA} />
+          <HelpfulQuestionUpvote questionData={questionData} getQA={getQA} />
           <AddAnswer open={this.open} />
-          {this.state.modal && <Modal close={this.close} />}
+          {this.state.modal && (
+            <AnswerModal getQA={getQA} close={this.close} questionId={questionId} />
+          )}
         </div>
       </div>
     );

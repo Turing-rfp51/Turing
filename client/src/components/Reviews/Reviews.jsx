@@ -12,8 +12,6 @@ import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-const { TOKEN } = require('../../../../config.js');
-
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +24,7 @@ class Reviews extends React.Component {
       starFilters: [],
       filteredReviews: [],
       productName: '',
+      showNewReviewModal: false,
     };
 
     this.getReviews = this.getReviews.bind(this);
@@ -48,7 +47,7 @@ class Reviews extends React.Component {
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?count=500&product_id=${this.props.productId}&sort=${this.state.sortMethod}`,
-        { headers: { Authorization: TOKEN } }
+        { headers: { Authorization: this.props.TOKEN } }
       )
       .then((obj) => {
         this.setState({ reviews: obj.data.results });
@@ -62,7 +61,7 @@ class Reviews extends React.Component {
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${this.props.productId}`,
-        { headers: { Authorization: TOKEN } }
+        { headers: { Authorization: this.props.TOKEN } }
       )
       .then((obj) => {
         this.setState({ metadata: obj.data });
@@ -74,7 +73,7 @@ class Reviews extends React.Component {
   getProductName() {
     axios
       .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${this.props.productId}`, {
-        headers: { Authorization: TOKEN },
+        headers: { Authorization: this.props.TOKEN },
       })
       .then((obj) => {
         this.setState({ productName: obj.data.name });
