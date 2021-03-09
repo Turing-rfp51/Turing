@@ -857,12 +857,13 @@ button:hover {
 }
 
 .imagePreviewContainer {
+  background-color: black;
   color: rgb(175, 52, 52);
   order: 1;
   margin: 15px;
   display: grid;
-  width: 60%;
-  height: 60%;
+  width: 50vw;
+  height: 100vh;
   grid-template-rows: 80% 20%;
 }
 
@@ -872,18 +873,51 @@ button:hover {
 }
 
 .imageBox {
+  position: relative;
   height: 100%;
   width: 100%;
   grid-row-start: 1;
-  overflow: hidden;
+  text-align: center;
+}
+.selectNextImage {
+  color: white;
+  opacity: 0%;
+  height: 0.5vh;
+  width: 0.5vw;
+  position: absolute;
+  font-size: 0.5vh;
+  top: 39.5vh;
+  right: 15vh;
+  transform: scale(20, 160);
+}
+.selectNextImage:hover {
+  cursor: pointer;
+  opacity: 15%;
+}
+.selectPrevImage {
+  color: white;
+  opacity: 0%;
+  height: 0.5vh;
+  width: 0.5vw;
+  position: absolute;
+  font-size: 0.5vh;
+  top: 39.5vh;
+  left: 5vh;
+  transform: scale(20, 160);
+}
+.selectPrevImage:hover {
+  cursor: pointer;
+  opacity: 15%;
 }
 
 .selectedImage {
-  max-width: 100%;
-  object-fit: contain;
+  max-width: 50vw;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumbnailScroll {
+  width: 50vw;
   grid-row-start: 2;
   background-color: black;
 }
