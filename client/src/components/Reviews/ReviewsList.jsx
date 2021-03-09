@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-plusplus */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -15,6 +17,7 @@ class ReviewsList extends React.Component {
       filtered: [],
       numberToDisplay: 2,
       reviewsInLength: 0,
+      prevFirstReviewId: 0,
     };
 
     this.filterBySearch = this.filterBySearch.bind(this);
@@ -28,19 +31,21 @@ class ReviewsList extends React.Component {
 
   componentDidUpdate() {
     const { reviews } = this.props;
-    const { reviewsInLength, searchedTerm } = this.state;
+    const { reviewsInLength, searchedTerm, prevFirstReviewId } = this.state;
     if (reviews.length !== reviewsInLength) {
       this.setState({ reviewsInLength: reviews.length }, () => this.filterBySearch(searchedTerm));
+    } else if (prevFirstReviewId !== reviews[0]?.review_id) {
+      this.setState({ prevFirstReviewId: reviews[0]?.review_id }, () =>
+        this.filterBySearch(searchedTerm)
+      );
     }
   }
 
   filterBySearch(term) {
     const { reviews } = this.props;
-    const unfiltered = [...reviews];
+    const unfiltered = reviews;
 
-    console.log(term);
-
-    if (term.length >= 3) {
+    if (term && term.length >= 3) {
       const regex = new RegExp(term, 'gi');
       const matches = unfiltered.filter(
         (r) => regex.test(r.body) || regex.test(r.summary) || regex.test(r.reviewer_name)
@@ -52,13 +57,15 @@ class ReviewsList extends React.Component {
         reviewsInLength: reviews.length,
       });
     } else {
-      this.setState({ filtered: [...unfiltered], reviewsInLength: reviews.length });
+      this.setState({
+        filtered: [...unfiltered],
+        reviewsInLength: reviews.length,
+        searchedTerm: '',
+      });
     }
   }
 
   showMoreReviews() {
-    const { numberToDisplay } = this.state;
-    console.log(numberToDisplay);
     this.setState((prevState) => ({ numberToDisplay: prevState.numberToDisplay + 2 }));
   }
 

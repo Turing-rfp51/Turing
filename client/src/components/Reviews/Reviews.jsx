@@ -49,7 +49,6 @@ class Reviews extends React.Component {
       )
       .then((obj) => {
         this.setState({ reviews: obj.data.results });
-        console.log(obj.data.results);
       })
       .then(this.state.starFilters.length > 0 && this.filterReviews)
       .catch((err) => console.error(err));
@@ -63,7 +62,6 @@ class Reviews extends React.Component {
       )
       .then((obj) => {
         this.setState({ metadata: obj.data });
-        console.log('metadata:', obj.data);
       })
       .catch((err) => console.error(err));
   }
