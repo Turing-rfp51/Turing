@@ -14,12 +14,14 @@ class ReviewSearch extends React.Component {
   }
 
   updateTerm(e, termIn = null) {
-    const { term } = this.state;
     const { filterBySearch } = this.props;
     e.preventDefault();
     if (termIn) {
       filterBySearch(termIn);
-    } else this.setState({ term: e.target.value }, () => filterBySearch(term));
+    } else {
+      filterBySearch(e.target.value);
+      this.setState({ term: e.target.value });
+    }
   }
 
   render() {

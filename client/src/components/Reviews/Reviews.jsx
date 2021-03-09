@@ -20,33 +20,25 @@ class Reviews extends React.Component {
       reviews: [],
       metadata: {},
       sortMethod: 'relevant',
-      numberToDisplay: 2,
       starFilters: [],
       filteredReviews: [],
       productName: '',
       showNewReviewModal: false,
-      searchedTerm: '',
     };
 
     this.getReviews = this.getReviews.bind(this);
     this.getMetadata = this.getMetadata.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
-    this.showMoreReviews = this.showMoreReviews.bind(this);
     this.toggleShowNewReviewModal = this.toggleShowNewReviewModal.bind(this);
     this.addOrRemoveFilters = this.addOrRemoveFilters.bind(this);
     this.filterReviews = this.filterReviews.bind(this);
     this.clearFilters = this.clearFilters.bind(this);
-    this.filterBySearch = this.filterBySearch.bind(this);
   }
 
   componentDidMount() {
-    const { searchedTerm } = this.state;
     this.getReviews();
     this.getMetadata();
     this.getProductName();
-    if (searchedTerm) {
-      this.filterBySearch(searchedTerm);
-    }
   }
 
   getReviews() {
@@ -60,7 +52,6 @@ class Reviews extends React.Component {
         console.log(obj.data.results);
       })
       .then(this.state.starFilters.length > 0 && this.filterReviews)
-      .then(() => this.filterBySearch(this.state.searchedTerm))
       .catch((err) => console.error(err));
   }
 
@@ -90,10 +81,6 @@ class Reviews extends React.Component {
 
   updateSortBy(method) {
     this.setState({ sortMethod: method }, () => this.getReviews());
-  }
-
-  showMoreReviews() {
-    this.setState((prevState) => ({ numberToDisplay: prevState.numberToDisplay + 2 }));
   }
 
   toggleShowNewReviewModal() {
@@ -132,32 +119,14 @@ class Reviews extends React.Component {
     this.setState({ starFilters: [] });
   }
 
-  filterBySearch(term) {
-    const { reviews, filteredReviews } = this.state;
-    const old = filteredReviews.length > 0 ? [...filteredReviews] : [...reviews];
-
-    if (term.length >= 3) {
-      const regex = new RegExp(term, 'gi');
-      const matches = old.filter(
-        (r) => regex.test(r.body) || regex.test(r.summary) || regex.test(r.reviewer_name)
-      );
-      console.log('matches:', matches);
-      this.setState({ searchedTerm: term, filteredReviews: matches });
-    } else {
-      this.setState({ searchedTerm: '' });
-    }
-  }
-
   render() {
     const {
       metadata,
       reviews,
       filteredReviews,
       starFilters,
-      numberToDisplay,
       showNewReviewModal,
       productName,
-      searchedTerm,
     } = this.state;
     return (
       <div className='reviewsModuleContainer'>
@@ -171,17 +140,11 @@ class Reviews extends React.Component {
           />
         )}
         <ReviewsList
-          reviews={
-            filteredReviews.length > 0 || searchedTerm
-              ? filteredReviews.slice(0, numberToDisplay)
-              : reviews.slice(0, numberToDisplay)
-          }
+          reviews={starFilters.length > 0 ? filteredReviews : reviews}
           updateSortBy={this.updateSortBy}
           showMoreReviews={this.showMoreReviews}
           toggleShowNewReviewModal={this.toggleShowNewReviewModal}
           getReviews={this.getReviews}
-          totalLength={starFilters.length > 0 ? filteredReviews.length : reviews.length}
-          filterBySearch={this.filterBySearch}
         />
         {showNewReviewModal && (
           <NewReviewModal
