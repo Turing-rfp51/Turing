@@ -50,7 +50,6 @@ class ReviewsList extends React.Component {
       const matches = unfiltered.filter(
         (r) => regex.test(r.body) || regex.test(r.summary) || regex.test(r.reviewer_name)
       );
-      console.log('matches:', matches);
       this.setState({
         searchedTerm: term,
         filtered: [...matches],
