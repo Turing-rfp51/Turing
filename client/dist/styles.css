@@ -288,14 +288,33 @@ button:hover {
   display: flex;
   font-size: 130%;
   margin-bottom: 5px;
+  align-items: center;
 }
 
-.reviewDropdownContainer {
-  margin: 0 0 10px 0;
+.reviewSearchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.reviewSearchIcon {
+  font-size: 90%;
+  background: none;
+  border: none;
+}
+
+.reviewSearchIcon:hover {
+  cursor: pointer;
+  color: var(--ae-green);
 }
 
 #reviewSearchInput {
-  margin: 0 0 10px 10px;
+  margin: 0 0 0 10px;
+}
+
+.reviewDropdownContainer {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 #reviewSortDropdown {

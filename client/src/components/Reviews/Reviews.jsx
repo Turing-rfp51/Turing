@@ -25,6 +25,7 @@ class Reviews extends React.Component {
       filteredReviews: [],
       productName: '',
       showNewReviewModal: false,
+      searchedTerm: 'cumque velit',
     };
 
     this.getReviews = this.getReviews.bind(this);
@@ -35,6 +36,7 @@ class Reviews extends React.Component {
     this.addOrRemoveFilters = this.addOrRemoveFilters.bind(this);
     this.filterReviews = this.filterReviews.bind(this);
     this.clearFilters = this.clearFilters.bind(this);
+    this.filterBySearch = this.filterBySearch.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +56,7 @@ class Reviews extends React.Component {
         console.log(obj.data.results);
       })
       .then(this.state.starFilters.length > 0 && this.filterReviews)
+      .then(() => this.filterBySearch(this.state.searchedTerm))
       .catch((err) => console.error(err));
   }
 
@@ -104,7 +107,7 @@ class Reviews extends React.Component {
   }
 
   filterReviews() {
-    const { reviews, starFilters } = this.state;
+    const { reviews, starFilters, searchedTerm } = this.state;
 
     const filtered = [];
 
@@ -114,11 +117,27 @@ class Reviews extends React.Component {
       }
     }
 
+    if (searchedTerm) {
+      this.filterBySearch(searchedTerm);
+    }
+
     this.setState({ filteredReviews: filtered });
   }
 
   clearFilters() {
     this.setState({ starFilters: [] });
+  }
+
+  filterBySearch(term) {
+    const { reviews, filteredReviews, searchedTerm } = this.state;
+    const old = filteredReviews.length > 0 ? [...filteredReviews] : [...reviews];
+
+    const regex = new RegExp(term, 'gi');
+    const matches = old.filter(
+      (r) => regex.test(r.body) || regex.test(r.summary) || regex.test(r.name)
+    );
+    console.log('matches:', matches);
+    this.setState({ searchedTerm: term, filteredReviews: matches });
   }
 
   render() {
@@ -130,6 +149,7 @@ class Reviews extends React.Component {
       numberToDisplay,
       showNewReviewModal,
       productName,
+      searchedTerm,
     } = this.state;
     return (
       <div className='reviewsModuleContainer'>
@@ -144,7 +164,7 @@ class Reviews extends React.Component {
         )}
         <ReviewsList
           reviews={
-            starFilters.length > 0
+            filteredReviews.length > 0
               ? filteredReviews.slice(0, numberToDisplay)
               : reviews.slice(0, numberToDisplay)
           }
@@ -153,6 +173,7 @@ class Reviews extends React.Component {
           toggleShowNewReviewModal={this.toggleShowNewReviewModal}
           getReviews={this.getReviews}
           totalLength={starFilters.length > 0 ? filteredReviews.length : reviews.length}
+          filterBySearch={this.filterBySearch}
         />
         {showNewReviewModal && (
           <NewReviewModal

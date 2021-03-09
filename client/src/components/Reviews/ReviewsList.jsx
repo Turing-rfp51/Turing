@@ -1,10 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
 import ReviewsSortDropdown from './ReviewsSortDropdown.jsx';
 import ReviewsListButtons from './ReviewsListButtons.jsx';
+import ReviewSearch from './ReviewSearch.jsx';
 
 const ReviewsList = ({
   reviews,
@@ -13,12 +12,11 @@ const ReviewsList = ({
   toggleShowNewReviewModal,
   getReviews,
   totalLength,
+  filterBySearch,
 }) => (
   <div className='reviewListContainer'>
     <div className='reviewListHeader'>
-      {/* <label htmlFor='reviewSearchInput'>Search: </label>
-      <input id='reviewSearchInput' type='text' />
-      <i className='fa fa-search' /> */}
+      <ReviewSearch filterBySearch={filterBySearch} />
       {reviews.length > 0 && <ReviewsSortDropdown updateSortBy={updateSortBy} />}
     </div>
     <div className='reviewListDisplay'>
