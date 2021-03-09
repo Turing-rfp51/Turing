@@ -4,13 +4,13 @@ import React from 'react';
 const Price = ({ price, salePrice }) => {
   if (salePrice > 0) {
     return (
-      <>
-        <h4>{salePrice}</h4>
-        <h4>{price}</h4>
-      </>
+      <div className='originalPrice'>
+        <div className='salePrice'>{`$${salePrice}`}</div>
+        <div className='oldPrice'>{`$${price}`}</div>
+      </div>
     );
   }
-  return <h4>{price}</h4>;
+  return <div className='originalPrice'>{`$${price}`}</div>;
 };
 
 export default Price;
