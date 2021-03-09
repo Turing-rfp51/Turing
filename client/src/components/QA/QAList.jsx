@@ -3,15 +3,13 @@ import React from 'react';
 
 import QAListItem from './QAListItem.jsx';
 
-const QAList = ({ data, getQA, answersDisplayed, showMoreAnswers }) => (
-  <div className='questionListContainer'>
+const QAList = ({ data, getQA }) => (
+  <div className='qaListContainer'>
     {data.length > 0 &&
       data.map((questionData) => (
         <QAListItem
           questionData={questionData}
           answers={Object.keys(questionData.answers).map((a) => questionData.answers[a])}
-          answersDisplayed={answersDisplayed}
-          showMoreAnswers={showMoreAnswers}
           key={questionData.question_id}
           getQA={getQA}
         />
@@ -20,3 +18,5 @@ const QAList = ({ data, getQA, answersDisplayed, showMoreAnswers }) => (
 );
 
 export default QAList;
+
+//may be the wrong spot to map answers
