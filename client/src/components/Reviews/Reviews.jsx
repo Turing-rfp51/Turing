@@ -25,7 +25,7 @@ class Reviews extends React.Component {
       filteredReviews: [],
       productName: '',
       showNewReviewModal: false,
-      searchedTerm: 'cumque velit',
+      searchedTerm: '',
     };
 
     this.getReviews = this.getReviews.bind(this);
@@ -40,9 +40,13 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
+    const { searchedTerm } = this.state;
     this.getReviews();
     this.getMetadata();
     this.getProductName();
+    if (searchedTerm) {
+      this.filterBySearch(searchedTerm);
+    }
   }
 
   getReviews() {
@@ -129,15 +133,19 @@ class Reviews extends React.Component {
   }
 
   filterBySearch(term) {
-    const { reviews, filteredReviews, searchedTerm } = this.state;
+    const { reviews, filteredReviews } = this.state;
     const old = filteredReviews.length > 0 ? [...filteredReviews] : [...reviews];
 
-    const regex = new RegExp(term, 'gi');
-    const matches = old.filter(
-      (r) => regex.test(r.body) || regex.test(r.summary) || regex.test(r.name)
-    );
-    console.log('matches:', matches);
-    this.setState({ searchedTerm: term, filteredReviews: matches });
+    if (term.length >= 3) {
+      const regex = new RegExp(term, 'gi');
+      const matches = old.filter(
+        (r) => regex.test(r.body) || regex.test(r.summary) || regex.test(r.reviewer_name)
+      );
+      console.log('matches:', matches);
+      this.setState({ searchedTerm: term, filteredReviews: matches });
+    } else {
+      this.setState({ searchedTerm: '' });
+    }
   }
 
   render() {
@@ -164,7 +172,7 @@ class Reviews extends React.Component {
         )}
         <ReviewsList
           reviews={
-            filteredReviews.length > 0
+            filteredReviews.length > 0 || searchedTerm
               ? filteredReviews.slice(0, numberToDisplay)
               : reviews.slice(0, numberToDisplay)
           }
