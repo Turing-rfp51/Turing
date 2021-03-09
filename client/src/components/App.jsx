@@ -1,5 +1,26 @@
 import React from 'react';
+import Overview from './Overview/Overview.jsx';
+import Reviews from './Reviews/Reviews.jsx';
+import QA from './QA/QA.jsx';
 
-const App = () => <h1>hello world</h1>;
+const { TOKEN } = require('../../../config.js');
+
+const productId = 17069;
+
+const App = () => (
+  <>
+    <Overview productId={productId} />
+    <br />
+    <br />
+    <br />
+    <br />
+    <QA productId={productId} />
+    <br />
+    <br />
+    <br />
+    <br />
+    <Reviews productId={productId} TOKEN={TOKEN} />
+  </>
+);
 
 export default App;

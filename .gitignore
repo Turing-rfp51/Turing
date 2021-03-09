@@ -29,4 +29,7 @@ hs_err_pid*
 node_modules
 
 #Bundle
-# /client/dist
+/client/dist
+
+#API TOKEN
+config.js

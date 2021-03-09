@@ -1,0 +1,932 @@
+:root {
+  --lightBlue: #7395ae;
+  --darkBlue: #557a95;
+  --darkgrey: #5d5c61;
+  --lightgrey: #938e94;
+  --taupe: #b1a296;
+  --smallFont: 'Exo', sans-serif;
+  --largeFont: 'Ovo', serif;
+  --ae-green: rgb(88, 179, 88);
+  --ae-lightgrey: rgb(224, 224, 224);
+}
+
+body {
+  font-family: var(--smallFont);
+}
+
+h1 {
+  font-family: var(--smallFont);
+}
+
+button:hover {
+  cursor: pointer;
+}
+/*---------------------------------------------------------------------------------------- Q&A */
+
+.qaModuleContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 70vw;
+  min-width: fit-content;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qaWrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.qaSearch-bar {
+  width: 100%;
+  height: 60 px;
+  border: 1px solid grey;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px 1px rgba(0, 0, 0, 0.18);
+}
+
+.qaSearch-bar input {
+  width: 95%;
+  border: none;
+  position: relative;
+  display: flex;
+}
+
+.qaSearchTerm {
+  width: 100%;
+  border: 3px solid black;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
+
+.qaSearchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #292b2c;
+  background: #292b2c;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.qaAddAnswer {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.qaHelpfulUpVoteAndAddAnswer {
+  display: flex;
+  flex-direction: row;
+}
+.questionHelpfulCountContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.questionVotedHelpful {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.questionHelpfulVoteCount {
+  display: flex;
+  flex-direction: row;
+}
+
+.qaModal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.qaModal-content {
+  padding: 20px 50px;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 5px solid black;
+  font-size: 130%;
+}
+
+.qaModal-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.qaModal-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.qaModalForm {
+  border-radius: 3px;
+  margin: 15px 0;
+  padding: 10px;
+}
+
+.qaModalyourAnswer,
+.qaModalNickname,
+.qaModalEmail {
+  font-family: var(--smallFont);
+  font-size: 100%;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.qaModalAnswerText,
+.qaModalNickNameQ,
+.qaModalEmailQ {
+  font-family: var(--smallFont);
+  font-size: 100%;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.qaModalPrivacyWarning,
+.qaModalEmailWarning {
+  font-size: 70%;
+  margin-top: 5px;
+}
+
+.modal-footer {
+  padding: 10px;
+}
+
+.qaModalSubmit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0;
+  background: none;
+  margin: 10px 10px 0 0;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 140%;
+  width: 100%;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.qaFooter {
+  display: flex;
+  flex-direction: row;
+}
+.qaDate {
+  margin-left: 10px;
+}
+
+.qaHelpfulAnswerUpvoteReport {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+.qaAnswerHelpfulUpvote {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaAnswerReport {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaAnswerName {
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.qaAddQuestion,
+.qaMoreAnsweredQuestions {
+  background-color: white;
+  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.432);
+  transition-duration: 0.4s;
+  margin: 10px 10px 0 0;
+  margin-left: 10px;
+  font-size: 140%;
+  padding: 15px 32px;
+  text-align: center;
+}
+
+.qaAddQuestion:hover,
+.qaMoreAnsweredQuestions:hover {
+  background-color: rgba(0, 0, 0, 0.432);
+  color: white;
+}
+
+/*---------------------------------------------------------------------------------------- REVIEWS */
+
+.reviewsModuleContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.ReviewsBreakdownContainer {
+  width: 20vw;
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.reviewListHeader {
+  display: flex;
+  font-size: 130%;
+  margin-bottom: 5px;
+}
+
+.reviewDropdownContainer {
+  margin: 0 0 10px 0;
+}
+
+#reviewSearchInput {
+  margin: 0 0 10px 10px;
+}
+
+#reviewSortDropdown {
+  margin-left: 5px;
+  font-size: 80%;
+}
+
+.reviewListContainer {
+  width: 50vw;
+}
+
+.reviewSummary {
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.reviewListDisplay {
+  max-height: 80vh;
+  overflow: scroll;
+}
+
+.reviewListItem:first-child {
+  border-top: 2px solid black;
+}
+
+.reviewListItem {
+  padding: 15px;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewRecommendLine {
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+  font-size: 120%;
+}
+
+.reviewRecommendLineText {
+  margin-left: 10px;
+}
+
+.reviewImageContainer {
+  display: flex;
+  margin: 10px 0;
+}
+
+.reviewImage {
+  height: 100px;
+  margin-right: 10px;
+  border: 2px solid black;
+}
+
+.reviewImage:hover {
+  cursor: pointer;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewDateAndUser {
+  display: flex;
+}
+
+.reviewUsername {
+  margin: 0 15px;
+}
+
+.reviewResponseContainer {
+  border-radius: 3px;
+  background-color: var(--ae-lightgrey);
+  margin: 15px 0;
+  padding: 10px;
+}
+
+.reviewResponseFromSellerText {
+  font-weight: 600;
+}
+
+.reviewResponseBody {
+  color: black;
+  margin-bottom: 0;
+}
+
+.reviewHelpfulCountContainer {
+  display: flex;
+  margin: 15px 0 0 0;
+}
+
+.reviewHelpfulVoteOption {
+  margin-left: 10px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 100%;
+}
+
+.reviewHelpfulVoteOption:hover {
+  cursor: pointer;
+  color: white;
+  background: var(--ae-green);
+  border-radius: 2px;
+}
+
+.reviewReportButton:hover {
+  background: rgb(175, 52, 52);
+}
+
+.reviewVotedHelpful {
+  color: white;
+  background: var(--ae-green);
+  border-radius: 2px;
+}
+
+.reviewHelpfulVoteCount {
+  margin-left: 3px;
+}
+
+.reviewExpandedPhotoModal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewSelectedImage {
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  max-height: 80%;
+  top: 10vh;
+  left: 10vh;
+  border-radius: 5px;
+  border: 5px solid rgb(0, 0, 0);
+}
+
+.showMoreButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+#showMoreButton {
+  background: none;
+  font-size: 100%;
+  font-family: var(--smallFont);
+  border: none;
+}
+
+.reviewsButton {
+  border-radius: 0;
+  background: none;
+  margin: 10px 10px 0 0;
+  padding: 3px 5px;
+  font-size: 140%;
+}
+
+.ratingSummaryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewAverageContainer {
+  display: flex;
+}
+
+.reviewAverageNumber {
+  font-size: 400%;
+}
+
+.starIcon {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+}
+
+.starIconSmall {
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+}
+
+.averageStarDisplayContainer {
+  display: flex;
+  word-wrap: none;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.totalReviewCountText {
+  font-size: 150%;
+}
+
+.reviewRatingBreakdownContainer {
+  margin: 20px 0;
+}
+
+.reviewRatingBreakdownText {
+  font-size: 130%;
+  margin-bottom: 10px;
+}
+
+.reviewRecommendationPercentage {
+  font-size: 130%;
+  margin-top: 20px;
+}
+
+.reviewProductBreakdownContainer {
+  margin-top: -10px;
+}
+
+.reviewFilterHeader {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.reviewClearFiltersButton {
+  margin-left: auto;
+  font-size: 80%;
+  margin-top: 0;
+}
+
+.reviewFilterNumberLabel {
+  margin-left: 3px;
+}
+
+.reviewSingleFilterContainer {
+  display: flex;
+  margin: 5px 0;
+  padding: 3px 0;
+  border-radius: 2px;
+  align-items: center;
+}
+
+.reviewSingleFilterContainer:hover {
+  background-color: lightsalmon;
+  cursor: pointer;
+}
+
+.reviewFilterLabel {
+  display: flex;
+  word-wrap: none;
+  min-width: 60px;
+  max-width: 60px;
+  align-items: center;
+}
+
+.reviewFilterLabelStarNumber {
+  margin-left: auto;
+}
+
+.reviewFilterLabelStarText {
+  margin-left: 5px;
+}
+
+.reviewSingleFilterBar {
+  margin: 0 10px 15px 10px;
+  width: 100%;
+  position: relative;
+}
+
+.reviewFilterCount {
+  min-width: 25px;
+}
+
+.reviewActiveFilter {
+  background-color: lightsalmon;
+}
+
+.reivewFilterBackgroundBar {
+  position: absolute;
+  height: 15px;
+  width: 100%;
+  background-color: var(--ae-lightgrey);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+}
+
+.reivewFilterForegroundBar {
+  position: absolute;
+  height: 15px;
+  width: 0%;
+  background-color: var(--ae-green);
+}
+
+.reviewCharacteristicContainer {
+  margin: 5px 5px;
+  padding: 3px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewCharacteristicBarTitle {
+  font-size: 130%;
+}
+
+.reviewCharacteristicBarContainer {
+  position: relative;
+}
+
+.reviewCharacteristicBarBackground {
+  position: absolute;
+  height: 15px;
+  width: 100%;
+  background-color: var(--ae-lightgrey);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+}
+
+.reviewCharacteristicBarForeground {
+  position: absolute;
+  height: 15px;
+  width: 5px;
+  background-color: black;
+}
+
+.reviewCharacteristicMinMax {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.newReviewModalBackgroundContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newReviewModalContainer {
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 5px solid black;
+  font-size: 130%;
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.newReviewModalHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nrmSmallText {
+  font-size: 70%;
+  margin-top: 5px;
+}
+
+.nrmTitle {
+  margin-bottom: 10px;
+}
+
+.nrmSubtitle {
+  margin: 0;
+}
+
+#nrmSummary,
+#nrmBody,
+#nrmNickname,
+#nrmEmail {
+  font-family: var(--smallFont);
+  font-size: 100%;
+  margin-top: 5px;
+  min-height: 30px;
+}
+
+.nrmButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reviewUploadedImagesContainer {
+  display: flex;
+}
+
+.reviewUploadImage {
+  height: 100px;
+  margin-right: 15px;
+  border: 2px solid black;
+}
+
+#nrmPhotoUpload {
+  font-size: 80%;
+  border-radius: 0;
+  background: none;
+  margin: 10px 10px 0 0;
+  padding: 3px 5px;
+  min-height: 30px;
+}
+.ReviewCharacteristicsInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.nrmRadioInputContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ae-lightgrey);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.nrmRadioOptionsContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nrmRadioLabelsContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 80%;
+}
+
+.nrmCharNameLabel {
+  margin-bottom: 10px;
+}
+
+.nrmSelectedCharLabel {
+  color: rgb(33, 129, 9);
+  margin-left: 10px;
+}
+
+#nrmRecommendYes,
+#nrmRecommendNo {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.nrmCharRadioButtons {
+  width: 100%;
+  height: 1em;
+}
+
+.reviewAllStarsInputContainer {
+  display: flex;
+}
+
+.reviewStarInputContainer {
+  margin-top: 5px;
+}
+
+.reviewInputStar:hover {
+  cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------------OVERVIEW----------*/
+
+.overviewBody {
+  display: flex;
+  margin: 50px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.overviewHeaderContainer {
+  width: 398px;
+  order: 1;
+  height: 450px;
+  display: grid;
+  grid-template: 55px 45px 100px / repeat(4, 100px);
+}
+.productName {
+  margin: 10px;
+  grid-area: 1/1/2/3;
+  text-align: left;
+}
+.productCategory {
+  margin: 10px;
+  text-align: left;
+  grid-area: 1 / 3 / 2 / 5;
+}
+.originalPrice {
+  margin: 15px;
+  grid-area: 2/1/3/3;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.salePrice {
+  color: red;
+  text-decoration: underline red;
+}
+.oldPrice {
+  text-decoration: line-through red;
+}
+.description {
+  margin-top: 14px;
+  font-style: italic;
+  grid-area: 3 / 1 / 4 / 3;
+}
+
+.styleSelector {
+  width: 408px;
+  order: 2;
+}
+
+.selectedStyle {
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.stylePhotos {
+  height: 102px;
+  width: 102px;
+  position: relative;
+  text-align: center;
+}
+.photosGrid {
+  display: grid;
+  grid-template: repeat(auto-fit, 102px) / repeat(4, 102px);
+}
+.doNotDisplay {
+  display: none;
+}
+.displayCheckMark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: not-allowed;
+}
+.notSelectedPhoto,
+.selectedPhoto {
+  border: 1px solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.notSelectedPhoto:hover {
+  opacity: 75%;
+  cursor: pointer;
+}
+.selectedPhoto {
+  opacity: 75%;
+  cursor: not-allowed;
+}
+
+.addToCartContainer {
+  margin: 5px;
+  width: 408px;
+  order: 3;
+}
+
+.imagePreviewContainer {
+  background-color: black;
+  color: rgb(175, 52, 52);
+  order: 1;
+  margin: 15px;
+  display: grid;
+  width: 50vw;
+  height: 100vh;
+  grid-template-rows: 80% 20%;
+}
+
+.infoStyleAdd {
+  order: 2;
+  width: 405px;
+}
+
+.imageBox {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  grid-row-start: 1;
+  text-align: center;
+}
+.selectNextImage {
+  color: white;
+  opacity: 0%;
+  height: 0.5vh;
+  width: 0.5vw;
+  position: absolute;
+  font-size: 0.5vh;
+  top: 39.5vh;
+  right: 15vh;
+  transform: scale(20, 160);
+}
+.selectNextImage:hover {
+  cursor: pointer;
+  opacity: 15%;
+}
+.selectPrevImage {
+  color: white;
+  opacity: 0%;
+  height: 0.5vh;
+  width: 0.5vw;
+  position: absolute;
+  font-size: 0.5vh;
+  top: 39.5vh;
+  left: 5vh;
+  transform: scale(20, 160);
+}
+.selectPrevImage:hover {
+  cursor: pointer;
+  opacity: 15%;
+}
+
+.selectedImage {
+  max-width: 50vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnailScroll {
+  width: 50vw;
+  grid-row-start: 2;
+  background-color: black;
+}

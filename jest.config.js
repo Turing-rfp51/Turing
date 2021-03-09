@@ -1,5 +1,9 @@
 module.exports = {
   clearMocks: true,
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.svg$': 'jest-svg-transformer',
+  },
   collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'json', 'jsx'],
