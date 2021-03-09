@@ -9,7 +9,7 @@ const productId = 17762;
 
 const App = () => (
   <>
-    {/* <Overview productId={productId} />
+    <Overview productId={productId} />
     <br />
     <br />
     <br />
@@ -18,7 +18,7 @@ const App = () => (
     <br />
     <br />
     <br />
-    <br /> */}
+    <br />
     <Reviews productId={productId} TOKEN={TOKEN} />
   </>
 );
