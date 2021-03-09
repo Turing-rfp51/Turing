@@ -17,16 +17,14 @@ class QA extends React.Component {
       data: [],
       filter: '',
       questionsDisplayed: 2,
-      answersDisplayed: 2,
     };
     this.getQA = this.getQA.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
-    this.showMoreAnswers = this.showMoreAnswers.bind(this);
   }
 
   componentDidMount() {
-    this.getQA();
+    this.getQA(this.createObjAnswers);
   }
 
   setFilter(text) {
@@ -37,11 +35,15 @@ class QA extends React.Component {
     this.setState((current) => ({ questionsDisplayed: current.questionsDisplayed + 2 }));
   }
 
-  showMoreAnswers(questionID) {
-    this.setState((current) => ({ answersDisplayed: current.answersDisplayed + 2 }));
-  }
+  // showMoreAnswers(questionId) {
+  //   //edge case: if that doesn't exist -
+  //   let currNum = this.state.answersPerQ[questionId] || 0;
+  //   let currAPerQ = Object.assign(this.state.answersPerQ);
+  //   currAPerQ[questionId] = currNum + 2;
+  //   this.setState({ answersPerQ: currAPerQ });
+  // }
 
-  getQA() {
+  getQA(cb) {
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?count=500&product_id=${this.props.productId}`,
@@ -49,6 +51,11 @@ class QA extends React.Component {
       )
       .then((obj) => {
         this.setState({ data: obj.data.results });
+      })
+      .then((results) => {
+        if (cb) {
+          cb(results);
+        }
       })
       .catch((err) => console.error(err));
   }
@@ -58,7 +65,7 @@ class QA extends React.Component {
       question.question_body.includes(this.state.filter)
     );
     // const questionsList = [...this.state.data].map((question) => question.question_body);
-    const { data, questionsDisplayed, answersDisplayed } = this.state;
+    const { data, questionsDisplayed } = this.state;
     const { productId } = this.props;
     return (
       <div className='qaModuleContainer'>
@@ -71,7 +78,6 @@ class QA extends React.Component {
               : data.slice(0, questionsDisplayed)
           }
           getQA={this.getQA}
-          answersDisplayed={answersDisplayed}
           showMoreAnswers={this.showMoreAnswers}
         />
         <QAFooter
@@ -87,7 +93,3 @@ class QA extends React.Component {
 }
 
 export default QA;
-
-// const sortedData = [...this.state.data]
-// .filter((question) => question.answers)
-// .sort((a, b) => b.helpfulness - a.helpfulness);

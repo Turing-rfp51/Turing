@@ -19,7 +19,6 @@ class QuestionSearch extends React.Component {
     //   const regex = new RegExp(`^${value}`, 'i');
     //   suggestions = this.props.questionsList.sort().filter((v) => regex.test(v));
     // }
-    console.log(this.props.questionsList);
     this.setState(() => ({ text: value }));
     if (value.length >= 3) {
       this.props.setFilter(value);
