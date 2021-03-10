@@ -11,24 +11,58 @@ class ReviewBody extends React.Component {
   }
 
   render() {
-    const { review } = this.props;
+    const { review, searchedTerm } = this.props;
     const { expanded } = this.state;
     return (
       <React.Fragment>
-        {(review.body.length <= 250 || expanded) && <p>{review.body}</p>}
-        {review.body.length > 250 && !expanded && (
+        {searchedTerm.length >= 3 &&
+        review.body.toLowerCase().includes(searchedTerm.toLowerCase()) ? (
           <React.Fragment>
-            <p>{review.body.slice(0, 250)}</p>
-            <div className='showMoreButtonContainer'>
-              <i className='fas fa-chevron-down' />
-              <button
-                type='button'
-                id='showMoreButton'
-                onClick={() => this.setState({ expanded: true })}
-              >
-                Show More
-              </button>
-            </div>
+            {review.body.indexOf(searchedTerm) !== -1 ? (
+              <p>
+                <span>{review.body.slice(0, review.body.indexOf(searchedTerm))}</span>
+                <span className='reviewHighlighted'>
+                  {review.body.slice(
+                    review.body.indexOf(searchedTerm),
+                    review.body.indexOf(searchedTerm) + searchedTerm.length
+                  )}
+                </span>
+                <span>
+                  {review.body.slice(review.body.indexOf(searchedTerm) + searchedTerm.length)}
+                </span>
+              </p>
+            ) : (
+              <p>
+                <span className='reviewHighlighted'>
+                  {review.body.slice(
+                    0,
+                    review.body.indexOf(searchedTerm) + searchedTerm.length + 1
+                  )}
+                </span>
+                <span>
+                  {review.body.slice(review.body.indexOf(searchedTerm) + searchedTerm.length + 1)}
+                </span>
+              </p>
+            )}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {(review.body.length <= 250 || expanded) && <p>{review.body}</p>}
+            {review.body.length > 250 && !expanded && (
+              <React.Fragment>
+                <p>{review.body.slice(0, 250)}</p>
+                <div className='showMoreButtonContainer'>
+                  <i className='fas fa-chevron-down' />
+                  <button
+                    type='button'
+                    id='showMoreButton'
+                    onClick={() => this.setState({ expanded: true })}
+                  >
+                    Show More
+                  </button>
+                </div>
+              </React.Fragment>
+            )}
           </React.Fragment>
         )}
       </React.Fragment>

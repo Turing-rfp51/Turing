@@ -6,11 +6,12 @@ import ReviewPhotos from './ReviewPhotos.jsx';
 import ReviewRecommendation from './ReviewRecommendation.jsx';
 import ReviewHelpfulCount from './ReviewHelpfulCount.jsx';
 import ReviewBody from './ReviewBody.jsx';
+import ReviewSummary from './ReviewSummary.jsx';
 
 const ReviewsList = ({ review, updateHelpfulCount, reportReview, getReviews, searchedTerm }) => (
   <div className='reviewListItem'>
     <ReviewHeader review={review} searchedTerm={searchedTerm} />
-    <h3 className='reviewSummary'>{review.summary}</h3>
+    <ReviewSummary review={review} searchedTerm={searchedTerm} />
     <ReviewBody review={review} searchedTerm={searchedTerm} />
     {review.photos.length > 0 && <ReviewPhotos review={review} />}
     <ReviewRecommendation review={review} />

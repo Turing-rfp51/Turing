@@ -785,6 +785,9 @@ button:hover {
   cursor: pointer;
 }
 
+.reviewHighlighted {
+  background-color: yellow;
+}
 /*----------------------------------------------------------------------------------OVERVIEW----------*/
 
 .overviewBody {

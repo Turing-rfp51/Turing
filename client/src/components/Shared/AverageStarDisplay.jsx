@@ -26,8 +26,6 @@ class AverageStarDisplay extends React.Component {
   }
 
   determineStarImage(average) {
-    console.log('average:', average);
-
     const decimal = (+average.toString().split('.')[1] * 10).toString().slice(0, 2);
 
     if (decimal < 12) {
