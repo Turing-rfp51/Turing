@@ -46,8 +46,8 @@ button:hover {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px 1px rgba(0, 0, 0, 0.18);
 }
 
-.qaWrap:hover {
-  box-shadow: 12px 12px 2px 1px rgba(136, 208, 219, 0.2);
+.qaWrap:hover .qaSearch-bar {
+  box-shadow: 0px 4px 2px -2px rgb(136, 208, 219);
   background-color: rgba(136, 208, 219, 0.2);
 }
 
@@ -67,6 +67,7 @@ button:hover {
   border-radius: 5px 0 0 5px;
   outline: none;
   color: black;
+  background: none;
 }
 
 .qaSearchButton {
