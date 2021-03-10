@@ -16,6 +16,7 @@ class ImagePreview extends React.Component {
       expanded: false,
       hidePrev: true,
       hideNext: false,
+      moveClass: '',
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.selectPrev = this.selectPrev.bind(this);
@@ -34,7 +35,7 @@ class ImagePreview extends React.Component {
     if (hideNext) {
       return;
     }
-    this.selectInd(selectedIndex + 1);
+    this.selectInd(selectedIndex + 1, 'left');
   }
 
   selectPrev() {
@@ -42,20 +43,34 @@ class ImagePreview extends React.Component {
     if (hidePrev) {
       return;
     }
-    this.selectInd(selectedIndex - 1);
+    this.selectInd(selectedIndex - 1, 'right');
   }
 
-  selectInd(ind) {
+  selectInd(ind, move) {
     const { photos } = this.props;
-    if (photos.length === 1) {
-      this.setState({ hidePrev: true, hideNext: true, selectedIndex: ind });
-    } else if (ind === 0) {
-      this.setState({ hidePrev: true, hideNext: false, selectedIndex: ind });
-    } else if (ind === photos.length - 1) {
-      this.setState({ hidePrev: false, hideNext: true, selectedIndex: ind });
+    const { selectedIndex } = this.state;
+    let moveClass;
+    if (move === 'right') {
+      moveClass = 'moveRight';
+    } else if (move === 'left') {
+      moveClass = 'moveLeft';
     } else {
-      this.setState({ hidePrev: false, hideNext: false, selectedIndex: ind });
+      moveClass = 'moveUp';
     }
+
+    const finish = () => {
+      if (photos.length === 1) {
+        this.setState({ hidePrev: true, hideNext: true, selectedIndex: ind, moveClass: '' });
+      } else if (ind === 0) {
+        this.setState({ hidePrev: true, hideNext: false, selectedIndex: ind, moveClass: '' });
+      } else if (ind === photos.length - 1) {
+        this.setState({ hidePrev: false, hideNext: true, selectedIndex: ind, moveClass: '' });
+      } else {
+        this.setState({ hidePrev: false, hideNext: false, selectedIndex: ind, moveClass: '' });
+      }
+    };
+    this.setState({ moveClass });
+    setTimeout(finish, 1000);
   }
 
   arrowKeyHandler(e) {
@@ -69,11 +84,12 @@ class ImagePreview extends React.Component {
 
   render() {
     const { photos } = this.props;
-    const { selectedIndex, hideNext, hidePrev } = this.state;
+    const { selectedIndex, hideNext, hidePrev, moveClass } = this.state;
     return photos ? (
       <>
         <div className='imagePreviewContainer' onKeyDown={this.arrowKeyHandler} tabIndex='0'>
           <ImageViewer
+            moveClass={moveClass}
             photos={photos}
             hidePrev={hidePrev}
             selectPrev={this.selectPrev}

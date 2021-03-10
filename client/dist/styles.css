@@ -875,6 +875,8 @@ button:hover {
   width: 50vw;
   height: 100vh;
   grid-template-rows: 80% 20%;
+  grid-template-columns: 100% 100% 100%;
+  overflow: hidden;
 }
 
 .infoStyleAdd {
@@ -882,12 +884,16 @@ button:hover {
   width: 405px;
 }
 
-.imageBox {
+.imageBox,
+.moveLeftBox {
   position: relative;
   height: 100%;
   width: 100%;
   grid-row-start: 1;
   text-align: center;
+}
+.imageBox {
+  grid-column-start: 1;
 }
 .selectNextImage {
   color: white;
@@ -920,12 +926,17 @@ button:hover {
   opacity: 15%;
 }
 
-.selectedImage {
+.selectedImage,
+.nextImage {
   max-width: 50vw;
   height: 100%;
   object-fit: cover;
 }
-
+.imageBox.moveLeft,
+.moveLeftBox.moveLeft {
+  transform: translateX(-100%);
+  transition: all 1s ease;
+}
 .thumbnailScroll {
   display: grid;
   grid-template: 20vh / 5vw repeat(15, 10vw);
