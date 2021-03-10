@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
-import ThumbnailScroll from './ThumbnailScroll.jsx'
+import ThumbnailScroll from './ThumbnailScroll.jsx';
+import ImageViewer from './ImageViewer.jsx';
 
 class ImagePreview extends React.Component {
   constructor(props) {
@@ -18,7 +20,8 @@ class ImagePreview extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.selectPrev = this.selectPrev.bind(this);
     this.selectNext = this.selectNext.bind(this);
-    this.arrowKeyHandler = this.arrowKeyHandler.bind(this)
+    this.arrowKeyHandler = this.arrowKeyHandler.bind(this);
+    this.selectInd = this.selectInd.bind(this);
   }
 
   toggleModal() {
@@ -28,28 +31,31 @@ class ImagePreview extends React.Component {
 
   selectNext() {
     const { selectedIndex, hideNext } = this.state;
-    const { photos } = this.props;
-    this.setState({ hidePrev: false });
     if (hideNext) {
       return;
     }
-    if (selectedIndex === photos.length - 2) {
-      this.setState({ hideNext: true });
-    }
-    this.setState((state) => ({ selectedIndex: state.selectedIndex + 1 }));
+    this.selectInd(selectedIndex + 1);
   }
 
   selectPrev() {
     const { selectedIndex, hidePrev } = this.state;
-    const { photos } = this.props;
-    this.setState({ hideNext: false });
     if (hidePrev) {
       return;
     }
-    if (selectedIndex === 1) {
-      this.setState({ hidePrev: true });
+    this.selectInd(selectedIndex - 1);
+  }
+
+  selectInd(ind) {
+    const { photos } = this.props;
+    if (photos.length === 1) {
+      this.setState({ hidePrev: true, hideNext: true, selectedIndex: ind });
+    } else if (ind === 0) {
+      this.setState({ hidePrev: true, hideNext: false, selectedIndex: ind });
+    } else if (ind === photos.length - 1) {
+      this.setState({ hidePrev: false, hideNext: true, selectedIndex: ind });
+    } else {
+      this.setState({ hidePrev: false, hideNext: false, selectedIndex: ind });
     }
-    this.setState((state) => ({ selectedIndex: state.selectedIndex - 1 }));
   }
 
   arrowKeyHandler(e) {
@@ -59,40 +65,31 @@ class ImagePreview extends React.Component {
     if (e.keyCode === 37) {
       this.selectPrev();
     }
-    console.log('Keypress')
   }
 
   render() {
     const { photos } = this.props;
-    const { selectedIndex, expanded, hideNext, hidePrev } = this.state;
-    if (photos) {
-      return (
-        <>
-          <div className='imagePreviewContainer' onKeyDown={this.arrowKeyHandler} tabIndex='0' >
-            <>
-              <div className='imageBox'>
-                <div className='selectPrevImage' hidden={hidePrev} onClick={this.selectPrev}>
-                  {`<`}
-                </div>
-                <div
-                  className='selectNextImage'
-                  hidden={hideNext}
-                  onClick={this.selectNext}
-                >{`>`}</div>
-                <img
-                  src={photos[selectedIndex].url}
-                  alt=''
-                  className='selectedImage'
-                  onClick={this.toggleModal}
-                />
-              </div>
-              <ThumbnailScroll/>
-            </>
-          </div>
-        </>
-      );
-    }
-    return null;
+    const { selectedIndex, hideNext, hidePrev } = this.state;
+    return photos ? (
+      <>
+        <div className='imagePreviewContainer' onKeyDown={this.arrowKeyHandler} tabIndex='0'>
+          <ImageViewer
+            photos={photos}
+            hidePrev={hidePrev}
+            selectPrev={this.selectPrev}
+            hideNext={hideNext}
+            selectNext={this.selectNext}
+            selectedIndex={selectedIndex}
+            toggleModal={this.toggleModal}
+          />
+          <ThumbnailScroll
+            photos={photos}
+            selectInd={this.selectInd}
+            selectedIndex={selectedIndex}
+          />
+        </div>
+      </>
+    ) : null;
   }
 }
 
