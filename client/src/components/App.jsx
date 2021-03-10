@@ -5,7 +5,7 @@ import QA from './QA/QA.jsx';
 
 const { TOKEN } = require('../../../config.js');
 
-const productId = 17762;
+const productId = 17070;
 
 const App = () => (
   <>

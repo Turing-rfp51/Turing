@@ -10,7 +10,6 @@ class QAListItem extends React.Component {
     super(props);
     this.state = {
       answersDisplayed: 2,
-      totalAnswers: this.props.answers.length,
     };
     this.showMoreAnswers = this.showMoreAnswers.bind(this);
   }
@@ -21,7 +20,7 @@ class QAListItem extends React.Component {
 
   render() {
     const { questionData, answers, getQA } = this.props;
-    const { answersDisplayed, totalAnswers } = this.state;
+    const { answersDisplayed } = this.state;
     return (
       <div className='qaListItem'>
         <QAHeader questionData={questionData} getQA={getQA} questionId={questionData.question_id} />
@@ -31,12 +30,14 @@ class QAListItem extends React.Component {
           answersDisplayed={answersDisplayed}
           getQA={getQA}
         />
-        <LoadMoreAnswers
-          totalAnswers={answers.length}
-          numOfAnswers={answers.length}
-          answersDisplayed={answersDisplayed}
-          showMoreAnswers={this.showMoreAnswers}
-        />
+        <div className='qaLoadMoreAnswers'>
+          <LoadMoreAnswers
+            totalAnswers={answers.length}
+            numOfAnswers={answers.length}
+            answersDisplayed={answersDisplayed}
+            showMoreAnswers={this.showMoreAnswers}
+          />
+        </div>
       </div>
     );
   }

@@ -16,7 +16,7 @@ class QA extends React.Component {
     this.state = {
       data: [],
       filter: '',
-      questionsDisplayed: 2,
+      questionsDisplayed: 4,
     };
     this.getQA = this.getQA.bind(this);
     this.setFilter = this.setFilter.bind(this);
@@ -34,14 +34,6 @@ class QA extends React.Component {
   showMoreQuestions() {
     this.setState((current) => ({ questionsDisplayed: current.questionsDisplayed + 2 }));
   }
-
-  // showMoreAnswers(questionId) {
-  //   //edge case: if that doesn't exist -
-  //   let currNum = this.state.answersPerQ[questionId] || 0;
-  //   let currAPerQ = Object.assign(this.state.answersPerQ);
-  //   currAPerQ[questionId] = currNum + 2;
-  //   this.setState({ answersPerQ: currAPerQ });
-  // }
 
   getQA(cb) {
     axios
@@ -62,7 +54,7 @@ class QA extends React.Component {
 
   render() {
     const filteredData = [...this.state.data].filter((question) =>
-      question.question_body.includes(this.state.filter)
+      question.question_body.match(this.state.filter)
     );
     // const questionsList = [...this.state.data].map((question) => question.question_body);
     const { data, questionsDisplayed } = this.state;
@@ -71,11 +63,13 @@ class QA extends React.Component {
       <div className='qaModuleContainer'>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
         <QuestionSearch data={data} setFilter={this.setFilter} />
+        <br />
+        <br />
         <QAList
           data={
             filteredData.length > 0
               ? filteredData.slice(0, questionsDisplayed)
-              : data.slice(0, questionsDisplayed)
+              : filteredData.slice(0, 0)
           }
           getQA={this.getQA}
           showMoreAnswers={this.showMoreAnswers}
