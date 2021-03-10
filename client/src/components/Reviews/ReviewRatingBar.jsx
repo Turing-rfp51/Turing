@@ -3,9 +3,9 @@ import React from 'react';
 
 const ReviewRatingBar = ({ n, metadata }) => (
   <div className='reviewSingleFilterBar'>
-    <div className='reivewFilterBackgroundBar' />
+    <div className='reviewFilterBackgroundBar' />
     <div
-      className='reivewFilterForegroundBar'
+      className='reviewFilterForegroundBar'
       style={{
         width: `${Math.round(
           (+(metadata.ratings[n] || 0) /
