@@ -29,7 +29,12 @@ class ReviewSearch extends React.Component {
     return (
       <form className='reviewSearchContainer' onSubmit={(e) => this.updateTerm(e, term)}>
         <label htmlFor='reviewSearchInput'>Search: </label>
-        <input id='reviewSearchInput' type='text' onChange={(e) => this.updateTerm(e)} />
+        <input
+          id='reviewSearchInput'
+          type='text'
+          autoComplete='off'
+          onChange={(e) => this.updateTerm(e)}
+        />
         <button type='submit' className='fa fa-search reviewSearchIcon' />
       </form>
     );
