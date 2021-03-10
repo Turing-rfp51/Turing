@@ -8,7 +8,7 @@ const ThumbnailScroll = ({ photos, selectInd, selectedIndex }) =>
   photos ? (
     <div className='thumbnailBox'>
       <div className='thumbnailScroll'>
-        <div className='thumbNailBuffer' />
+        <div className='prevThumb' />
         {photos.map((photo, i) => (
           <div name={`thumb${i}`} className='thumbnailImageBox' key={i}>
             <img
@@ -21,7 +21,7 @@ const ThumbnailScroll = ({ photos, selectInd, selectedIndex }) =>
             />
           </div>
         ))}
-        <div className='thumbnailBuffer' />
+        <div className='nextThumb' />
       </div>
     </div>
   ) : null;

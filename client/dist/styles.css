@@ -874,8 +874,9 @@ button:hover {
   display: grid;
   width: 50vw;
   height: 100vh;
+  min-width: 400px;
   grid-template-rows: 80% 20%;
-  grid-template-columns: 100% 100% 100%;
+  grid-template-columns: 100% 100%;
   overflow: hidden;
 }
 
@@ -885,15 +886,56 @@ button:hover {
 }
 
 .imageBox,
-.moveLeftBox {
+.moveLeftBox,
+.moveRightBox,
+.moveUpBox {
   position: relative;
   height: 100%;
   width: 100%;
   grid-row-start: 1;
   text-align: center;
 }
+.moveLeftBox {
+  grid-column-start: 2;
+}
+.moveRightBox {
+  grid-column-start: 1;
+  transform: translateX(-100%);
+}
+.moveUpBox {
+  grid-column-start: 1;
+  transform: translateY(-100%);
+}
+
 .imageBox {
   grid-column-start: 1;
+}
+.selectedImage,
+.nextImage {
+  max-width: 50vw;
+  height: 100%;
+  object-fit: cover;
+}
+.moveUpBox.moveUp {
+  transform: translateY(0%);
+  transition: all 300ms ease;
+}
+.imageBox.moveUp {
+  transform: translateY(100%);
+  transition: all 300ms ease;
+}
+.moveRightBox.moveRight {
+  transform: translateX(0%);
+  transition: all 300ms ease;
+}
+.imageBox.moveRight {
+  transform: translateX(100%);
+  transition: all 300ms ease;
+}
+.imageBox.moveLeft,
+.moveLeftBox.moveLeft {
+  transform: translateX(-100%);
+  transition: all 300ms ease;
 }
 .selectNextImage {
   color: white;
@@ -902,8 +944,8 @@ button:hover {
   width: 0.5vw;
   position: absolute;
   font-size: 0.5vh;
-  top: 39.5vh;
-  right: 15vh;
+  top: 40vh;
+  right: 5vw;
   transform: scale(20, 160);
 }
 .selectNextImage:hover {
@@ -917,8 +959,8 @@ button:hover {
   width: 0.5vw;
   position: absolute;
   font-size: 0.5vh;
-  top: 39.5vh;
-  left: 5vh;
+  top: 40vh;
+  left: 5vw;
   transform: scale(20, 160);
 }
 .selectPrevImage:hover {
@@ -926,17 +968,6 @@ button:hover {
   opacity: 15%;
 }
 
-.selectedImage,
-.nextImage {
-  max-width: 50vw;
-  height: 100%;
-  object-fit: cover;
-}
-.imageBox.moveLeft,
-.moveLeftBox.moveLeft {
-  transform: translateX(-100%);
-  transition: all 1s ease;
-}
 .thumbnailScroll {
   display: grid;
   grid-template: 20vh / 5vw repeat(15, 10vw);
