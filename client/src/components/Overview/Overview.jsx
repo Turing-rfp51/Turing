@@ -35,14 +35,21 @@ class Overview extends React.Component {
     url += `/styles`;
 
     axios.get(url, {headers: {Authorization: TOKEN}})
-      .then(({data: {results}}) => this.setState({styles: results}))
+      .then(({data: {results}}) => {
+        let styles = [];
+        results.forEach(({name, skus, original_price, sale_price, photos, style_id}) => {
+          styles.push({name, skus, original_price, sale_price, photos, style_id})
+        })
+        return styles;
+      })
+      .then((styles) => this.setState({styles}))
       .then(() => this.selectStyle(0))
       .catch((err) => console.log(err));
   }
 
   selectStyle (ind) {
     this.setState((state) => ({selectedStyle: state.styles[ind]}))
-  }
+  };
 
   render () {
     const {name, category, description} = this.state.info;

@@ -844,10 +844,11 @@ button:hover {
 }
 .notSelectedPhoto,
 .selectedPhoto {
+  margin: 1px;
   border: 1px solid;
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
+  width: 99px;
+  height: 99px;
+  border-radius: 50px;
   object-fit: cover;
 }
 .notSelectedPhoto:hover {
@@ -926,7 +927,29 @@ button:hover {
 }
 
 .thumbnailScroll {
+  display: grid;
+  grid-template: 20vh / 5vw repeat(15, 10vw);
   width: 50vw;
-  grid-row-start: 2;
+  height: calc('20vh + 20px');
   background-color: black;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+.thumbnailImages {
+  margin: 3px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20vh;
+  object-fit: cover;
+  overflow: hidden;
+}
+.thumbnailBox {
+  grid-row-start: 2;
+  height: 20vh;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
 }
