@@ -10,8 +10,10 @@ const AnswersList = ({ answers, getQA }) => {
   return (
     <React.Fragment>
       {Object.keys(answers).map((a) => (
-        <div className='AnswerList' key={answers[a].id}>
-          <Answer answer={answers[a].body} />
+        <div className='qaAnswerList' key={answers[a].id}>
+          <div className='qaAnswer'>
+            <Answer answer={answers[a].body} />
+          </div>
           <div className='qaFooter' key={answers[a].id}>
             <AnswerName userName={answers[a].answerer_name} />
             <div className='qaDate'>
