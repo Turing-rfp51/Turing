@@ -1,8 +1,11 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import axios from 'axios';
 import SizeOptions from './SizeOptions.jsx';
 import QuantityOptions from './QuantityOptions.jsx';
+import { TOKEN } from '../../../../config.js';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -32,13 +35,19 @@ class AddToCart extends React.Component {
   }
 
   onAddToCart(e) {
+    const { selectedSizeSku, selectedQuantity } = this.state;
+    const url = `${this.props.url}/cart`;
     e.preventDefault();
     if (!this.state.selectedSizeSku) {
       this.setState({ displayInstructions: true });
     } else {
       console.log('Added To Cart');
+      for (let i = 0; i < selectedQuantity; i++) {
+        axios
+          .post(url, { sku_id: selectedSizeSku }, { headers: { Authorization: TOKEN } })
+          .catch(console.error);
+      }
     }
-    // Post Req Here...Need more info on it.
   }
 
   render() {

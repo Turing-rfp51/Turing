@@ -20,7 +20,6 @@ class Reviews extends React.Component {
       reviews: [],
       metadata: {},
       sortMethod: 'relevant',
-      numberToDisplay: 2,
       starFilters: [],
       filteredReviews: [],
       productName: '',
@@ -30,7 +29,6 @@ class Reviews extends React.Component {
     this.getReviews = this.getReviews.bind(this);
     this.getMetadata = this.getMetadata.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
-    this.showMoreReviews = this.showMoreReviews.bind(this);
     this.toggleShowNewReviewModal = this.toggleShowNewReviewModal.bind(this);
     this.addOrRemoveFilters = this.addOrRemoveFilters.bind(this);
     this.filterReviews = this.filterReviews.bind(this);
@@ -51,7 +49,6 @@ class Reviews extends React.Component {
       )
       .then((obj) => {
         this.setState({ reviews: obj.data.results });
-        console.log(obj.data.results);
       })
       .then(this.state.starFilters.length > 0 && this.filterReviews)
       .catch((err) => console.error(err));
@@ -65,7 +62,6 @@ class Reviews extends React.Component {
       )
       .then((obj) => {
         this.setState({ metadata: obj.data });
-        console.log('metadata:', obj.data);
       })
       .catch((err) => console.error(err));
   }
@@ -85,10 +81,6 @@ class Reviews extends React.Component {
     this.setState({ sortMethod: method }, () => this.getReviews());
   }
 
-  showMoreReviews() {
-    this.setState((prevState) => ({ numberToDisplay: prevState.numberToDisplay + 2 }));
-  }
-
   toggleShowNewReviewModal() {
     const { showNewReviewModal } = this.state;
     this.setState({ showNewReviewModal: !showNewReviewModal });
@@ -104,7 +96,7 @@ class Reviews extends React.Component {
   }
 
   filterReviews() {
-    const { reviews, starFilters } = this.state;
+    const { reviews, starFilters, searchedTerm } = this.state;
 
     const filtered = [];
 
@@ -112,6 +104,10 @@ class Reviews extends React.Component {
       if (starFilters.includes(+reviews[i].rating)) {
         filtered.push(reviews[i]);
       }
+    }
+
+    if (searchedTerm) {
+      this.filterBySearch(searchedTerm);
     }
 
     this.setState({ filteredReviews: filtered });
@@ -127,7 +123,6 @@ class Reviews extends React.Component {
       reviews,
       filteredReviews,
       starFilters,
-      numberToDisplay,
       showNewReviewModal,
       productName,
     } = this.state;
@@ -143,16 +138,11 @@ class Reviews extends React.Component {
           />
         )}
         <ReviewsList
-          reviews={
-            starFilters.length > 0
-              ? filteredReviews.slice(0, numberToDisplay)
-              : reviews.slice(0, numberToDisplay)
-          }
+          reviews={starFilters.length > 0 ? filteredReviews : reviews}
           updateSortBy={this.updateSortBy}
           showMoreReviews={this.showMoreReviews}
           toggleShowNewReviewModal={this.toggleShowNewReviewModal}
           getReviews={this.getReviews}
-          totalLength={starFilters.length > 0 ? filteredReviews.length : reviews.length}
         />
         {showNewReviewModal && (
           <NewReviewModal

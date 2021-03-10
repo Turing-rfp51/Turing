@@ -35,35 +35,47 @@ class Overview extends React.Component {
     url += `/styles`;
 
     axios.get(url, {headers: {Authorization: TOKEN}})
-      .then(({data: {results}}) => this.setState({styles: results}))
+      .then(({data: {results}}) => {
+        let styles = [];
+        results.forEach(({name, skus, original_price, sale_price, photos, style_id}) => {
+          styles.push({name, skus, original_price, sale_price, photos, style_id})
+        })
+        return styles;
+      })
+      .then((styles) => this.setState({styles}))
       .then(() => this.selectStyle(0))
       .catch((err) => console.log(err));
   }
 
   selectStyle (ind) {
     this.setState((state) => ({selectedStyle: state.styles[ind]}))
-  }
+  };
 
   render () {
+    const {name, category, description} = this.state.info;
+    const {original_price, sale_price, skus, photos} = this.state.selectedStyle;
+    const {styles, selectedStyle, url} = this.state;
     return (<div className='overviewBody'>
-    <div className='infoStyleAdd'>
-      <Header
-        name={this.state.info.name}
-        category={this.state.info.category}
-        description={this.state.info.description}
-        price={this.state.selectedStyle.original_price}
-        salePrice={this.state.selectedStyle.sale_price}
+      <div className='infoStyleAdd'>
+        <Header
+          name={name}
+          category={category}
+          description={description}
+          price={original_price}
+          salePrice={sale_price}
         />
-      <StyleSelector
-        styles={this.state.styles}
-        selectedStyle={this.state.selectedStyle}
-        selectStyle={this.selectStyle}
+        <StyleSelector
+          styles={styles}
+          selectedStyle={selectedStyle}
+          selectStyle={this.selectStyle}
         />
-      <AddToCart
-        skus={this.state.selectedStyle.skus}
-        url={this.state.url}/>
+        <AddToCart
+          skus={skus}
+          url={url}/>
       </div>
-    <ImagePreview/>
+      <ImagePreview
+        photos={photos}
+      />
     </div>);
   }
 }
