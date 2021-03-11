@@ -4,6 +4,7 @@
   --darkgrey: #5d5c61;
   --lightgrey: #938e94;
   --taupe: #b1a296;
+  --accent: #046b99;
   --smallFont: 'Exo', sans-serif;
   --largeFont: 'Ovo', serif;
   --ae-green: rgb(88, 179, 88);
@@ -46,8 +47,8 @@ button:hover {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px 1px rgba(0, 0, 0, 0.18);
 }
 
-.qaWrap:hover {
-  box-shadow: 12px 12px 2px 1px rgba(136, 208, 219, 0.2);
+.qaWrap:hover .qaSearch-bar {
+  box-shadow: 0px 4px 2px -2px rgb(136, 208, 219);
   background-color: rgba(136, 208, 219, 0.2);
 }
 
@@ -67,13 +68,14 @@ button:hover {
   border-radius: 5px 0 0 5px;
   outline: none;
   color: black;
+  background: none;
 }
 
 .qaSearchButton {
   width: 35px;
   height: 35px;
   border: 1px solid #292b2c;
-  background: #292b2c;
+  background: #1c304a;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -83,8 +85,7 @@ button:hover {
 
 .qaListContainer {
   max-height: 80vh;
-  overflow: scroll;
-  scrollbar-width: thin;
+  overflow-y: scroll;
 }
 
 .qaAnswer {
@@ -138,11 +139,11 @@ button:hover {
 
 .qaModal-content {
   padding: 20px 50px;
-  width: 70vw;
   display: flex;
   flex-direction: column;
   background-color: white;
   border: 5px solid black;
+  color: black;
   font-size: 130%;
 }
 
@@ -152,6 +153,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  color: black;
 }
 
 .qaModal-title {
@@ -258,6 +260,7 @@ button:hover {
   font-size: 90%;
 }
 .qaLoadMoreAnswers:hover {
+  color: #046b99;
 }
 
 .qaAnswer {
@@ -267,20 +270,19 @@ button:hover {
 
 .qaAddQuestion,
 .qaMoreAnsweredQuestions {
+  border-radius: 0;
+  padding: 10px 12px;
+  font-size: 120%;
   background-color: white;
-  color: black;
   border: 2px solid rgba(0, 0, 0, 0.432);
   transition-duration: 0.4s;
-  margin: 10px 10px 0 0;
-  margin-left: 10px;
-  font-size: 140%;
-  padding: 15px 32px;
+  margin: 10px 10px 0 10px;
   text-align: center;
 }
 
 .qaAddQuestion:hover,
 .qaMoreAnsweredQuestions:hover {
-  background-color: rgba(0, 0, 0, 0.432);
+  background-color: #046b99;
   color: white;
 }
 
@@ -321,7 +323,7 @@ button:hover {
 
 .reviewSearchIcon:hover {
   cursor: pointer;
-  color: var(--ae-green);
+  color: #046b99;
 }
 
 #reviewSearchInput {
@@ -432,6 +434,7 @@ button:hover {
   font-size: 100%;
 }
 
+.qaAnswerHelpfulUpvote:hover,
 .reviewHelpfulVoteOption:hover {
   cursor: pointer;
   color: white;
@@ -439,8 +442,10 @@ button:hover {
   border-radius: 2px;
 }
 
+.qaAnswerReport:hover,
 .reviewReportButton:hover {
   background: rgb(175, 52, 52);
+  color: white;
 }
 
 .reviewVotedHelpful {
@@ -504,7 +509,7 @@ button:hover {
 }
 
 .reviewsButton:hover {
-  background-color: rgba(0, 0, 0, 0.432);
+  background-color: #046b99;
   color: white;
 }
 
