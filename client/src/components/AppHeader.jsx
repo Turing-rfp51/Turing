@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TuringLogo from './Shared/TurningLogo/TurningLogo.svg';
+import TuringLogo from './Shared/TurningLogo/TuringLogo.svg';
 
 const AppHeader = () => (
   <div className='appHeaderContainer'>
