@@ -124,6 +124,7 @@ class ImagePreview extends React.Component {
             photos={photos}
             selectInd={this.selectInd}
             selectedIndex={selectedIndex}
+            startInd={3}
           />
         </div>
       </>

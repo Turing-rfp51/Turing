@@ -27,7 +27,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 98vw;
+  margin: 0;
 }
 
 .appHeaderContainer {
@@ -951,10 +952,11 @@ button:hover {
 
 .imagePreviewContainer {
   background-color: black;
+  border: hidden;
   color: rgb(175, 52, 52);
   order: 1;
   display: grid;
-  width: 50vw;
+  width: 40vw;
   height: 80vh;
   min-width: 400px;
   min-height: 500px;
@@ -993,6 +995,7 @@ button:hover {
 .imageBox {
   grid-column-start: 1;
   overflow: visible;
+  border: hidden;
 }
 .selectedImage,
 .nextImage {
@@ -1064,8 +1067,7 @@ button:hover {
   height: calc(100% + 14px);
   min-height: calc(100% + 14px);
   background-color: black;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: visible;
   scroll-behavior: smooth;
 }
 .thumbnailImages {
@@ -1086,12 +1088,44 @@ button:hover {
   min-width: 98px;
 }
 .thumbnailBox {
-  display: grid;
-  grid-template-columns: 5vw 40vw 5vw;
   z-index: 1;
   grid-row-start: 2;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 1fr 1fr;
   height: 100%;
   width: 100%;
   overflow: hidden;
   text-align: center;
+  vertical-align: middle;
+}
+.nextThumb,
+.prevThumb {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  height: 16vh;
+  width: 16vh;
+  min-height: 98px;
+  min-width: 98px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200%;
+  object-fit: cover;
+  z-index: 1;
+  background-color: black;
+}
+.nextThumb:hover,
+.prevThumb:hover {
+  cursor: pointer;
+}
+.nextThumb {
+  position: relative;
+  right: 0;
+}
+.prevThumb {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  left: 0%;
 }
