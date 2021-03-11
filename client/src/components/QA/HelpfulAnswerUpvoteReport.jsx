@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import InteractionTracker from '../Shared/InteractionTracker.jsx';
 
 import { updateHelpfulCount, reportItem } from '../Shared/HelpfulCount.js';
 

@@ -23,3 +23,5 @@ const LoadMoreAnswers = ({
 );
 
 export default LoadMoreAnswers;
+
+// && numOfAnswers !== totalAnswers
