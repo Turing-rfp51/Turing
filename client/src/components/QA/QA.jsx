@@ -7,8 +7,6 @@ import QuestionSearch from './QuestionSearch.jsx';
 import QAList from './QAList.jsx';
 import QAFooter from './QAFooter.jsx';
 
-const { TOKEN } = require('../../../../config.js');
-
 class QA extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +34,7 @@ class QA extends React.Component {
   }
 
   getQA(cb) {
+    const { TOKEN } = this.props;
     axios
       .get(
         `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?count=500&product_id=${this.props.productId}`,
@@ -58,9 +57,9 @@ class QA extends React.Component {
     );
     // const questionsList = [...this.state.data].map((question) => question.question_body);
     const { data, questionsDisplayed } = this.state;
-    const { productId } = this.props;
+    const { productId, postInteraction } = this.props;
     return (
-      <div className='qaModuleContainer'>
+      <div className='qaModuleContainer' onClick={(event) => postInteraction(event, 'q&a')}>
         <h3>{'QUESTIONS & ANSWERS'}</h3>
         <QuestionSearch data={data} setFilter={this.setFilter} />
         <br />
