@@ -69,7 +69,7 @@ class QuestionModal extends React.Component {
             <br />
             <textarea
               type='text'
-              className='qaModalyourQuestion'
+              className='qaModalAnswerText'
               name='body'
               onChange={this.onChange}
               maxLength='1000'

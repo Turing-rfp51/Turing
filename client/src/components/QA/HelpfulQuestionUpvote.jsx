@@ -25,13 +25,15 @@ class HelpfulQuestionUpvote extends React.Component {
 
   render() {
     const { questionData } = this.props;
-
+    const { voted } = this.state;
     return (
       <div className='questionHelpfulCountContainer'>
         <div>Helpful?</div>
         <button
           type='button'
-          className='questionVotedHelpful'
+          className={
+            voted === true ? 'qaAnswerHelpfulUpvote reviewVotedHelpful' : 'qaAnswerHelpfulUpvote'
+          }
           onClick={this.triggerUpdateHelpfulCount}
         >
           Yes
