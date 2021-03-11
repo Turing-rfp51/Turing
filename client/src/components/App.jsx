@@ -6,7 +6,7 @@ import AppHeader from './AppHeader.jsx';
 
 const { TOKEN } = require('../../../config.js');
 
-const productId = 17070;
+const productId = 17072;
 
 const App = () => (
   <div className='appContainer'>
