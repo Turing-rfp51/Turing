@@ -7,7 +7,7 @@
   --accent: #046b99;
   --smallFont: 'Exo', sans-serif;
   --largeFont: 'Ovo', serif;
-  --ae-green: rgb(88, 179, 88);
+  --ae-green: #046b99;
   --ae-lightgrey: rgb(224, 224, 224);
 }
 
@@ -616,7 +616,7 @@ button:hover {
 
 .reviewSingleFilterContainer:hover {
   cursor: pointer;
-  color: var(--ae-green);
+  color: var(--accent);
   text-decoration: underline;
 }
 
@@ -659,14 +659,14 @@ button:hover {
 }
 
 .reviewSingleFilterContainer:hover .reviewFilterBackgroundBar {
-  background-color: rgb(196, 224, 202);
+  background-color: #bde7fa;
 }
 
 .reviewFilterForegroundBar {
   position: absolute;
   height: 15px;
   width: 0%;
-  background-color: var(--ae-green);
+  background-color: var(--accent);
 }
 
 .reviewCharacteristicContainer {
