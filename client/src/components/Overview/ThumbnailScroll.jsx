@@ -8,7 +8,6 @@ const ThumbnailScroll = ({ photos, selectInd, selectedIndex }) =>
   photos ? (
     <div className='thumbnailBox'>
       <div className='thumbnailScroll'>
-        <div className='prevThumb' />
         {photos.map((photo, i) => (
           <div name={`thumb${i}`} className='thumbnailImageBox' key={i}>
             <img
@@ -17,13 +16,18 @@ const ThumbnailScroll = ({ photos, selectInd, selectedIndex }) =>
               className='thumbnailImages'
               id={i}
               key={i}
-              onClick={(e) => selectInd(Number(e.target.id))}
+              onClick={(e) => selectInd(Number(e.target.id), 'moveUp')}
             />
           </div>
         ))}
+        <div className='prevThumb' />
         <div className='nextThumb' />
       </div>
     </div>
   ) : null;
+
+const getIndex = (i, selectedIndex) => {
+
+}
 
 export default ThumbnailScroll;

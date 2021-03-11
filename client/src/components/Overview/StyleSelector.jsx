@@ -6,11 +6,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
-const StyleSelector = ({ styles, selectedStyle: { name, style_id }, selectStyle }) => {
-  if (!styles || !name) {
-    return null;
-  }
-  return (
+const StyleSelector = ({ styles, selectedStyle: { name, style_id }, selectStyle }) =>
+  styles && name ? (
     <div className='styleSelector'>
       <div className='selectedStyle'>{name}</div>
       <div className='photosGrid'>
@@ -39,7 +36,6 @@ const StyleSelector = ({ styles, selectedStyle: { name, style_id }, selectStyle 
         })}
       </div>
     </div>
-  );
-};
+  ) : null;
 
 export default StyleSelector;
