@@ -9,20 +9,12 @@ const { TOKEN } = require('../../../config.js');
 const productId = 17070;
 
 const App = () => (
-  <>
+  <div className='appContainer'>
     <AppHeader />
     <Overview productId={productId} />
-    <br />
-    <br />
-    <br />
-    <br />
     <QA productId={productId} />
-    <br />
-    <br />
-    <br />
-    <br />
     <Reviews productId={productId} TOKEN={TOKEN} />
-  </>
+  </div>
 );
 
 export default App;
