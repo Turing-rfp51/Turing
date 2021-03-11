@@ -22,6 +22,24 @@ h1 {
 button:hover {
   cursor: pointer;
 }
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.appHeaderContainer {
+  width: 70vw;
+  height: 150px;
+  background-color: var(--accent);
+}
+
+.turingLogo {
+  height: 100%;
+}
+
 /*---------------------------------------------------------------------------------------- Q&A */
 
 .qaModuleContainer {
@@ -33,6 +51,8 @@ button:hover {
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 80px;
+  margin-bottom: 0px;
 }
 
 .qaWrap {
@@ -46,7 +66,6 @@ button:hover {
   border: 1px solid grey;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px 1px rgba(0, 0, 0, 0.18);
 }
-
 
 .qaWrap:hover .qaSearch-bar {
   box-shadow: 0px 4px 2px -2px rgb(136, 208, 219);
@@ -293,6 +312,8 @@ button:hover {
   display: flex;
   justify-content: center;
   position: relative;
+  margin-top: 80px;
+  margin-bottom: 20px;
 }
 
 .ReviewsBreakdownContainer {
@@ -830,6 +851,9 @@ button:hover {
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: space-around;
+  margin-top: 80px;
+  margin-bottom: 0px;
+  width: 70vw;
 }
 
 .overviewHeaderContainer {

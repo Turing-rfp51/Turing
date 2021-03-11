@@ -1,5 +1,11 @@
 import React from 'react';
 
-const AppHeader = () => <div className='appHeaderContainer'>Header</div>;
+import TuringLogo from './Shared/TurningLogo/TurningLogo.svg';
+
+const AppHeader = () => (
+  <div className='appHeaderContainer'>
+    <img src={TuringLogo} alt='logo' className='turingLogo' />
+  </div>
+);
 
 export default AppHeader;
