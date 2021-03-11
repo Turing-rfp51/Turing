@@ -812,7 +812,7 @@ button:hover {
 }
 
 .nrmSelectedCharLabel {
-  color: rgb(33, 129, 9);
+  color: var(--accent);
   margin-left: 10px;
 }
 
