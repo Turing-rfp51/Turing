@@ -74,6 +74,7 @@ class QA extends React.Component {
           getQA={this.getQA}
           showMoreAnswers={this.showMoreAnswers}
         />
+        <br />
         <QAFooter
           showMoreQuestions={this.showMoreQuestions}
           numOfQuestions={filteredData.length}
