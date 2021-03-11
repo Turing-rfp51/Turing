@@ -26,12 +26,15 @@ class HelpfulAnswerUpvoteReport extends React.Component {
 
   render() {
     const { answerid, answerHelpfulness, getQA } = this.props;
+    const { voted } = this.state;
     return (
       <div className='qaHelpfulAnswerUpvoteReport'>
         <div>Helpful? </div>
         <button
           type='button'
-          className='qaAnswerHelpfulUpvote'
+          className={
+            voted === true ? 'qaAnswerHelpfulUpvote reviewVotedHelpful' : 'qaAnswerHelpfulUpvote'
+          }
           onClick={this.triggerUpdateHelpfulCount}
         >
           Yes
