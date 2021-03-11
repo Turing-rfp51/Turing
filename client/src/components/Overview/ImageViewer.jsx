@@ -12,12 +12,12 @@ const ImageViewer = ({
   selectNext,
   selectedIndex,
   toggleModal,
-  moveClass,
+  move,
   nextInd,
 }) =>
   photos ? (
     <>
-      <div className={`imageBox ${moveClass}`}>
+      <div className={`imageBox ${move}`}>
         <div className='selectPrevImage' hidden={hidePrev} onClick={selectPrev}>
           {`<`}
         </div>
@@ -29,13 +29,13 @@ const ImageViewer = ({
           onClick={toggleModal}
         />
       </div>
-      <div className={`${moveClass ? `moveLeftBox ${moveClass}` : `moveLeftBox`} ${moveClass}`}>
+      <div className={`${move ? `moveLeftBox ${move}` : `moveLeftBox`} ${move}`}>
         <img src={photos[nextInd].url} alt='' className='nextImage' />
       </div>
-      <div className={`${moveClass ? `moveRightBox ${moveClass}` : `moveRightBox`} ${moveClass}`}>
+      <div className={`${move ? `moveRightBox ${move}` : `moveRightBox`} ${move}`}>
         <img src={photos[nextInd].url} alt='' className='nextImage' />
       </div>
-      <div className={`${moveClass ? `moveUpBox ${moveClass}` : `moveUpBox`} ${moveClass}`}>
+      <div className={`${move ? `moveUpBox ${move}` : `moveUpBox`} ${move}`}>
         <img src={photos[nextInd].url} alt='' className='nextImage' />
       </div>
     </>
