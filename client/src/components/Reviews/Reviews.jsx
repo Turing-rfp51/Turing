@@ -131,6 +131,7 @@ class Reviews extends React.Component {
     const { postInteraction } = this.props;
     return (
       <div
+        id='reviewsContainer'
         className='reviewsModuleContainer'
         onClick={(event) => postInteraction(event, 'reviews')}
       >
