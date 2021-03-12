@@ -66,7 +66,6 @@ class QuestionModal extends React.Component {
           </div>
           <form className='qaModalForm' onSubmit={(e) => this.handleSubmit(e)}>
             <div id='qaModalyourAnswer'>YOUR QUESTION :</div>
-            <br />
             <textarea
               type='text'
               className='qaModalAnswerText'
@@ -77,8 +76,8 @@ class QuestionModal extends React.Component {
               required
             />
             <br />
-            <div className='nickName'>WHAT IS YOUR NICKNAME : </div>
             <br />
+            <div className='qaModalNickName'>WHAT IS YOUR NICKNAME : </div>
             <input
               type='text'
               name='name'
@@ -94,7 +93,6 @@ class QuestionModal extends React.Component {
             </p>
             <br />
             <div className='qaModalEmail'>YOUR EMAIL : </div>
-            <br />
             <input
               type='text'
               name='email'

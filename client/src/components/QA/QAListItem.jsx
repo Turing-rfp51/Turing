@@ -19,8 +19,10 @@ class QAListItem extends React.Component {
   }
 
   render() {
-    const { questionData, answers, getQA } = this.props;
+    const { questionData, getQA } = this.props;
     const { answersDisplayed } = this.state;
+    const answers = this.props.answers.sort((a, b) => a.helpfulness - b.helpfulness);
+    console.log(answers);
     return (
       <div className='qaListItem'>
         <QAHeader questionData={questionData} getQA={getQA} questionId={questionData.question_id} />
