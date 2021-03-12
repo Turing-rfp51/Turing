@@ -12,7 +12,6 @@ const InteractionTracker = (WrappedComponent) =>
     }
 
     postInteraction(event, widget) {
-      console.log(event.target.outerHTML, widget);
       axios({
         method: 'post',
         url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/interactions',
@@ -25,13 +24,9 @@ const InteractionTracker = (WrappedComponent) =>
           'widget': widget,
           'time': new Date(),
         },
-      })
-        .then((response) => {
-          console.log('success posting new interaction', response);
-        })
-        .catch((err) => {
-          console.log('error posting new interaction', err);
-        });
+      }).catch((err) => {
+        console.log('error posting new interaction', err);
+      });
     }
 
     render() {
