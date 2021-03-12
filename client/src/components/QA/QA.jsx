@@ -14,7 +14,7 @@ class QA extends React.Component {
     this.state = {
       data: [],
       filter: '',
-      questionsDisplayed: 4,
+      questionsDisplayed: 2,
     };
     this.getQA = this.getQA.bind(this);
     this.setFilter = this.setFilter.bind(this);
