@@ -109,6 +109,10 @@ button:hover {
   overflow-y: scroll;
 }
 
+.qaListItem {
+  border-left: 1px grey;
+}
+
 .qaAnswer {
   margin-bottom: 5px;
 }
@@ -229,6 +233,11 @@ button:hover {
   transition-duration: 0.4s;
   margin: 10px 10px 0 10px;
   text-align: center;
+}
+
+.qaModalSubmit:hover {
+  background-color: #046b99;
+  color: white;
 }
 
 .modal-title {
@@ -647,7 +656,7 @@ button:hover {
 }
 
 .reviewActiveFilter {
-  background: rgb(187, 187, 187);
+  background: rgb(136, 208, 219);
 }
 
 .reviewFilterBackgroundBar {

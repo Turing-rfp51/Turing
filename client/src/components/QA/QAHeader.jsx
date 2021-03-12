@@ -27,6 +27,8 @@ class QAHeader extends React.Component {
 
   render() {
     const { questionData, getQA, questionId } = this.props;
+    console.log(questionData);
+
     return (
       <div className='qaHeader'>
         <Question questionData={questionData} />

@@ -1,5 +1,9 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-useless-escape */
 import React from 'react';
 import axios from 'axios';
+
+import QAUploadImages from './QAUploadImages.jsx';
 
 const { TOKEN } = require('../../../../config.js');
 
@@ -15,47 +19,100 @@ class AnswerModal extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  loadPhotos() {
+    const { files } = document.getElementById('PhotoUpload');
+    const fReader = new FileReader();
+
+    [0, 1, 2, 3, 4].forEach((i) => {
+      if (files[i]) {
+        fReader.readAsDataURL(files[i]);
+
+        fReader.onloadend = (event) => {
+          const temp = event.target.result;
+          this.updatePhotos(temp);
+        };
+      }
+    });
+  }
+
+  validateForm() {
+    const { body, name, email } = this.state;
+
+    if (body.length <= 0) {
+      alert('Please submit an entry for: Answer');
+      return false;
+    }
+
+    if (name.length <= 0) {
+      alert('Please submit an entry for: NickName');
+      return false;
+    }
+
+    if (email.length <= 0) {
+      alert('Please submit an entry for: E-mail');
+      return false;
+    }
+
+    if (!this.validateEmail(email)) {
+      alert('Please enter a valid E-mail Address');
+      return false;
+    }
+    return true;
+  }
+
+  validateEmail(email) {
+    let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(String(email).toLowerCase());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+
     const { body, name, email, photos } = this.state;
     const { questionId, close, getQA } = this.props;
-    axios({
-      method: 'post',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`,
-      headers: {
-        'Authorization': TOKEN,
-        'Content-Type': 'application/json',
-      },
-      data: {
-        'body': body,
-        'name': name,
-        'email': email,
-        'photos': photos,
-      },
-    })
-      .then((response) => {
-        console.log('success posting new answer', response);
+
+    if (this.validateForm()) {
+      axios({
+        method: 'post',
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${questionId}/answers`,
+        headers: {
+          'Authorization': TOKEN,
+          'Content-Type': 'application/json',
+        },
+        data: {
+          'body': body,
+          'name': name,
+          'email': email,
+          'photos': photos,
+        },
       })
-      .catch((err) => {
-        console.log('error posting answer', err);
-      })
-      .then(() => {
-        getQA();
-        close();
-      })
-      .catch((err) => {
-        console.log('error getting new question list', err);
-      });
+        .then((response) => {
+          console.log('success posting new answer', response);
+        })
+        .catch((err) => {
+          console.log('error posting answer', err);
+        })
+        .then(() => {
+          getQA();
+          close();
+        })
+        .catch((err) => {
+          console.log('error getting new question list', err);
+        });
+    }
   }
 
   render() {
     const { close } = this.props;
+    const { photos } = this.state;
     return (
       <div className='qaModal'>
         <div className='qaModal-content'>
@@ -70,7 +127,7 @@ class AnswerModal extends React.Component {
               name='body'
               onChange={this.onChange}
               maxLength='1000'
-              placeholder='Your question here...'
+              placeholder='Your answer here...'
               required
             />
             <br />
@@ -104,6 +161,10 @@ class AnswerModal extends React.Component {
             <p className='qaModalEmailWarning'>
               For authentication reasons, you will not be emailed
             </p>
+            <br />
+            <br />
+            <label htmlFor='PhotoUpload'>Upload Photos</label>
+            <QAUploadImages photos={photos} loadPhotos={this.loadPhotos} />
             <br />
             <div className='modal-footer'>
               <button className='qaModalSubmit' type='submit'>

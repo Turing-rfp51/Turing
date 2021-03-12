@@ -14,7 +14,7 @@ class QA extends React.Component {
     this.state = {
       data: [],
       filter: '',
-      questionsDisplayed: 4,
+      questionsDisplayed: 2,
     };
     this.getQA = this.getQA.bind(this);
     this.setFilter = this.setFilter.bind(this);
@@ -55,8 +55,9 @@ class QA extends React.Component {
     const filteredData = [...this.state.data].filter((question) =>
       question.question_body.match(this.state.filter)
     );
+    const data = this.state.data.sort((a, b) => b.helpfulness - a.helpfulness);
     // const questionsList = [...this.state.data].map((question) => question.question_body);
-    const { data, questionsDisplayed } = this.state;
+    const { questionsDisplayed } = this.state;
     const { productId, postInteraction } = this.props;
     return (
       <div className='qaModuleContainer' onClick={(event) => postInteraction(event, 'q&a')}>
