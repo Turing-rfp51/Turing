@@ -26,12 +26,10 @@ const ThumbnailScroll = ({ photos, selectInd, selectedIndex, startInd }) => {
           );
         })}
       </div>
-      <div className='prevThumb'>L</div>
-      <div className='nextThumb'>R</div>
+      <div className='prevThumb'> &#8656;</div>
+      <div className='nextThumb'>&#8658;</div>
     </div>
   ) : null;
-      }
-
-
+};
 
 export default ThumbnailScroll;
