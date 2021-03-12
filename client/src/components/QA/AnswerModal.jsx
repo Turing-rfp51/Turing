@@ -24,8 +24,6 @@ class AnswerModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { body, name, email, photos } = this.state;
-    console.log('it is hitting handle submit');
-    console.log(body, name, email, photos);
     const { questionId, close, getQA } = this.props;
     axios({
       method: 'post',
