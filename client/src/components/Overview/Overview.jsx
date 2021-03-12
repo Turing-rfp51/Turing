@@ -9,6 +9,7 @@ import AddToCart from './AddToCart.jsx';
 import Header from './Header.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ImagePreview from './ImagePreview.jsx';
+import Description from './Description.jsx';
 import { TOKEN } from '../../../../config.js';
 
 class Overview extends React.Component {
@@ -67,19 +68,16 @@ class Overview extends React.Component {
     return (
       <div className='overviewBody' onClick={(event) => postInteraction(event, 'overview')}>
         <div className='infoStyleAdd'>
-          <Header
-            name={name}
-            category={category}
-            description={description}
-            price={original_price}
-            salePrice={sale_price}
-          />
+          <span className='overviewHeaderContainer'>
+            <Header name={name} category={category} price={original_price} salePrice={sale_price} />
+          </span>
           <StyleSelector
             styles={styles}
             selectedStyle={selectedStyle}
             selectStyle={this.selectStyle}
           />
           <AddToCart skus={skus} url={url} />
+          <Description description={description} />
         </div>
         <ImagePreview photos={photos} />
       </div>

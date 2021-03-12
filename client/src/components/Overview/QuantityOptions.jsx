@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-const QuantityOptions = ({selectedSizeSku, onSelectQuantity, stock, selectedQuantity}) => {
+const QuantityOptions = ({ selectedSizeSku, onSelectQuantity, stock, selectedQuantity }) => {
   let options, num, selected;
   if (stock > 15) {
     num = 15;
@@ -13,17 +13,21 @@ const QuantityOptions = ({selectedSizeSku, onSelectQuantity, stock, selectedQuan
     options = ['-'];
     selected = '-';
   } else {
-    options = [...Array(num).keys()].map((n) => n + 1)
+    options = [...Array(num).keys()].map((n) => n + 1);
     selected = selectedQuantity;
   }
-  return (<select
-    value={selected}
-    disabled={!selectedSizeSku}
-    onChange={(e) => onSelectQuantity(e.target.value)}
+  return (
+    <select
+      value={selected}
+      disabled={!selectedSizeSku}
+      onChange={(e) => onSelectQuantity(e.target.value)}
+      className={`selectAmountMenu ${selectedSizeSku ? 'showAmountMenu' : ''}`}
     >
-      {options.map((option) => <option key={option}>{option}</option>)}
+      {options.map((option) => (
+        <option key={option}>{option}</option>
+      ))}
     </select>
-  )
-}
+  );
+};
 
 export default QuantityOptions;

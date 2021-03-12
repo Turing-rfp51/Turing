@@ -14,6 +14,7 @@ class AddToCart extends React.Component {
       selectedSizeSku: null,
       stock: null,
       selectedQuantity: null,
+      buttonText: false,
     };
     this.onSelectSize = this.onSelectSize.bind(this);
     this.onSelectQuantity = this.onSelectQuantity.bind(this);
@@ -39,34 +40,49 @@ class AddToCart extends React.Component {
     const url = `${this.props.url}/cart`;
     e.preventDefault();
     if (!this.state.selectedSizeSku) {
-      this.setState({ displayInstructions: true });
+      this.setState({ displayInstructions: 'showSizeInstructions' });
     } else {
       console.log('Added To Cart');
       for (let i = 0; i < selectedQuantity; i++) {
         axios
           .post(url, { sku_id: selectedSizeSku }, { headers: { Authorization: TOKEN } })
-          .catch(console.error);
+          .catch(console.error)
+          .then(() => this.setState({ buttonText: 'Added to cart' }));
       }
     }
   }
 
   render() {
+    const {
+      displayInstructions,
+      stock,
+      selectedSizeSku,
+      selectedQuantity,
+      buttonText,
+    } = this.state;
+    const { skus } = this.props;
     return (
-      <div className='addToCartContainer'>
-        <form>
-          <div hidden={!this.state.displayInstructions}>Please select size</div>
-          <SizeOptions onSelectSize={this.onSelectSize} skus={this.props.skus} />
-          <QuantityOptions
-            onSelectQuantity={this.onSelectQuantity}
-            stock={this.state.stock}
-            selectedSizeSku={this.state.selectedSizeSku}
-            selectedQuantity={this.state.selectedQuantity}
-          />
-        </form>
-        <button onClick={this.onAddToCart} type='submit'>
-          Add to Cart
-        </button>
-      </div>
+      <>
+        <div className={`selectSizeText ${displayInstructions || ''}`}>Please select size</div>
+        <div className='addToCartContainer'>
+          <form className='cartMenus'>
+            <SizeOptions onSelectSize={this.onSelectSize} skus={skus} />
+            <QuantityOptions
+              onSelectQuantity={this.onSelectQuantity}
+              stock={stock}
+              selectedSizeSku={selectedSizeSku}
+              selectedQuantity={selectedQuantity}
+            />
+          </form>
+          <button
+            onClick={this.onAddToCart}
+            type='submit'
+            className={`addToCartButton ${buttonText ? 'addedToCart' : ''}`}
+          >
+            {buttonText || 'Add to Cart'}
+          </button>
+        </div>
+      </>
     );
   }
 }
