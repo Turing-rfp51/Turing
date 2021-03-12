@@ -230,6 +230,11 @@ button:hover {
   text-align: center;
 }
 
+.qaModalSubmit:hover {
+  background-color: #046b99;
+  color: white;
+}
+
 .modal-title {
   margin: 0;
 }
