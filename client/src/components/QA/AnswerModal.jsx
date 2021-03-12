@@ -29,17 +29,17 @@ class AnswerModal extends React.Component {
     const { body, name, email } = this.state;
 
     if (body.length <= 0) {
-      alert('Please submit a entry for: Answer');
+      alert('Please submit an entry for: Answer');
       return false;
     }
 
     if (name.length <= 0) {
-      alert('Please submit a entry for: NickName');
+      alert('Please submit an entry for: NickName');
       return false;
     }
 
     if (email.length <= 0) {
-      alert('Please submit a entry for: E-mail');
+      alert('Please submit an entry for: E-mail');
       return false;
     }
 
@@ -57,6 +57,7 @@ class AnswerModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const { body, name, email, photos } = this.state;
     const { questionId, close, getQA } = this.props;
 

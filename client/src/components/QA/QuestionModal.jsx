@@ -14,10 +14,42 @@ class QuestionModal extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  validateForm() {
+    const { body, name, email } = this.state;
+
+    if (body.length <= 0) {
+      alert('Please submit an entry for: Question');
+      return false;
+    }
+
+    if (name.length <= 0) {
+      alert('Please submit an entry for: NickName');
+      return false;
+    }
+
+    if (email.length <= 0) {
+      alert('Please submit an entry for: E-mail');
+      return false;
+    }
+
+    if (!this.validateEmail(email)) {
+      alert('Please enter a valid E-mail Address');
+      return false;
+    }
+    return true;
+  }
+
+  validateEmail(email) {
+    let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(String(email).toLowerCase());
   }
 
   handleSubmit(e) {
@@ -25,35 +57,36 @@ class QuestionModal extends React.Component {
 
     const { body, nickname, email } = this.state;
     const { productId, getQA, close } = this.props;
-
-    axios({
-      method: 'post',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/`,
-      headers: {
-        'product_id': productId,
-        'Authorization': TOKEN,
-        'Content-Type': 'application/json',
-      },
-      data: {
-        'body': body,
-        'name': nickname,
-        'email': email,
-        'product_id': productId,
-      },
-    })
-      .then((response) => {
-        console.log('success posting new question', response);
+    if (this.validateForm()) {
+      axios({
+        method: 'post',
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/`,
+        headers: {
+          'product_id': productId,
+          'Authorization': TOKEN,
+          'Content-Type': 'application/json',
+        },
+        data: {
+          'body': body,
+          'name': nickname,
+          'email': email,
+          'product_id': productId,
+        },
       })
-      .catch((err) => {
-        console.log('error posting question', err);
-      })
-      .then(() => {
-        getQA();
-        close();
-      })
-      .catch((err) => {
-        console.log('error getting new question list', err);
-      });
+        .then((response) => {
+          console.log('success posting new question', response);
+        })
+        .catch((err) => {
+          console.log('error posting question', err);
+        })
+        .then(() => {
+          getQA();
+          close();
+        })
+        .catch((err) => {
+          console.log('error getting new question list', err);
+        });
+    }
   }
 
   render() {
