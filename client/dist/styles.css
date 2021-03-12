@@ -108,6 +108,10 @@ button:hover {
   overflow-y: scroll;
 }
 
+.qaListItem {
+  border-left: 1px grey;
+}
+
 .qaAnswer {
   margin-bottom: 5px;
 }
