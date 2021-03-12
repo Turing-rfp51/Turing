@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Price from './Price.jsx';
-import Description from './Description.jsx';
-import ShareAndStars from './ShareAndStars.jsx';
+import StarsReview from './StarsReview.jsx';
+import ShareButtons from './ShareButtons.jsx';
 
 const Header = ({ name, category, price, salePrice }) => (
   <>
     <h3 className='productName'>{name}</h3>
     <h5 className='productCategory'>{`(${category})`}</h5>
     <Price price={price} salePrice={salePrice} />
-    {/* <Description description={description} /> */}
-    <ShareAndStars />
+    <StarsReview />
+    <ShareButtons />
   </>
 );
 
