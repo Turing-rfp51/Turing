@@ -4,30 +4,32 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 
-const ThumbnailScroll = ({ photos, selectInd, selectedIndex }) =>
-  photos ? (
+const ThumbnailScroll = ({ photos, selectInd, selectedIndex, startInd }) => {
+  const getIndex = (i) => (i + startInd) % photos.length;
+
+  return photos ? (
     <div className='thumbnailBox'>
       <div className='thumbnailScroll'>
-        {photos.map((photo, i) => (
-          <div name={`thumb${i}`} className='thumbnailImageBox' key={i}>
-            <img
-              src={photo.thumbnail_url}
-              alt=''
-              className='thumbnailImages'
-              id={i}
-              key={i}
-              onClick={(e) => selectInd(Number(e.target.id), 'moveUp')}
-            />
-          </div>
-        ))}
-        <div className='prevThumb' />
-        <div className='nextThumb' />
+        {photos.map((photo, i) => {
+          const ind = getIndex(i);
+          return (
+            <div name={`thumb${ind}`} className='thumbnailImageBox' key={ind}>
+              <img
+                src={photos[ind].thumbnail_url}
+                alt='Missing'
+                className={`thumbnailImages ${selectedIndex === ind ? 'selectedThumb' : ''}`}
+                id={ind}
+                key={ind}
+                onClick={(e) => selectInd(Number(e.target.id), 'moveUp')}
+              />
+            </div>
+          );
+        })}
       </div>
+      <div className='prevThumb'> &#8656;</div>
+      <div className='nextThumb'>&#8658;</div>
     </div>
   ) : null;
-
-const getIndex = (i, selectedIndex) => {
-
-}
+};
 
 export default ThumbnailScroll;

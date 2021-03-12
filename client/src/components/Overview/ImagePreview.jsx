@@ -14,7 +14,7 @@ class ImagePreview extends React.Component {
     this.state = {
       selectedIndex: 0,
       expanded: false,
-      hidePrev: true,
+      hidePrev: 'hideButton',
       hideNext: false,
       move: '',
       nextInd: 0,
@@ -55,15 +55,15 @@ class ImagePreview extends React.Component {
     const finish = () => {
       if (photos.length === 1) {
         this.setState({
-          hidePrev: true,
-          hideNext: true,
+          hidePrev: 'hideButton',
+          hideNext: 'hideButton',
           selectedIndex: nextInd,
           move: '',
           moving: false,
         });
       } else if (nextInd === 0) {
         this.setState({
-          hidePrev: true,
+          hidePrev: 'hideButton',
           hideNext: false,
           selectedIndex: nextInd,
           move: '',
@@ -72,7 +72,7 @@ class ImagePreview extends React.Component {
       } else if (nextInd === photos.length - 1) {
         this.setState({
           hidePrev: false,
-          hideNext: true,
+          hideNext: 'hideButton',
           selectedIndex: nextInd,
           move: '',
           moving: false,
@@ -124,6 +124,7 @@ class ImagePreview extends React.Component {
             photos={photos}
             selectInd={this.selectInd}
             selectedIndex={selectedIndex}
+            startInd={3}
           />
         </div>
       </>

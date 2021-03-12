@@ -18,16 +18,20 @@ const ImageViewer = ({
   photos ? (
     <>
       <div className={`imageBox ${move}`}>
-        <div className='selectPrevImage' hidden={hidePrev} onClick={selectPrev}>
-          {`<`}
+        <div className={`${hidePrev} selectPrevImage`} onClick={selectPrev}>
+          &#10148;
         </div>
-        <div className='selectNextImage' hidden={hideNext} onClick={selectNext}>{`>`}</div>
-        <img
-          src={photos[selectedIndex].url}
-          alt=''
-          className='selectedImage'
-          onClick={toggleModal}
-        />
+        <div className={`${hideNext} selectNextImage`} visible={!hideNext} onClick={selectNext}>
+          &#10148;
+        </div>
+        <div className='selectedImageBox'>
+          <img
+            src={photos[selectedIndex].url}
+            alt=''
+            className='selectedImage'
+            onClick={toggleModal}
+          />
+        </div>
       </div>
       <div className={`${move ? `moveLeftBox ${move}` : `moveLeftBox`} ${move}`}>
         <img src={photos[nextInd].url} alt='' className='nextImage' />
