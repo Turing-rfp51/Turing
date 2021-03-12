@@ -16,7 +16,7 @@ const LoadMoreAnswers = ({
           showMoreAnswers(questionID);
         }}
       >
-        LOAD MORE ANSWERS
+        SEE MORE ANSWERS
       </button>
     )}
   </React.Fragment>
