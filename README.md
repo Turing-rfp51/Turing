@@ -10,11 +10,7 @@ This product page displays detailed information about a particular product, and 
 - Installation
 - Usage
 
----
-
 ## **Description**
-
----
 
 **Overview**
 
@@ -60,5 +56,7 @@ This app currently displays the product page for a single product, and the `prod
 ## **Team Members**
 
 **Overview** - Till Mattson
+
 **Questions & Answers** - Irene Hodge
+
 **Ratings & Reviews** - Austin Elwell
