@@ -3,6 +3,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import QAUploadImages from './QAUploadImages.jsx';
+
 const { TOKEN } = require('../../../../config.js');
 
 class AnswerModal extends React.Component {
@@ -23,6 +25,22 @@ class AnswerModal extends React.Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  loadPhotos() {
+    const { files } = document.getElementById('PhotoUpload');
+    const fReader = new FileReader();
+
+    [0, 1, 2, 3, 4].forEach((i) => {
+      if (files[i]) {
+        fReader.readAsDataURL(files[i]);
+
+        fReader.onloadend = (event) => {
+          const temp = event.target.result;
+          this.updatePhotos(temp);
+        };
+      }
+    });
   }
 
   validateForm() {
@@ -94,6 +112,7 @@ class AnswerModal extends React.Component {
 
   render() {
     const { close } = this.props;
+    const { photos } = this.state;
     return (
       <div className='qaModal'>
         <div className='qaModal-content'>
@@ -142,6 +161,10 @@ class AnswerModal extends React.Component {
             <p className='qaModalEmailWarning'>
               For authentication reasons, you will not be emailed
             </p>
+            <br />
+            <br />
+            <label htmlFor='PhotoUpload'>Upload Photos</label>
+            <QAUploadImages photos={photos} loadPhotos={this.loadPhotos} />
             <br />
             <div className='modal-footer'>
               <button className='qaModalSubmit' type='submit'>
