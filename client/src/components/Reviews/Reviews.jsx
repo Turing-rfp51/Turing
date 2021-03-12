@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-plusplus */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
@@ -126,8 +128,12 @@ class Reviews extends React.Component {
       showNewReviewModal,
       productName,
     } = this.state;
+    const { postInteraction } = this.props;
     return (
-      <div className='reviewsModuleContainer'>
+      <div
+        className='reviewsModuleContainer'
+        onClick={(event) => postInteraction(event, 'reviews')}
+      >
         {metadata.ratings && (
           <ReviewsBreakdown
             reviews={reviews}

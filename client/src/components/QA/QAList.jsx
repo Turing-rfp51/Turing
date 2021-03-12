@@ -18,5 +18,3 @@ const QAList = ({ data, getQA }) => (
 );
 
 export default QAList;
-
-//may be the wrong spot to map answers
