@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-const SizeOptions = ({skus, onSelectSize}) => {
+const SizeOptions = ({ skus, onSelectSize }) => {
   if (!skus) {
     return null;
   }
@@ -13,23 +13,31 @@ const SizeOptions = ({skus, onSelectSize}) => {
   keys.forEach((sku) => {
     if (skus[sku].quantity > 0) {
       inStock = true;
-      options.push({size: skus[sku].size, sku});
+      options.push({ size: skus[sku].size, sku });
     }
   });
 
   const onSelect = (e) => {
     const selectedSizeSku = e.target[e.target.selectedIndex].id;
     onSelectSize(selectedSizeSku);
-  }
+  };
 
-  return (
-    inStock
-      ? (<select onChange={onSelect} defaultValue=''>
-        <option disabled hidden value=''>Select Size</option>
-        {options.map((option) => <option key={option.sku} id={option.sku}>{option.size}</option>)}
-      </select>)
-      : (<select disabled><option>OUT OF STOCK</option></select>)
-  )
-}
+  return inStock ? (
+    <select onChange={onSelect} defaultValue='' className='selectSizeMenu'>
+      <option disabled hidden value=''>
+        Select Size
+      </option>
+      {options.map((option) => (
+        <option key={option.sku} id={option.sku}>
+          {`Size: ${option.size}`}
+        </option>
+      ))}
+    </select>
+  ) : (
+    <select disabled className='sizeOutOfStock'>
+      <option>OUT OF STOCK</option>
+    </select>
+  );
+};
 
 export default SizeOptions;
