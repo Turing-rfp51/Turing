@@ -868,22 +868,22 @@ button:hover {
 .overviewHeaderContainer {
   width: 398px;
   order: 1;
-  height: 150px;
   display: grid;
-  grid-template: 55px 45px 50px / repeat(4, 100px);
+  grid-template: 1fr 45px 1fr / repeat(4, 100px);
 }
 .productName {
   margin: 10px;
   grid-area: 1/1/2/4;
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
 }
 .productCategory {
   margin: 10px;
   text-align: center;
   grid-area: 1 / 4 / 2 / 5;
   transform: translateY(10px);
-  font-size: 15px;
+  font-size: 12px;
+  opacity: 50%;
 }
 .originalPrice {
   margin: 15px;
@@ -891,6 +891,8 @@ button:hover {
   font-weight: bold;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
 }
 .salePrice {
   color: red;
@@ -898,12 +900,39 @@ button:hover {
 }
 .oldPrice {
   text-decoration: line-through red;
+  font-size: 25px;
+  margin-left: 30px;
 }
 .starsContainer {
   grid-area: 3 / 1 / 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 50%;
+}
+.starsContainer:hover {
+  cursor: pointer;
+}
+.overviewStarAverageContainer {
+  height: 30px;
+  width: 199px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overviewAverageNumber {
+  width: 20px;
+  transform: translateY(8px);
+  font-size: 22px;
+}
+.overviewshowAllReviews {
+  width: 199px;
+  transform: translateY(8px);
+  font-size: 22px;
 }
 .shareButtons {
-  grid-area: 2 / 3 / 3 / 5;
+  grid-area: 2 / 4 / 3 / 5;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -924,6 +953,7 @@ button:hover {
 }
 
 .styleSelector {
+  margin-top: 25px;
   width: 408px;
   order: 2;
 }
@@ -932,7 +962,7 @@ button:hover {
   height: 40px;
   margin: 10px;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .stylePhotos {
@@ -1041,7 +1071,7 @@ button:hover {
   color: white;
 }
 .selectSizeText {
-  margin-top: 50px;
+  margin-top: 25px;
   color: white;
 }
 .showSizeInstructions {
@@ -1122,8 +1152,6 @@ button:hover {
   justify-content: center;
   height: 70vh;
   width: 40vw;
-  /* min-width: 600px;
-  min-height: 400px; */
   text-align: center;
   overflow: visible;
   object-fit: cover;
@@ -1208,21 +1236,30 @@ button:hover {
 .thumbnailScroll {
   grid-column-start: 2;
   display: grid;
-  grid-template-rows: 100%;
-  grid-template-columns: repeat(10, 1fr);
-  grid-column-gap: 40px;
-  width: 40vw;
-  height: 108px;
+  height: 118px;
   overflow: visible;
-  transform: translateX(-158px);
+}
+.thumbnailScroll.displayScroll {
+  transform: translateX(-295px);
+}
+.thumbnailScroll.displayScroll.moveLeft {
+  transition: all 300ms ease;
+  transform: translateX(-433px);
+}
+.thumbnailScroll.displayScroll.moveRight {
+  transition: all 300ms ease;
+  transform: translateX(-157px);
+}
+.thumbnailScroll.hideScroll {
+  justify-content: center;
 }
 .thumbnailImages {
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
+  height: 98px;
+  width: 98px;
   object-fit: cover;
   overflow: hidden;
   opacity: 75%;
@@ -1231,30 +1268,40 @@ button:hover {
 .thumbnailImages:hover {
   opacity: 100%;
   transition: all 300ms ease;
-  height: calc(100% + 10px);
-  width: calc(100% + 10px);
+  height: calc(98px + 10px);
+  width: calc(98px + 10px);
 }
 .thumbnailImageBox {
+  position: relative;
   grid-row-start: 1;
+  margin-right: 20px;
+  margin-left: 20px;
   overflow: hidden;
   height: 98px;
   width: 98px;
   transition: all 300ms ease;
+  transform: translateY(10px);
+  object-fit: cover;
 }
 .thumbnailImageBox:hover {
-  height: 108px;
-  width: 108px;
-  transform: translateX(-10px);
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 118px;
+  width: 118px;
+  transform: translateX(-5px);
   transition: all 300ms ease;
+}
+.thumbnailImageBox.hideScroll {
+  display: none;
 }
 .thumbnailBox {
   z-index: 4;
   grid-row-start: 2;
   display: grid;
   grid-template-rows: 100%;
-  grid-template-columns: 118px calc(40vw - 196px) 118px;
+  grid-template-columns: 118px calc(40vw - 236px) 118px;
   width: 40vw;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
   vertical-align: middle;
   opacity: 30%;
@@ -1263,6 +1310,14 @@ button:hover {
 .thumbnailBox:hover {
   opacity: 100%;
   transition: all 400ms ease;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  );
 }
 .nextThumb,
 .prevThumb {
@@ -1280,6 +1335,10 @@ button:hover {
   opacity: 15%;
   transition: all 300ms ease;
 }
+.nextThumb.hideScroll,
+.prevThumb.hideScroll {
+  pointer-events: none;
+}
 .nextThumb:hover,
 .prevThumb:hover {
   cursor: pointer;
@@ -1292,6 +1351,7 @@ button:hover {
   transform: translateX(calc(40vw - 118px));
   transition: all 300ms ease;
 }
+
 .nextThumb {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   grid-column-start: 1;

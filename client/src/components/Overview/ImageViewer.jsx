@@ -21,7 +21,10 @@ const ImageViewer = ({
         <div className={`${hidePrev} selectPrevImage`} onClick={selectPrev}>
           &#10148;
         </div>
-        <div className={`${hideNext} selectNextImage`} onClick={selectNext}>
+        <div
+          className={`${photos.length > 1 ? hideNext : 'hideButton'} selectNextImage`}
+          onClick={selectNext}
+        >
           &#10148;
         </div>
         <div className='selectedImageBox'>
