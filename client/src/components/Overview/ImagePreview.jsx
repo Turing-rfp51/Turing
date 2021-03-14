@@ -40,7 +40,8 @@ class ImagePreview extends React.Component {
   }
 
   setThumbScroll() {
-    if (this.props.photos) {
+    const { photos } = this.props;
+    if (photos) {
       return this.checkPhotosLength();
     }
     return setTimeout(this.setThumbScroll, 10);

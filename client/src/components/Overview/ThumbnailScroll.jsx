@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -23,7 +24,7 @@ const ThumbnailScroll = ({
           <img
             src={photos[getIndex(startInd - 2 + photos.length)].thumbnail_url}
             alt='Missing'
-            className={`thumbnailImages`}
+            className='thumbnailImages'
             id={getIndex(startInd - 1 + photos.length)}
             key={getIndex(startInd - 1 + photos.length)}
           />
@@ -32,7 +33,7 @@ const ThumbnailScroll = ({
           <img
             src={photos[getIndex(startInd - 1 + photos.length)].thumbnail_url}
             alt='Missing'
-            className={`thumbnailImages`}
+            className='thumbnailImages'
             id={getIndex(startInd - 1 + photos.length)}
             key={getIndex(startInd - 1 + photos.length)}
           />
@@ -56,7 +57,7 @@ const ThumbnailScroll = ({
           <img
             src={photos[getIndex(startInd)].thumbnail_url}
             alt='Missing'
-            className={`thumbnailImages`}
+            className='thumbnailImages'
             id={getIndex(startInd - 1 + photos.length)}
             key={getIndex(startInd - 1 + photos.length)}
           />
@@ -65,7 +66,7 @@ const ThumbnailScroll = ({
           <img
             src={photos[getIndex(startInd + 1)].thumbnail_url}
             alt='Missing'
-            className={`thumbnailImages`}
+            className='thumbnailImages'
             id={getIndex(startInd - 1 + photos.length)}
             key={getIndex(startInd - 1 + photos.length)}
           />
