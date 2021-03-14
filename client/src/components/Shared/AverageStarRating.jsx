@@ -43,9 +43,10 @@ class AverageStarRating extends React.Component {
 
   render() {
     const { average } = this.state;
+    const { inOverview } = this.props;
     return (
-      <div className='reviewAverageContainer'>
-        <div className='reviewAverageNumber'>
+      <div className={inOverview ? 'overviewStarAverageContainer' : 'reviewAverageContainer'}>
+        <div className={inOverview ? 'overviewAverageNumber' : 'reviewAverageNumber'}>
           {`${(Math.round(average * 10) / 10).toString()}.0`.slice(0, 3)}
         </div>
         {average !== -1 && <AverageStarDisplay average={average} />}
